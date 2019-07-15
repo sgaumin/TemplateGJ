@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
@@ -11,15 +12,35 @@ public class LevelLoader : MonoBehaviour
 
 	protected void Awake() => Instance = this;
 
-	public void ReloadLevel() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	public void ReloadLevel()
+	{
+		LevelClear();
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
 
-	public void LoadNextLevel() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+	public void LoadNextLevel()
+	{
+		LevelClear();
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+	}
 
-	public void LoadMenu() => SceneManager.LoadScene(menuScene);
+	public void LoadMenu()
+	{
+		LevelClear();
+		SceneManager.LoadScene(menuScene);
+	}
 
-	public void LoadCredits() => SceneManager.LoadScene(creditsScene);
+	public void LoadCredits()
+	{
+		LevelClear();
+		SceneManager.LoadScene(creditsScene);
+	}
 
-	public void LoadGame() => SceneManager.LoadScene(gameScene);
+	public void LoadGame()
+	{
+		LevelClear();
+		SceneManager.LoadScene(gameScene);
+	}
 
 	public void QuitGame()
 	{
@@ -29,4 +50,6 @@ public class LevelLoader : MonoBehaviour
          Application.Quit();
 #endif
 	}
+
+	private void LevelClear() => DOTween.Clear(true);
 }
