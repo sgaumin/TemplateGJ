@@ -5,6 +5,7 @@
 ============
 - DOTween
 - TextMeshPro
+- Pixelart Animation Importer for Unity (https://github.com/talecrafter/AnimationImporter)
 
 =============
 = Resources =
