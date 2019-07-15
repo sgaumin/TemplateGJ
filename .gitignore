@@ -1,0 +1,96 @@
+=============== 
+Lightmap generated
+===============
+LightmapSnapshot*
+LightmapSnapshot.asset
+LightmapSnapshot.asset.meta
+Lightmap-*.png
+Lightmap-*.png.meta
+Lightmap-*
+Lightmap-*.exr
+Lightmap-*.exr.meta
+Assets/LargeFiles/
+Assets/LargeFiles.meta
+
+===============
+Builds and Others
+===============
+Builds/
+Wireframes/
+Ref/
+
+=============== 
+Unity generated
+===============
+Temp/
+Library/
+Library*
+UnityPackageManager/
+
+=====================================
+Visual Studio / MonoDevelop generated
+=====================================
+ExportedObj/
+obj/
+*.svd
+*.userprefs
+/*.csproj
+*.pidb
+*.suo
+/*.sln
+*.user
+*.unityproj
+*.booproj
+/*.vs
+
+# Common IntelliJ Platform excludes
+
+# User specific
+**/.idea/**/workspace.xml
+**/.idea/**/tasks.xml
+**/.idea/shelf/*
+**/.idea/dictionaries
+
+# Sensitive or high-churn files
+**/.idea/**/dataSources/
+**/.idea/**/dataSources.ids
+**/.idea/**/dataSources.xml
+**/.idea/**/dataSources.local.xml
+**/.idea/**/sqlDataSources.xml
+**/.idea/**/dynamic.xml
+
+# Rider
+# Rider auto-generates .iml files, and contentModel.xml
+**/.idea/**/*.iml
+**/.idea/**/contentModel.xml
+**/.idea/**/modules.xml
+
+*.suo
+*.user
+.vs/
+[Bb]in/
+[Oo]bj/
+_UpgradeReport_Files/
+[Pp]ackages/
+
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+============
+OS generated
+============
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+=====
+Wwise
+=====
+Assets/Wwise/Editor/ProjectData/AkWwiseProjectData\.asset
+end-of-study-Project2019_WwiseProject/Originals/SFX/*.akd
+end-of-study-Project2019_WwiseProject/.cache/
+end-of-study-Project2019_WwiseProject/*.prof

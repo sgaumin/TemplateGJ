@@ -1,0 +1,11 @@
+== Here, all packages/resources used in this project ==
+
+============
+= Packages =
+============
+- DOTween
+- TextMeshPro
+
+=============
+= Resources =
+=============
