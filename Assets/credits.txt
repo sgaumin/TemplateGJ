@@ -7,3 +7,4 @@
 - TextMeshPro
 - Pixelart Animation Importer for Unity (https://github.com/talecrafter/AnimationImporter)
 - Project Cleaner: https://github.com/unity-cn/Tool-UnityAssetCleaner
+- CharacterController2D : https://github.com/Brackeys/2D-Character-Controller
