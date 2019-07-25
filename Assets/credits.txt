@@ -6,7 +6,4 @@
 - DOTween
 - TextMeshPro
 - Pixelart Animation Importer for Unity (https://github.com/talecrafter/AnimationImporter)
-
-=============
-= Resources =
-=============
+- Project Cleaner: https://github.com/unity-cn/Tool-UnityAssetCleaner
