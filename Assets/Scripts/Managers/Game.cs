@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,5 +20,10 @@ public class Game : GameSystem
 	{
 		base.Awake();
 		Instance = this;
+	}
+
+	protected override void Update()
+	{
+		base.Update();
 	}
 }
