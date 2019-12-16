@@ -1,4 +1,6 @@
-# TemplateGJ_2D
-Project template for 2D prototype or game jam.
+# TemplateGJ
+Project template for prototype or game jam.
 
-For Unity 2019.1.9f1.
+By default in 2D mode.
+
+For Unity 2019.2.15.
