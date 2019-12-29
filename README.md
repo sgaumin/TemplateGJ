@@ -10,3 +10,6 @@ For Unity 2019.2.15.
 - Write a project description.
 - Link to the game itch.io page.
 - Insert a logo picture.
+
+## License
+MIT @ [Sébastien Gaumin](https://github.com/sgaumin)
