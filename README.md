@@ -1,8 +1,11 @@
 # TemplateGJ
+![unity](https://img.shields.io/badge/unity-2019.2.15-blue)
+![visual-studio](https://img.shields.io/badge/visualstudio-2019-purple)
+
 Project template for prototype or game jam.
 
 ## Getting Started
-You can download the project and open it on your local machine with **Unity 2019.2.15**.
+You can download the project and open it on your local machine.
 
 By default in 2D mode.
 
