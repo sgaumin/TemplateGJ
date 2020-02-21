@@ -16,6 +16,7 @@ After using this template, you need to:
 - Link to the game itch.io page.
 - List all tools used.
 - Update Issues link in this Readme file.
+- Update Badges of Readme file. 
 - (Optional) Insert a logo picture.
 
 ## Bugs, Issues
