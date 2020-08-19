@@ -1,9 +1,6 @@
-﻿namespace GameSpace
+﻿public enum GameStates
 {
-	public enum GameStates
-	{
-		Play,
-		GameOver,
-		Pause
-	}
+	Play,
+	GameOver,
+	Pause
 }

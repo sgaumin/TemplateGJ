@@ -1,22 +1,19 @@
 ﻿using UnityEngine;
 
-namespace GameSpace.Sounds
+public class MusicPlayer : MonoBehaviour
 {
-	public class MusicPlayer : MonoBehaviour
-	{
-		public static MusicPlayer Instance { get; private set; }
+	public static MusicPlayer Instance { get; private set; }
 
-		protected void Awake()
+	protected void Awake()
+	{
+		if (Instance == null)
 		{
-			if (Instance == null)
-			{
-				DontDestroyOnLoad(gameObject);
-				Instance = this;
-			}
-			else
-			{
-				Destroy(gameObject);
-			}
+			DontDestroyOnLoad(gameObject);
+			Instance = this;
+		}
+		else
+		{
+			Destroy(gameObject);
 		}
 	}
 }
