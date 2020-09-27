@@ -1,4 +1,5 @@
 ﻿using Tools;
+using UnityEngine;
 
 public class Game : GameSystem
 {
@@ -8,6 +9,9 @@ public class Game : GameSystem
 	public event GameEventHandler OnStart;
 	public event GameEventHandler OnGameOver;
 	public event GameEventHandler OnPause;
+
+	[Header("References")]
+	[SerializeField] private FadScreen fader;
 
 	private GameStates gameState;
 
@@ -44,6 +48,7 @@ public class Game : GameSystem
 	protected void Start()
 	{
 		GameState = GameStates.Play;
+		fader.FadIn();
 	}
 
 	protected override void Update()
