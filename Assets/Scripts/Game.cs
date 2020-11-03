@@ -1,9 +1,13 @@
-﻿using Tools;
+﻿using System;
+using System.Collections;
+using Tools;
 using UnityEngine;
 
 public class Game : GameSystem
 {
 	public static Game Instance { get; private set; }
+
+	private const string MENU_SCENE = "Menu";
 
 	public delegate void GameEventHandler();
 	public event GameEventHandler OnStart;
@@ -14,6 +18,7 @@ public class Game : GameSystem
 	[SerializeField] private FadScreen fader;
 
 	private GameStates gameState;
+	private Coroutine loadingLevel;
 
 	public GameStates GameState
 	{
@@ -54,5 +59,56 @@ public class Game : GameSystem
 	protected override void Update()
 	{
 		base.Update();
+	}
+
+	public void ReloadLevel()
+	{
+		if (loadingLevel == null)
+		{
+			loadingLevel = StartCoroutine(LoadLevelCore(
+
+			content: () =>
+			{
+				LevelLoader.ReloadLevel();
+			}));
+		}
+	}
+
+	public void LoadNextLevel()
+	{
+		if (loadingLevel == null)
+		{
+			loadingLevel = StartCoroutine(LoadLevelCore(
+
+			content: () =>
+			{
+				LevelLoader.LoadNextLevel();
+			}));
+		}
+	}
+
+	public void LoadMenu()
+	{
+		if (loadingLevel == null)
+		{
+			loadingLevel = StartCoroutine(LoadLevelCore(
+
+			content: () =>
+			{
+				LevelLoader.LoadLevelByName(MENU_SCENE);
+			}));
+		}
+	}
+
+	private IEnumerator LoadLevelCore(Action content = null)
+	{
+		Time.timeScale = 1f;
+		yield return fader.FadOutCore();
+		content?.Invoke();
+	}
+
+	private void OnDestroy()
+	{
+		Instance = null;
 	}
 }
