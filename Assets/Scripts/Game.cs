@@ -1,12 +1,10 @@
-﻿using System;
+using System;
 using System.Collections;
 using Tools;
 using UnityEngine;
 
 public class Game : GameSystem
 {
-	public static Game Instance { get; private set; }
-
 	private const string MENU_SCENE = "Menu";
 
 	public delegate void GameEventHandler();
@@ -47,7 +45,6 @@ public class Game : GameSystem
 	protected override void Awake()
 	{
 		base.Awake();
-		Instance = this;
 	}
 
 	protected void Start()
@@ -107,8 +104,4 @@ public class Game : GameSystem
 		content?.Invoke();
 	}
 
-	private void OnDestroy()
-	{
-		Instance = null;
-	}
 }
