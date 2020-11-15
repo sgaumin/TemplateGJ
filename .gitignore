@@ -85,3 +85,6 @@ OS generated
 .Spotlight-V100
 .Trashes
 ehthumbs.db
+fmod_editor.log
+
+Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
