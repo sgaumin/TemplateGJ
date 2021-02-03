@@ -4,23 +4,25 @@
 
 Project template for prototype or game jam.
 
-## Getting Started
+## Notice
 You can download the project and open it on your local machine.
 
 By default in 2D mode.
 
-## TODO Readme
-After using this template, you need to:
+## Description
+After using this template, you coud fo the following:
 - Put team credits.
 - Write a project description.
 - Link to the game itch.io page.
 - List all tools used.
-- Update Issues link in this Readme file.
-- Update Badges of Readme file. 
-- (Optional) Insert a logo picture.
+- Update Badges of Readme file.
+- Insert a logo picture.
+
+## Useful Links
+- [NavMesh Components](https://github.com/Unity-Technologies/NavMeshComponents).
 
 ## Bugs, Issues
 See a bug or an issue ? Please, [open a new issue here](https://github.com/sgaumin/TemplateGJ/issues) on GitHub.
 
 ## Copyright and License
-Code released under the MIT license @ [Sébastien Gaumin](https://github.com/sgaumin)
+Code released under the MIT license
