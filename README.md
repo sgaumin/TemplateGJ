@@ -10,7 +10,7 @@ You can download the project and open it on your local machine.
 By default in 2D mode.
 
 ## Description
-After using this template, you coud fo the following:
+After using this template, you could do the following:
 - Put team credits.
 - Write a project description.
 - Link to the game itch.io page.
