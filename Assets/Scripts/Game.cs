@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Game : GameSystem
 {
-	private const string MENU_SCENE = "Menu";
-
 	public delegate void GameEventHandler();
 	public event GameEventHandler OnStart;
 	public event GameEventHandler OnGameOver;
@@ -42,6 +40,7 @@ public class Game : GameSystem
 		}
 	}
 
+	#region Unity Callbacks
 	protected override void Awake()
 	{
 		base.Awake();
@@ -57,7 +56,9 @@ public class Game : GameSystem
 	{
 		base.Update();
 	}
+	#endregion
 
+	#region Level Loading Methods
 	public void ReloadLevel()
 	{
 		if (loadingLevel == null)
@@ -92,7 +93,7 @@ public class Game : GameSystem
 
 			content: () =>
 			{
-				LevelLoader.LoadLevelByName(MENU_SCENE);
+				LevelLoader.LoadLevelByName(Constants.MENU_SCENE);
 			}));
 		}
 	}
@@ -129,5 +130,5 @@ public class Game : GameSystem
 		yield return fader.FadOutCore();
 		content?.Invoke();
 	}
-
+	#endregion
 }
