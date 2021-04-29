@@ -1,53 +1,26 @@
-﻿using System.IO;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public static class GameData
 {
-	private const string fileName = "playerScore.json";
+	private const string DATA = "data";
 
-	static private string PathToDataFolder()
+	public static string Data
 	{
-		string savepath;
-
-#if UNITY_EDITOR
-		savepath = Application.dataPath;
-#else
-			savepath = Application.persistentDataPath;
-#endif
-		savepath += "/Data";
-		if (!Directory.Exists(savepath))
+		get
 		{
-			Directory.CreateDirectory(savepath);
+			return PlayerPrefs.HasKey(DATA) ? PlayerPrefs.GetString(DATA) : "";
 		}
-
-		return savepath;
+		set
+		{
+			PlayerPrefs.SetString(DATA, value);
+			PlayerPrefs.Save();
+		}
 	}
 
-	static public void SaveData()
+	public static void DeleteAllSave()
 	{
-		//PlayerData playerData = new PlayerData();
-		//playerData.bestScoreLevel1 = BestScoreLevel;
-
-		//string filePath = Path.Combine(PathToDataFolder(), fileName);
-		//string json = JsonUtility.ToJson(playerData);
-		//File.WriteAllText(filePath, json);
-	}
-
-	static public void LoadData()
-	{
-		//string filePath = Path.Combine(PathToDataFolder(), fileName);
-
-		//if (!File.Exists(filePath)) return;
-
-		//string json = File.ReadAllText(filePath);
-
-		//PlayerData playerDatas = JsonUtility.FromJson<PlayerData>(json);
-		//BestScoreLevel1 = playerDatas.bestScoreLevel;
-	}
-
-	static public void ResetData()
-	{
-
+		PlayerPrefs.DeleteAll();
+		PlayerPrefs.Save();
 	}
 }
