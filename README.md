@@ -1,5 +1,5 @@
 # TemplateGJ
-[![unity](https://img.shields.io/badge/unity-2019.4.22f1-blue)](https://unity3d.com/fr/get-unity/download)
+[![unity](https://img.shields.io/badge/unity-2019.4.25f1-blue)](https://unity3d.com/fr/get-unity/download)
 [![visual-studio](https://img.shields.io/badge/visualstudio-2019-purple)](https://visualstudio.microsoft.com/fr/vs/)
 [![fmob](https://img.shields.io/badge/fmob-2.00.08-orange)](https://www.fmod.com/download)
 
