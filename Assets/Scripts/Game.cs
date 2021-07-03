@@ -23,11 +23,11 @@ public class Game : GameSystem
 	[Header("References")]
 	[SerializeField] private FadScreen fader;
 
-	private GameStates gameState;
+	private GameState gameState;
 	private Coroutine loadingLevel;
 	private float gameMusicVolume;
 
-	public GameStates GameState
+	public GameState GameState
 	{
 		get => gameState;
 		set
@@ -36,15 +36,15 @@ public class Game : GameSystem
 
 			switch (value)
 			{
-				case GameStates.Play:
+				case GameState.Play:
 					OnStart?.Invoke();
 					break;
 
-				case GameStates.GameOver:
+				case GameState.GameOver:
 					OnGameOver?.Invoke();
 					break;
 
-				case GameStates.Pause:
+				case GameState.Pause:
 					OnPause?.Invoke();
 					break;
 			}
@@ -59,7 +59,7 @@ public class Game : GameSystem
 
 	protected void Start()
 	{
-		GameState = GameStates.Play;
+		GameState = GameState.Play;
 		fader.FadIn();
 
 		mixer.GetFloat(GAME_MUSIC_VOLUME, out gameMusicVolume);

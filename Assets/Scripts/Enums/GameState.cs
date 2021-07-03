@@ -1,4 +1,4 @@
-﻿public enum GameStates
+﻿public enum GameState
 {
 	Play,
 	GameOver,
