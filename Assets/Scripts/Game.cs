@@ -52,6 +52,7 @@ public class Game : GameSystem
 	}
 
 	#region Unity Callbacks
+
 	protected override void Awake()
 	{
 		base.Awake();
@@ -71,17 +72,21 @@ public class Game : GameSystem
 	{
 		base.Update();
 	}
-	#endregion
+
+	#endregion Unity Callbacks
 
 	#region Audio
+
 	public void UpdateGameMusicVolume(float percentage)
 	{
 		gameMusicVolume = Mathf.Lerp(gameMusicVolumeLimits.Min, gameMusicVolumeLimits.Max, percentage);
 		mixer.SetFloat(GAME_MUSIC_VOLUME, gameMusicVolume);
 	}
-	#endregion
+
+	#endregion Audio
 
 	#region Level Loading Methods
+
 	public void ReloadLevel()
 	{
 		if (loadingLevel == null)
@@ -153,5 +158,6 @@ public class Game : GameSystem
 		yield return fader.FadOutCore();
 		content?.Invoke();
 	}
-	#endregion
+
+	#endregion Level Loading Methods
 }
