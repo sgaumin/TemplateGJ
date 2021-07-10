@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
-struct I18nImageData
+internal struct I18nImageData
 {
 	public Language language;
 	public Sprite sprite;

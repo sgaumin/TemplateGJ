@@ -1,10 +1,10 @@
 /*
- * Internationalization 
- * 
+ * Internationalization
+ *
  * Author: Daniel Erdmann
- * 
+ *
  * 1. Add this File to you Project
- * 
+ *
  * 2. Add the language files to the folder Assets/Resources/I18n. (Filesnames: en.txt, es.txt, pt.txt, de.txt, and so on)
  *    Format: en.txt:           es.txt:
  *           =============== =================
@@ -12,10 +12,10 @@
  *           |world=World  | |world=Mundo    |
  *           |...          | |...            |
  *           =============== =================
- *           
- * 3. Use it! 
+ *
+ * 3. Use it!
  *    Debug.Log(I18n.Fields["hello"] + " " + I18n.Fields["world"]); //"Hello World" or "Hola Mundo"
- * 
+ *
  * Use \n for new lines. Fallback language is "en"
  */
 
@@ -23,7 +23,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-class I18n
+internal class I18n
 {
 	/// <summary>
 	/// Text Fields

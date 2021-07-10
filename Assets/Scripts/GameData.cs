@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 
-
 public static class GameData
 {
 	private const string DATA = "data";
