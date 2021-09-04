@@ -1,12 +1,14 @@
 ﻿using DG.Tweening;
 using System.Collections;
+using Tools;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FadScreen : MonoBehaviour
 {
-	[Header("References")]
-	[SerializeField] private Image image;
+	[SerializeField] private Dependency<Image> _image;
+
+	private Image image => _image.Resolve(this);
 
 	private Color defaultFadInColorTarget = Color.black;
 	private Color defaultFadOutColorTarget = Color.black.WithAlpha(0);

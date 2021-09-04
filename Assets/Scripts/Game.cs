@@ -10,18 +10,22 @@ public class Game : GameSystem
 	public const string GAME_MUSIC_VOLUME = "musicVolume";
 
 	public delegate void GameEventHandler();
+
 	public event GameEventHandler OnStart;
+
 	public event GameEventHandler OnGameOver;
+
 	public event GameEventHandler OnPause;
+
+	public static Game Instance { get; private set; }
 
 	[Header("Audio")]
 	[SerializeField] private AudioMixer mixer;
-	[Space]
 	[SerializeField] private AudioExpress gameMusic;
 	[SerializeField, FloatRangeSlider(-80f, 10f)] private FloatRange gameMusicVolumeLimits = new FloatRange(-60f, 0f);
 
 	[Header("References")]
-	[SerializeField] private FadScreen fader;
+	[SerializeField] private Dependency<FadScreen> _fader;
 
 	private GameState gameState;
 	private Coroutine loadingLevel;
@@ -50,12 +54,14 @@ public class Game : GameSystem
 			}
 		}
 	}
+	private FadScreen fader => _fader.Resolve(this);
 
 	#region Unity Callbacks
 
 	protected override void Awake()
 	{
 		base.Awake();
+		Instance = this;
 	}
 
 	protected void Start()

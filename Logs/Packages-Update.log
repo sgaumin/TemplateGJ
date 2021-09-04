@@ -185,3 +185,15 @@ The following packages were updated:
   com.unity.timeline from version 1.1.0 to 1.2.6
 The following packages were removed:
   com.unity.package-manager-ui@2.2.0
+
+=== Sat Sep  4 12:17:55 2021
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were added:
+  com.unity.ide.visualstudio@2.0.11
+The following packages were updated:
+  com.unity.analytics from version 3.3.5 to 3.5.3
+  com.unity.test-framework from version 1.1.24 to 1.1.27
+  com.unity.textmeshpro from version 2.1.6 to 3.0.6

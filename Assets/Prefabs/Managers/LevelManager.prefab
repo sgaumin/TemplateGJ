@@ -65,7 +65,9 @@ MonoBehaviour:
   gameMusicVolumeLimits:
     min: -60
     max: 0
-  fader: {fileID: 1857699063805068419}
+  _fader:
+    _source: 2
+    _localReference: {fileID: 0}
 --- !u!114 &6724002783205896963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,8 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ae2a0a0a0d2d34ba5b5aefe641c2e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tmpFont: {fileID: 0}
-  plainFont: {fileID: 0}
+  TMPFont: {fileID: 0}
+  PlainFont: {fileID: 0}
 --- !u!1001 &576153364358352620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -210,18 +212,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 576153364358352620}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1857699063805068419 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2177832480006244975, guid: 19da4f67621aea34dbd4e5bbbecb34ea,
-    type: 3}
-  m_PrefabInstance: {fileID: 576153364358352620}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85014644fcff057479f80ab8e5badc33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1167935706699334503
 PrefabInstance:
   m_ObjectHideFlags: 0

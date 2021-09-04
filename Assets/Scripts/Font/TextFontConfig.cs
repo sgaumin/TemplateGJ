@@ -7,9 +7,6 @@ public class TextFontConfig : MonoBehaviour
 
 	protected void Awake() => Instance = this;
 
-	[SerializeField] private TMP_FontAsset tmpFont;
-	[SerializeField] private Font plainFont;
-
-	public TMP_FontAsset TMPFont => tmpFont;
-	public Font PlainFont => plainFont;
+	public TMP_FontAsset TMPFont;
+	public Font PlainFont;
 }

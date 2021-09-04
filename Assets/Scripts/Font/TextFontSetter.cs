@@ -1,24 +1,27 @@
 ﻿using TMPro;
+using Tools;
 using UnityEngine;
 using UnityEngine.UI;
+using static Facade;
 
 public class TextFontSetter : MonoBehaviour
 {
-	private TextMeshProUGUI tmpText;
-	private Text plainText;
+	[SerializeField] private Dependency<TextMeshProUGUI> _tmpText;
+	[SerializeField] private Dependency<Text> _plainText;
+
+	private TextMeshProUGUI tmpText => _tmpText.Resolve(this);
+	private Text plainText => _plainText.Resolve(this);
 
 	protected void Start()
 	{
-		tmpText = GetComponent<TextMeshProUGUI>();
-		plainText = GetComponent<Text>();
 		SetFont();
 	}
 
 	public void SetFont()
 	{
 		if (tmpText != null)
-			tmpText.font = TextFontConfig.Instance.TMPFont;
+			tmpText.font = FontConfig.TMPFont;
 		if (plainText != null)
-			plainText.font = TextFontConfig.Instance.PlainFont;
+			plainText.font = FontConfig.PlainFont;
 	}
 }
