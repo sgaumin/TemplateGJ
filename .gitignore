@@ -23,6 +23,8 @@ Ref/
 Unity generated
 ===============
 Temp/
+Logs/
+Logs*
 Library/
 Library*
 UnityPackageManager/
