@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using Tools;
@@ -24,12 +25,17 @@ public class Game : GameSystem
 	[SerializeField] private AudioExpress gameMusic;
 	[SerializeField, FloatRangeSlider(-80f, 10f)] private FloatRange gameMusicVolumeLimits = new FloatRange(-60f, 0f);
 
+	[Header("Effect")]
+	[SerializeField] private Material transition;
+
 	[Header("References")]
 	[SerializeField] private Dependency<FadScreen> _fader;
+	[SerializeField] private Dependency<CinemachineImpulseSource> _impulse;
 
 	private GameState gameState;
 	private Coroutine loadingLevel;
 	private float gameMusicVolume;
+	private Coroutine inversingColor;
 
 	public GameState GameState
 	{
@@ -55,8 +61,7 @@ public class Game : GameSystem
 		}
 	}
 	private FadScreen fader => _fader.Resolve(this);
-
-	#region Unity Callbacks
+	private CinemachineImpulseSource impulse => _impulse.Resolve(this);
 
 	protected override void Awake()
 	{
@@ -67,6 +72,7 @@ public class Game : GameSystem
 	protected void Start()
 	{
 		GameState = GameState.Play;
+		transition.SetFloat("_isInversed", 0);
 		fader.FadIn();
 
 		mixer.GetFloat(GAME_MUSIC_VOLUME, out gameMusicVolume);
@@ -79,19 +85,34 @@ public class Game : GameSystem
 		base.Update();
 	}
 
-	#endregion Unity Callbacks
+	public void GenerateImpulse()
+	{
+		impulse.GenerateImpulse();
+	}
 
-	#region Audio
+	public void InverseColor(float duration)
+	{
+		if (inversingColor != null)
+		{
+			StopCoroutine(inversingColor);
+		}
+
+		transition.SetFloat("_isInversed", 0);
+		inversingColor = StartCoroutine(InversingColor(duration));
+	}
+
+	private IEnumerator InversingColor(float duration)
+	{
+		transition.SetFloat("_isInversed", 1);
+		yield return new WaitForSeconds(duration);
+		transition.SetFloat("_isInversed", 0);
+	}
 
 	public void UpdateGameMusicVolume(float percentage)
 	{
 		gameMusicVolume = Mathf.Lerp(gameMusicVolumeLimits.Min, gameMusicVolumeLimits.Max, percentage);
 		mixer.SetFloat(GAME_MUSIC_VOLUME, gameMusicVolume);
 	}
-
-	#endregion Audio
-
-	#region Level Loading Methods
 
 	public void ReloadLevel()
 	{
@@ -160,10 +181,13 @@ public class Game : GameSystem
 
 	private IEnumerator LoadLevelCore(Action content = null)
 	{
+		if (inversingColor != null)
+		{
+			StopCoroutine(inversingColor);
+		}
 		Time.timeScale = 1f;
+
 		yield return fader.FadOutCore();
 		content?.Invoke();
 	}
-
-	#endregion Level Loading Methods
 }
