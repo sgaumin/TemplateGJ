@@ -1,4 +1,5 @@
 using Cinemachine;
+using DG.Tweening;
 using System;
 using System.Collections;
 using Tools;
@@ -9,28 +10,25 @@ using UnityEngine.Audio;
 public class Game : GameSystem
 {
 	public const string GAME_MUSIC_VOLUME = "musicVolume";
+	public const float MIN_MUSIC_VOLUME = -60f;
 
 	public delegate void GameEventHandler();
 
 	public event GameEventHandler OnStart;
-
 	public event GameEventHandler OnGameOver;
-
 	public event GameEventHandler OnPause;
 
 	public static Game Instance { get; private set; }
 
 	[Header("Audio")]
-	[SerializeField] private AudioMixer mixer;
 	[SerializeField] private AudioExpress gameMusic;
-	[SerializeField, FloatRangeSlider(-80f, 10f)] private FloatRange gameMusicVolumeLimits = new FloatRange(-60f, 0f);
-
-	[Header("Effect")]
-	[SerializeField] private Material transition;
 
 	[Header("References")]
 	[SerializeField] private Dependency<FadScreen> _fader;
 	[SerializeField] private Dependency<CinemachineImpulseSource> _impulse;
+	[SerializeField] private Dependency<CinemachineVirtualCamera> _camera;
+	[SerializeField] private AudioMixer mixer;
+	[SerializeField] private Material transition;
 
 	private GameState gameState;
 	private Coroutine loadingLevel;
@@ -62,6 +60,7 @@ public class Game : GameSystem
 	}
 	private FadScreen fader => _fader.Resolve(this);
 	private CinemachineImpulseSource impulse => _impulse.Resolve(this);
+	private CinemachineVirtualCamera currentCamera => _camera.Resolve(this);
 
 	protected override void Awake()
 	{
@@ -101,6 +100,11 @@ public class Game : GameSystem
 		inversingColor = StartCoroutine(InversingColor(duration));
 	}
 
+	public void Zoom(float value, float duration, Ease ease)
+	{
+		DOTween.To(() => currentCamera.m_Lens.OrthographicSize, x => currentCamera.m_Lens.OrthographicSize = x, value, duration).SetEase(ease).SetLoops(2, LoopType.Yoyo);
+	}
+
 	private IEnumerator InversingColor(float duration)
 	{
 		transition.SetFloat("_isInversed", 1);
@@ -110,7 +114,7 @@ public class Game : GameSystem
 
 	public void UpdateGameMusicVolume(float percentage)
 	{
-		gameMusicVolume = Mathf.Lerp(gameMusicVolumeLimits.Min, gameMusicVolumeLimits.Max, percentage);
+		gameMusicVolume = Mathf.Lerp(MIN_MUSIC_VOLUME, 0f, percentage);
 		mixer.SetFloat(GAME_MUSIC_VOLUME, gameMusicVolume);
 	}
 

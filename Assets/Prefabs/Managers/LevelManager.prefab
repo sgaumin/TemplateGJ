@@ -164,6 +164,13 @@ MonoBehaviour:
   _fader:
     _source: 2
     _localReference: {fileID: 0}
+  _impulse:
+    _source: 0
+    _localReference: {fileID: 0}
+  _camera:
+    _source: 2
+    _localReference: {fileID: 0}
+  transition: {fileID: 2100000, guid: bbb5062d96b699f4d9c1b1bfbf109ce9, type: 2}
 --- !u!114 &6724002783205896963
 MonoBehaviour:
   m_ObjectHideFlags: 0
