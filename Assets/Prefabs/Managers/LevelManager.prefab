@@ -142,7 +142,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04dc52d7a03854747abbc90cc4458624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixer: {fileID: 24100000, guid: dbd143edd4df0224d92ac4ff39f0844e, type: 2}
   gameMusic:
     isUsingClips: 0
     clip: {fileID: 0}
@@ -158,9 +157,6 @@ MonoBehaviour:
       max: 0.2
     autoDestroy: 0
     multiplier: 5
-  gameMusicVolumeLimits:
-    min: -60
-    max: 0
   _fader:
     _source: 2
     _localReference: {fileID: 0}
@@ -170,6 +166,10 @@ MonoBehaviour:
   _camera:
     _source: 2
     _localReference: {fileID: 0}
+  _volume:
+    _source: 2
+    _localReference: {fileID: 0}
+  mixer: {fileID: 24100000, guid: dbd143edd4df0224d92ac4ff39f0844e, type: 2}
   transition: {fileID: 2100000, guid: bbb5062d96b699f4d9c1b1bfbf109ce9, type: 2}
 --- !u!114 &6724002783205896963
 MonoBehaviour:
@@ -253,7 +253,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8035569357473091673}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4667085495053063094}

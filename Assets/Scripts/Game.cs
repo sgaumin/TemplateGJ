@@ -6,6 +6,7 @@ using Tools;
 using Tools.Utils;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering.PostProcessing;
 
 public class Game : GameSystem
 {
@@ -27,6 +28,7 @@ public class Game : GameSystem
 	[SerializeField] private Dependency<FadScreen> _fader;
 	[SerializeField] private Dependency<CinemachineImpulseSource> _impulse;
 	[SerializeField] private Dependency<CinemachineVirtualCamera> _camera;
+	[SerializeField] private Dependency<PostProcessVolume> _volume;
 	[SerializeField] private AudioMixer mixer;
 	[SerializeField] private Material transition;
 
@@ -34,6 +36,14 @@ public class Game : GameSystem
 	private Coroutine loadingLevel;
 	private float gameMusicVolume;
 	private Coroutine inversingColor;
+	private float startOrthographicSize;
+	private FloatParameter startVignetteIntensity;
+	private FloatParameter startChromaticAberation;
+	private Tween zooming;
+	private Tween updatingVignette;
+	private Tween updatingChromatic;
+	private Vignette vignette;
+	private ChromaticAberration chromatic;
 
 	public GameState GameState
 	{
@@ -61,6 +71,7 @@ public class Game : GameSystem
 	private FadScreen fader => _fader.Resolve(this);
 	private CinemachineImpulseSource impulse => _impulse.Resolve(this);
 	private CinemachineVirtualCamera currentCamera => _camera.Resolve(this);
+	private PostProcessVolume volume => _volume.Resolve(this);
 
 	protected override void Awake()
 	{
@@ -70,13 +81,27 @@ public class Game : GameSystem
 
 	protected void Start()
 	{
-		GameState = GameState.Play;
+		// Post Processing
 		transition.SetFloat("_isInversed", 0);
-		fader.FadIn();
+		volume.profile.TryGetSettings<Vignette>(out vignette);
+		if (volume != null)
+		{
+			startVignetteIntensity = vignette.intensity;
+		}
+
+		volume.profile.TryGetSettings<ChromaticAberration>(out chromatic);
+		if (volume != null)
+		{
+			startChromaticAberation = chromatic.intensity;
+		}
 
 		mixer.GetFloat(GAME_MUSIC_VOLUME, out gameMusicVolume);
+		startOrthographicSize = currentCamera.m_Lens.OrthographicSize;
 
+		fader.FadIn();
 		gameMusic.Play();
+
+		GameState = GameState.Play;
 	}
 
 	protected override void Update()
@@ -100,9 +125,37 @@ public class Game : GameSystem
 		inversingColor = StartCoroutine(InversingColor(duration));
 	}
 
-	public void Zoom(float value, float duration, Ease ease)
+	public void SetZoom(float value, float duration, Ease ease)
 	{
-		DOTween.To(() => currentCamera.m_Lens.OrthographicSize, x => currentCamera.m_Lens.OrthographicSize = x, value, duration).SetEase(ease).SetLoops(2, LoopType.Yoyo);
+		zooming?.Kill();
+		currentCamera.m_Lens.OrthographicSize = startOrthographicSize;
+		zooming = DOTween.To(() => currentCamera.m_Lens.OrthographicSize, x => currentCamera.m_Lens.OrthographicSize = x, value, duration).SetEase(ease).SetLoops(2, LoopType.Yoyo);
+	}
+
+	public void SetVignette(float value, float duration, Ease ease)
+	{
+		if (vignette == null)
+		{
+			Debug.LogWarning("Vignette effect has not been initialized. is PostProcessVolume component missing?");
+			return;
+		}
+
+		updatingVignette?.Kill();
+		vignette.intensity = startVignetteIntensity;
+		updatingVignette = DOTween.To(() => vignette.intensity.value, x => vignette.intensity.value = x, value, duration).SetEase(ease).SetLoops(2, LoopType.Yoyo);
+	}
+
+	public void SetChromaticAberation(float value, float duration, Ease ease)
+	{
+		if (chromatic == null)
+		{
+			Debug.LogWarning("Chromatic effect has not been initialized. is PostProcessVolume component missing?");
+			return;
+		}
+
+		updatingChromatic?.Kill();
+		chromatic.intensity = startChromaticAberation;
+		updatingChromatic = DOTween.To(() => chromatic.intensity.value, x => chromatic.intensity.value = x, value, duration).SetEase(ease).SetLoops(2, LoopType.Yoyo);
 	}
 
 	private IEnumerator InversingColor(float duration)
@@ -166,6 +219,19 @@ public class Game : GameSystem
 			content: () =>
 			{
 				LevelLoader.LoadLevelByName(sceneName);
+			}));
+		}
+	}
+
+	public void LoadSceneTransition(LevelLoading levelLoading)
+	{
+		if (loadingLevel == null)
+		{
+			loadingLevel = StartCoroutine(LoadLevelCore(
+
+			content: () =>
+			{
+				LevelLoader.OnLoadLevel(levelLoading);
 			}));
 		}
 	}
