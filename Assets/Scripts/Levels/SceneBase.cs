@@ -15,10 +15,10 @@ using static Facade;
 
 namespace Tools
 {
-	public abstract class LevelBase : MonoBehaviour
+	public abstract class SceneBase : MonoBehaviour
 	{
-		public const string LEVEL_MUSIC_VOLUME = "musicVolume";
-		public const string LEVEL_MUSIC_LOWPASS = "musicLowPass";
+		public const string MUSIC_VOLUME = "musicVolume";
+		public const string MUSIC_LOWPASS = "musicLowPass";
 
 		public delegate void LevelEventHandler();
 
@@ -27,25 +27,22 @@ namespace Tools
 		public event LevelEventHandler OnPause;
 
 		[Header("Audio")]
-		[SerializeField] protected AudioExpress levelMusic;
-
-		[Header("Animations")]
-		[SerializeField] protected float levelTransitionDuration = 0.2f;
+		[SerializeField] protected AudioExpress music;
 
 		[Header("References")]
-		[SerializeField] protected Dependency<FadScreen> _fader;
+		[SerializeField] protected Dependency<FadeScreen> _fader;
 		[SerializeField] protected Dependency<CinemachineImpulseSource> _impulse;
 		[SerializeField] protected Dependency<CinemachineVirtualCamera> _camera;
 		[SerializeField] protected Dependency<PostProcessVolume> _volume;
 		[SerializeField] protected AudioMixer mixer;
 		[SerializeField] protected Material transition;
 
-		protected LevelState levelState;
-		protected float levelMusicVolume;
-		protected float levelMusicLowPass;
+		protected LevelState state;
+		protected float musicVolume;
+		protected float musicLowPass;
 		protected float startOrthographicSize;
-		protected bool isLevelMusicMuted;
-		protected Coroutine loadingLevel;
+		protected bool isMusicMuted;
+		protected Coroutine loading;
 		protected Coroutine inversingColor;
 		protected FloatParameter startVignetteIntensity;
 		protected FloatParameter startChromaticAberation;
@@ -54,14 +51,14 @@ namespace Tools
 		protected Tween updatingChromatic;
 		protected Vignette vignette;
 		protected ChromaticAberration chromatic;
-		protected AudioUnit levelMusicUnit;
+		protected AudioUnit musicUnit;
 
-		public LevelState LevelState
+		public LevelState State
 		{
-			get => levelState;
+			get => state;
 			set
 			{
-				levelState = value;
+				state = value;
 
 				switch (value)
 				{
@@ -79,7 +76,7 @@ namespace Tools
 				}
 			}
 		}
-		protected FadScreen fader => _fader.Resolve(this);
+		protected FadeScreen fader => _fader.Resolve(this);
 		protected CinemachineImpulseSource impulse => _impulse.Resolve(this);
 		protected CinemachineVirtualCamera currentCamera => _camera.Resolve(this);
 		protected PostProcessVolume volume => _volume.Resolve(this);
@@ -111,13 +108,13 @@ namespace Tools
 			startOrthographicSize = currentCamera.m_Lens.OrthographicSize;
 
 			// Audio
-			mixer.GetFloat(LEVEL_MUSIC_VOLUME, out levelMusicVolume);
-			mixer.GetFloat(LEVEL_MUSIC_LOWPASS, out levelMusicLowPass);
-			levelMusicUnit = levelMusic.Play();
-			levelMusicUnit?.FadIn();
+			mixer.GetFloat(MUSIC_VOLUME, out musicVolume);
+			mixer.GetFloat(MUSIC_LOWPASS, out musicLowPass);
+			musicUnit = music.Play();
+			musicUnit?.FadeIn();
 
-			LevelState = LevelState.Play;
-			fader.FadIn();
+			State = LevelState.Play;
+			fader.FadeIn();
 		}
 
 		protected virtual void Update()
@@ -125,11 +122,11 @@ namespace Tools
 #if UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX || UNITY_EDITOR
 			if (Input.GetButtonDown("Quit"))
 			{
-				LevelLoader.QuitGame();
+				SceneLoader.QuitGame();
 			}
 			if (Input.GetButtonDown("Mute"))
 			{
-				if (isLevelMusicMuted)
+				if (isMusicMuted)
 				{
 					UpdateLevelMusicVolume(1f);
 				}
@@ -137,7 +134,7 @@ namespace Tools
 				{
 					UpdateLevelMusicVolume(0f);
 				}
-				isLevelMusicMuted = !isLevelMusicMuted;
+				isMusicMuted = !isMusicMuted;
 			}
 			if (Input.GetButtonDown("Fullscreen"))
 			{
@@ -210,92 +207,92 @@ namespace Tools
 
 		public void UpdateLevelMusicVolume(float percentage)
 		{
-			levelMusicVolume = Mathf.Lerp(-80f, 0f, percentage);
-			mixer.SetFloat(LEVEL_MUSIC_VOLUME, levelMusicVolume);
+			musicVolume = Mathf.Lerp(-80f, 0f, percentage);
+			mixer.SetFloat(MUSIC_VOLUME, musicVolume);
 		}
 
 		public void UpdateLevelMusicLowPass(float percentage)
 		{
-			levelMusicLowPass = Mathf.Lerp(800f, 22000f, percentage);
-			mixer.SetFloat(LEVEL_MUSIC_LOWPASS, levelMusicLowPass);
+			musicLowPass = Mathf.Lerp(800f, 22000f, percentage);
+			mixer.SetFloat(MUSIC_LOWPASS, musicLowPass);
 		}
 
 		#region Level Loading
 
 		public void ReloadLevel()
 		{
-			if (loadingLevel == null)
+			if (loading == null)
 			{
-				loadingLevel = StartCoroutine(LoadLevelCore(
+				loading = StartCoroutine(LoadLevelCore(
 
 				content: () =>
 				{
-					LevelLoader.ReloadLevel();
+					SceneLoader.Reload();
 				}));
 			}
 		}
 
 		public void LoadNextLevel()
 		{
-			if (loadingLevel == null)
+			if (loading == null)
 			{
-				loadingLevel = StartCoroutine(LoadLevelCore(
+				loading = StartCoroutine(LoadLevelCore(
 
 				content: () =>
 				{
-					LevelLoader.LoadNextLevel();
+					SceneLoader.LoadNext();
 				}));
 			}
 		}
 
 		public void LoadMenu()
 		{
-			if (loadingLevel == null)
+			if (loading == null)
 			{
-				loadingLevel = StartCoroutine(LoadLevelCore(
+				loading = StartCoroutine(LoadLevelCore(
 
 				content: () =>
 				{
-					LevelLoader.LoadLevelByName(Constants.MENU_SCENE);
+					SceneLoader.LoadScene(Constants.MENU_SCENE);
 				}));
 			}
 		}
 
 		public void LoadSceneByName(string sceneName)
 		{
-			if (loadingLevel == null)
+			if (loading == null)
 			{
-				loadingLevel = StartCoroutine(LoadLevelCore(
+				loading = StartCoroutine(LoadLevelCore(
 
 				content: () =>
 				{
-					LevelLoader.LoadLevelByName(sceneName);
+					SceneLoader.LoadScene(sceneName);
 				}));
 			}
 		}
 
-		public void LoadSceneTransition(LevelLoading levelLoading)
+		public void LoadSceneTransition(SceneLoading levelLoading)
 		{
-			if (loadingLevel == null)
+			if (loading == null)
 			{
-				loadingLevel = StartCoroutine(LoadLevelCore(
+				loading = StartCoroutine(LoadLevelCore(
 
 				content: () =>
 				{
-					LevelLoader.OnLoadLevel(levelLoading);
+					SceneLoader.LoadScene(levelLoading);
 				}));
 			}
 		}
 
 		public void QuitGame()
 		{
-			if (loadingLevel == null)
+			if (loading == null)
 			{
-				loadingLevel = StartCoroutine(LoadLevelCore(
+				loading = StartCoroutine(LoadLevelCore(
 
 				content: () =>
 				{
-					LevelLoader.QuitGame();
+					SceneLoader.QuitGame();
 				}));
 			}
 		}
@@ -308,9 +305,9 @@ namespace Tools
 			}
 			Time.timeScale = 1f;
 
-			levelMusicUnit?.FadOut(levelTransitionDuration);
+			musicUnit?.FadeOut(Animations.sceneFadeDuration);
 
-			yield return fader.FadOutCore(fadDuration: levelTransitionDuration);
+			yield return fader.FadeOutCore();
 			content?.Invoke();
 		}
 

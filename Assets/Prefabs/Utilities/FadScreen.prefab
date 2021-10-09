@@ -85,7 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2177832480006244971}
   - component: {fileID: 2177832480006244970}
-  - component: {fileID: 2177832480006244975}
+  - component: {fileID: 8060281805552714147}
   m_Layer: 5
   m_Name: FadScreen
   m_TagString: Untagged
@@ -134,7 +134,7 @@ Canvas:
   m_SortingLayerID: 1476709903
   m_SortingOrder: 1
   m_TargetDisplay: 0
---- !u!114 &2177832480006244975
+--- !u!114 &8060281805552714147
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2177832480006244974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85014644fcff057479f80ab8e5badc33, type: 3}
+  m_Script: {fileID: 11500000, guid: 5308451c74ab5c34fa1fddce93ab95be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _image:

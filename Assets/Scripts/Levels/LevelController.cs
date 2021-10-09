@@ -13,7 +13,7 @@ using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UI;
 using static Facade;
 
-public class LevelController : LevelBase
+public class LevelController : SceneBase
 {
 	public static LevelController Instance { get; private set; }
 
