@@ -91,7 +91,7 @@ namespace Tools
 			DOTween.defaultAutoPlay = AutoPlay.All;
 		}
 
-		protected void Start()
+		protected virtual void Start()
 		{
 			// Post-Processing
 			transition.SetFloat("_isInversed", 0);

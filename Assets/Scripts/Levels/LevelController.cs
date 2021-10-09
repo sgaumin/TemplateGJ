@@ -22,4 +22,14 @@ public class LevelController : SceneBase
 		base.Awake();
 		Instance = this;
 	}
+
+	protected override void Start()
+	{
+		base.Start();
+	}
+
+	protected override void Update()
+	{
+		base.Update();
+	}
 }
