@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d885ede801643a64da6f7248880687e7, type: 3}
-  m_Name: AnimationData
+  m_Script: {fileID: 11500000, guid: 557b2c13c9166d74a9f0d70043f8d482, type: 3}
+  m_Name: SettingsData
   m_EditorClassIdentifier: 
+  autoAssignScene: 1
   sceneFadeDuration: 0.5

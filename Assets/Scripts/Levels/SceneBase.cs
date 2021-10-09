@@ -318,7 +318,7 @@ namespace Tools
 			}
 			Time.timeScale = 1f;
 
-			musicUnit?.FadeOut(Animations.sceneFadeDuration);
+			musicUnit?.FadeOut(Settings.sceneFadeDuration);
 
 			yield return fader.FadeOutCore();
 			content?.Invoke();

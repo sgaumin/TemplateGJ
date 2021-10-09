@@ -5,5 +5,5 @@
 	public static MusicPlayer Music => MusicPlayer.Instance;
 	public static TextFontConfig FontConfig => TextFontConfig.Instance;
 	public static Index Prefabs => Index.Instance;
-	public static AnimationData Animations => AnimationData.Instance;
+	public static SettingsData Settings => SettingsData.Instance;
 }

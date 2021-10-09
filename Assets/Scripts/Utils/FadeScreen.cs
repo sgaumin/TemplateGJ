@@ -23,7 +23,7 @@ public class FadeScreen : MonoBehaviour
 	public void FadeOut()
 	{
 		image.color = defaultFadeOutColorTarget;
-		image.DOFade(1f, Animations.sceneFadeDuration);
+		image.DOFade(1f, Settings.sceneFadeDuration);
 	}
 
 	public IEnumerator FadeOutCore(float fadeDuration)
@@ -36,7 +36,7 @@ public class FadeScreen : MonoBehaviour
 	public IEnumerator FadeOutCore()
 	{
 		image.color = defaultFadeOutColorTarget;
-		Tweener fade = image.DOFade(1f, Animations.sceneFadeDuration);
+		Tweener fade = image.DOFade(1f, Settings.sceneFadeDuration);
 		yield return fade.WaitForCompletion();
 	}
 
@@ -49,7 +49,7 @@ public class FadeScreen : MonoBehaviour
 	public void FadeIn()
 	{
 		image.color = defaultFadeInColorTarget;
-		image.DOFade(0f, Animations.sceneFadeDuration);
+		image.DOFade(0f, Settings.sceneFadeDuration);
 	}
 
 	public IEnumerator FadeInCore(float fadeDuration)
@@ -62,7 +62,7 @@ public class FadeScreen : MonoBehaviour
 	public IEnumerator FadeInCore()
 	{
 		image.color = defaultFadeInColorTarget;
-		Tweener fade = image.DOFade(0f, Animations.sceneFadeDuration);
+		Tweener fade = image.DOFade(0f, Settings.sceneFadeDuration);
 		yield return fade.WaitForCompletion();
 	}
 }
