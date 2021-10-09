@@ -17,6 +17,7 @@ namespace Tools
 {
 	public abstract class SceneBase : MonoBehaviour
 	{
+		public const string MASTER_VOLUME = "masterVolume";
 		public const string MUSIC_VOLUME = "musicVolume";
 		public const string MUSIC_LOWPASS = "musicLowPass";
 
@@ -38,6 +39,7 @@ namespace Tools
 		[SerializeField] protected Material transition;
 
 		protected LevelState state;
+		protected float masterVolume;
 		protected float musicVolume;
 		protected float musicLowPass;
 		protected float startOrthographicSize;
@@ -108,6 +110,7 @@ namespace Tools
 			startOrthographicSize = currentCamera.m_Lens.OrthographicSize;
 
 			// Audio
+			mixer.GetFloat(MASTER_VOLUME, out masterVolume);
 			mixer.GetFloat(MUSIC_VOLUME, out musicVolume);
 			mixer.GetFloat(MUSIC_LOWPASS, out musicLowPass);
 			musicUnit = music.Play();
@@ -128,11 +131,11 @@ namespace Tools
 			{
 				if (isMusicMuted)
 				{
-					UpdateLevelMusicVolume(1f);
+					UpdateSceneMasterVolume(1f);
 				}
 				else
 				{
-					UpdateLevelMusicVolume(0f);
+					UpdateSceneMasterVolume(0f);
 				}
 				isMusicMuted = !isMusicMuted;
 			}
@@ -143,6 +146,7 @@ namespace Tools
 #endif
 		}
 
+		#region Post-Processing and Effects
 		public void GenerateImpulse()
 		{
 			impulse.GenerateImpulse();
@@ -204,18 +208,27 @@ namespace Tools
 			yield return new WaitForSeconds(duration);
 			transition.SetFloat("_isInversed", 0);
 		}
+		#endregion Post-Processing and Effects
 
-		public void UpdateLevelMusicVolume(float percentage)
+		#region Audio
+		public void UpdateSceneMasterVolume(float percentage)
+		{
+			masterVolume = Mathf.Lerp(-80f, 0f, percentage);
+			mixer.SetFloat(MASTER_VOLUME, masterVolume);
+		}
+
+		public void UpdateSceneMusicVolume(float percentage)
 		{
 			musicVolume = Mathf.Lerp(-80f, 0f, percentage);
 			mixer.SetFloat(MUSIC_VOLUME, musicVolume);
 		}
 
-		public void UpdateLevelMusicLowPass(float percentage)
+		public void UpdateSceneMusicLowPass(float percentage)
 		{
 			musicLowPass = Mathf.Lerp(800f, 22000f, percentage);
 			mixer.SetFloat(MUSIC_LOWPASS, musicLowPass);
 		}
+		#endregion Audio
 
 		#region Level Loading
 
@@ -312,6 +325,5 @@ namespace Tools
 		}
 
 		#endregion Level Loading
-
 	}
 }
