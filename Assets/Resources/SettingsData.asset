@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoAssignScene: 1
   sceneFadeDuration: 0.5
+  audioFadeDuration: 0.2

@@ -22,4 +22,7 @@ public class SettingsData : BaseIndex
 
 	[Header("Animations")]
 	public float sceneFadeDuration = 0.5f;
+
+	[Header("Audio")]
+	public float audioFadeDuration = 0.2f;
 }

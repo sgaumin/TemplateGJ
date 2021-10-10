@@ -28,7 +28,7 @@ namespace Tools
 		public event LevelEventHandler OnPause;
 
 		[Header("Audio")]
-		[SerializeField] protected AudioExpress music;
+		[SerializeField] protected AudioClip music;
 
 		[Header("References")]
 		[SerializeField] protected Dependency<FadeScreen> _fader;
@@ -53,7 +53,6 @@ namespace Tools
 		protected Tween updatingChromatic;
 		protected Vignette vignette;
 		protected ChromaticAberration chromatic;
-		protected AudioUnit musicUnit;
 
 		public LevelState State
 		{
@@ -113,8 +112,8 @@ namespace Tools
 			mixer.GetFloat(MASTER_VOLUME, out masterVolume);
 			mixer.GetFloat(MUSIC_VOLUME, out musicVolume);
 			mixer.GetFloat(MUSIC_LOWPASS, out musicLowPass);
-			musicUnit = music.Play();
-			musicUnit?.FadeIn();
+
+			Music.TryUpdateClip(music);
 
 			State = LevelState.Play;
 			fader.FadeIn();
@@ -317,8 +316,6 @@ namespace Tools
 				StopCoroutine(inversingColor);
 			}
 			Time.timeScale = 1f;
-
-			musicUnit?.FadeOut(Settings.sceneFadeDuration);
 
 			yield return fader.FadeOutCore();
 			content?.Invoke();
