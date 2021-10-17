@@ -4,6 +4,6 @@
 	public static LevelController Level => LevelController.Instance;
 	public static MusicPlayer Music => MusicPlayer.Instance;
 	public static TextFontConfig FontConfig => TextFontConfig.Instance;
-	public static Index Prefabs => Index.Instance;
+	public static PrefabsData Prefabs => PrefabsData.Instance;
 	public static SettingsData Settings => SettingsData.Instance;
 }

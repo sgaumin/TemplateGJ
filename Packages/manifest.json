@@ -1,9 +1,10 @@
 {
   "dependencies": {
+    "com.talecrafter.animationimporter": "https://github.com/talecrafter/AnimationImporter.git?path=/Assets",
     "com.unity.2d.pixel-perfect": "4.0.1",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
-    "com.unity.2d.tilemap.extras": "1.8.0-preview",
+    "com.unity.2d.tilemap.extras": "1.8.1-preview",
     "com.unity.analytics": "3.5.3",
     "com.unity.cinemachine": "2.6.10",
     "com.unity.ext.nunit": "1.0.6",

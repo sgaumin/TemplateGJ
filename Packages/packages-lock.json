@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.talecrafter.animationimporter": {
+      "version": "https://github.com/talecrafter/AnimationImporter.git?path=/Assets",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "517f4667d21a94680cec8118cf63a15053bff711"
+    },
     "com.unity.2d.pixel-perfect": {
       "version": "4.0.1",
       "depth": 0,
@@ -20,7 +27,7 @@
       "dependencies": {}
     },
     "com.unity.2d.tilemap.extras": {
-      "version": "1.8.0-preview",
+      "version": "1.8.1-preview",
       "depth": 0,
       "source": "registry",
       "dependencies": {
