@@ -32,4 +32,12 @@ public class LevelController : SceneBase
 	{
 		base.Update();
 	}
+
+	protected void OnDestroy()
+	{
+		if (Instance == this)
+		{
+			Instance = null;
+		}
+	}
 }

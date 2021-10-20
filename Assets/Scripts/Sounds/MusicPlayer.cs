@@ -48,6 +48,6 @@ public class MusicPlayer : MonoBehaviour
 		audioSource.Play();
 
 		Tween fadIn = audioSource.DOFade(1f, Settings.audioFadeDuration);
-		yield return fadOut.WaitForCompletion();
+		yield return fadIn.WaitForCompletion();
 	}
 }
