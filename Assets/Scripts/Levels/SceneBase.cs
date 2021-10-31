@@ -94,29 +94,38 @@ namespace Tools
 		{
 			// Post-Processing
 			transition.SetFloat("_isInversed", 0);
-			volume.profile.TryGetSettings<Vignette>(out vignette);
-			if (volume != null)
+			if (volume != null && volume.profile.TryGetSettings<Vignette>(out vignette))
 			{
 				startVignetteIntensity = vignette.intensity;
 			}
-
-			volume.profile.TryGetSettings<ChromaticAberration>(out chromatic);
-			if (volume != null)
+			if (volume != null && volume.profile.TryGetSettings<ChromaticAberration>(out chromatic))
 			{
 				startChromaticAberation = chromatic.intensity;
 			}
 
-			startOrthographicSize = currentCamera.m_Lens.OrthographicSize;
-
 			// Audio
-			mixer.GetFloat(MASTER_VOLUME, out masterVolume);
-			mixer.GetFloat(MUSIC_VOLUME, out musicVolume);
-			mixer.GetFloat(MUSIC_LOWPASS, out musicLowPass);
+			if (mixer != null)
+			{
+				mixer.GetFloat(MASTER_VOLUME, out masterVolume);
+				mixer.GetFloat(MUSIC_VOLUME, out musicVolume);
+				mixer.GetFloat(MUSIC_LOWPASS, out musicLowPass);
+			}
+			if (Music != null)
+			{
+				Music.TryUpdateClip(music);
+			}
 
-			Music.TryUpdateClip(music);
+			// Effects
+			if (currentCamera != null)
+			{
+				startOrthographicSize = currentCamera.m_Lens.OrthographicSize;
+			}
+			if (fader != null)
+			{
+				fader.FadeIn();
+			}
 
 			State = SceneState.Start;
-			fader.FadeIn();
 		}
 
 		protected virtual void Update()
@@ -315,9 +324,14 @@ namespace Tools
 			{
 				StopCoroutine(inversingColor);
 			}
+
 			Time.timeScale = 1f;
 
-			yield return fader.FadeOutCore();
+			if (fader != null)
+			{
+				yield return fader.FadeOutCore();
+			}
+
 			content?.Invoke();
 		}
 
