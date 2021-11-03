@@ -113,6 +113,7 @@ namespace Tools
 			if (Music != null)
 			{
 				Music.TryUpdateClip(music);
+				Music.SwitchBackToMain();
 			}
 
 			// Effects

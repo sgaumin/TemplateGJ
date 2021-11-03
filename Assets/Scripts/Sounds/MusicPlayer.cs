@@ -12,9 +12,22 @@ public class MusicPlayer : MonoBehaviour, ISingleton
 	[SerializeField] private Dependency<AudioSource> _audioSource;
 
 	private AudioSource audioSource => _audioSource.Resolve(this);
-	public AudioUnit MusicOverride { get; set; }
 
+	private AudioUnit musicOverride;
 	private Coroutine updateClip;
+
+	public AudioUnit MusicOverride
+	{
+		get => musicOverride;
+		set
+		{
+			musicOverride = value;
+			if (musicOverride != null)
+			{
+				FadOut();
+			}
+		}
+	}
 
 	public int GetSingletonPriority()
 	{
@@ -80,6 +93,4 @@ public class MusicPlayer : MonoBehaviour, ISingleton
 		Tween fadIn = audioSource.DOFade(1f, Settings.audioFadeDuration);
 		yield return fadIn.WaitForCompletion();
 	}
-
-
 }
