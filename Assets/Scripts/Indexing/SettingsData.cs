@@ -15,6 +15,7 @@ using UnityEngine.UI;
 public class SettingsData : BaseIndex
 {
 	private static SettingsData _instance;
+
 	public static SettingsData Instance => GetOrLoad(ref _instance);
 
 	// Set up your references below!

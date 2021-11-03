@@ -13,13 +13,25 @@ using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UI;
 using static Facade;
 
-public class LevelController : SceneBase
+public class LevelController : SceneBase, ISingleton
 {
 	public static LevelController Instance { get; private set; }
 
 	protected override void Awake()
 	{
 		base.Awake();
+
+		// Setup all singletons present in the scene
+		FindObjectsOfType<MonoBehaviour>().OfType<ISingleton>().OrderByDescending(x => x.GetSingletonPriority()).ForEach(x => x.OnSingletonSetup());
+	}
+
+	public int GetSingletonPriority()
+	{
+		return 100;
+	}
+
+	public void OnSingletonSetup()
+	{
 		Instance = this;
 	}
 

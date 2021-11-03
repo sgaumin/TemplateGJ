@@ -5,7 +5,7 @@ using Tools.Utils;
 using UnityEngine;
 using static Facade;
 
-public class MusicPlayer : MonoBehaviour
+public class MusicPlayer : MonoBehaviour, ISingleton
 {
 	public static MusicPlayer Instance { get; private set; }
 
@@ -16,14 +16,19 @@ public class MusicPlayer : MonoBehaviour
 
 	private Coroutine updateClip;
 
-	protected void Awake()
+	public int GetSingletonPriority()
+	{
+		return 99;
+	}
+
+	public void OnSingletonSetup()
 	{
 		if (Instance == null)
 		{
 			DontDestroyOnLoad(gameObject);
 			Instance = this;
 		}
-		else
+		else if (Instance != null && Instance != this)
 		{
 			Destroy(gameObject);
 		}
@@ -75,4 +80,6 @@ public class MusicPlayer : MonoBehaviour
 		Tween fadIn = audioSource.DOFade(1f, Settings.audioFadeDuration);
 		yield return fadIn.WaitForCompletion();
 	}
+
+
 }
