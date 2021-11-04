@@ -17,14 +17,6 @@ public class LevelController : SceneBase, ISingleton
 {
 	public static LevelController Instance { get; private set; }
 
-	protected override void Awake()
-	{
-		base.Awake();
-
-		// Setup all singletons present in the scene
-		FindObjectsOfType<MonoBehaviour>().OfType<ISingleton>().OrderByDescending(x => x.GetSingletonPriority()).ForEach(x => x.OnSingletonSetup());
-	}
-
 	public int GetSingletonPriority()
 	{
 		return 100;

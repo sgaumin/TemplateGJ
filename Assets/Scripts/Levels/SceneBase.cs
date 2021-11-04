@@ -88,6 +88,13 @@ namespace Tools
 
 			DOTween.Init();
 			DOTween.defaultAutoPlay = AutoPlay.All;
+
+			SetupAllSingleton();
+		}
+
+		private void SetupAllSingleton()
+		{
+			FindObjectsOfType<MonoBehaviour>().OfType<ISingleton>().OrderByDescending(x => x.GetSingletonPriority()).ForEach(x => x.OnSingletonSetup());
 		}
 
 		protected virtual void Start()
