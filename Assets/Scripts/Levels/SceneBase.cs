@@ -89,6 +89,9 @@ namespace Tools
 			DOTween.Init();
 			DOTween.defaultAutoPlay = AutoPlay.All;
 
+			// Disable screen dimming
+			Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
 			SetupAllSingleton();
 		}
 
