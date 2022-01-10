@@ -3,19 +3,18 @@ using UnityEngine;
 
 public static class GameData
 {
-	private const string DATA = "data";
+	private const string USER_NAME = "userName";
 	private const string LANGUAGE = "language";
 
-	// Template Below
-	public static string Data
+	public static string UserName
 	{
 		get
 		{
-			return PlayerPrefs.HasKey(DATA) ? PlayerPrefs.GetString(DATA) : "";
+			return PlayerPrefs.HasKey(USER_NAME) ? PlayerPrefs.GetString(USER_NAME) : "";
 		}
 		set
 		{
-			PlayerPrefs.SetString(DATA, value);
+			PlayerPrefs.SetString(USER_NAME, value);
 			PlayerPrefs.Save();
 		}
 	}
@@ -24,7 +23,7 @@ public static class GameData
 	{
 		get
 		{
-			return PlayerPrefs.HasKey(LANGUAGE) ? (Language)Enum.Parse(typeof(Language), PlayerPrefs.GetString(DATA)) : Language.French;
+			return PlayerPrefs.HasKey(LANGUAGE) ? (Language)Enum.Parse(typeof(Language), PlayerPrefs.GetString(LANGUAGE)) : Language.French;
 		}
 		set
 		{
