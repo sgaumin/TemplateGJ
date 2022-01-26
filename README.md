@@ -1,5 +1,5 @@
 # TemplateGJ
-[![unity](https://img.shields.io/badge/unity-2020.3.17-blue)](https://unity3d.com/fr/get-unity/download)
+[![unity](https://img.shields.io/badge/unity-blue)](https://unity3d.com/fr/get-unity/download)
 [![visual-studio](https://img.shields.io/badge/visualstudio-purple)](https://visualstudio.microsoft.com/fr/vs/)
 
 Project template for prototype or game jam.
