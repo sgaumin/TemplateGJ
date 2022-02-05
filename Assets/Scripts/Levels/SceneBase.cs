@@ -171,7 +171,7 @@ namespace Tools
 			impulse.GenerateImpulse();
 		}
 
-		public void InverseColor(float duration)
+		public void InverseColor(float duration = 0.05f)
 		{
 			if (inversingColor != null)
 			{
