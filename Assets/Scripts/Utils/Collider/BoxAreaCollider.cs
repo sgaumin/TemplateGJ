@@ -1,3 +1,4 @@
+using Lazlo;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -9,7 +10,9 @@ public class BoxAreaCollider : MonoBehaviour
 	[SerializeField] private float size = 2f;
 
 	[Header("References")]
-	[SerializeField] private PolygonCollider2D polygonCollider2D;
+	[SerializeField] private Dependency<PolygonCollider2D> _polygonCollider2D;
+
+	private PolygonCollider2D polygonCollider2D => _polygonCollider2D.Resolve(this);
 
 	private Vector2 point1;
 	private Vector2 point2;

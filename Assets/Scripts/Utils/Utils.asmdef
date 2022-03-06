@@ -2,7 +2,8 @@
     "name": "Utils",
     "rootNamespace": "",
     "references": [
-        "Unity.TextMeshPro"
+        "Unity.TextMeshPro",
+        "Dependency"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

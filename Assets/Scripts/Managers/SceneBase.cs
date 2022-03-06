@@ -44,6 +44,7 @@ public abstract class SceneBase : MonoBehaviour
 	protected bool isMusicMuted;
 	protected Coroutine loading;
 	protected Coroutine inversingColor;
+	protected Coroutine whiteScreen;
 	protected FloatParameter startVignetteIntensity;
 	protected FloatParameter startChromaticAberation;
 	protected Tween zooming;
@@ -102,7 +103,7 @@ public abstract class SceneBase : MonoBehaviour
 	protected virtual void Start()
 	{
 		// Post-Processing
-		transition.SetFloat("_isInversed", 0);
+		ResetShaders();
 		if (volume != null && volume.profile.TryGetSettings<Vignette>(out vignette))
 		{
 			startVignetteIntensity = vignette.intensity;
@@ -143,7 +144,7 @@ public abstract class SceneBase : MonoBehaviour
 #if UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX || UNITY_EDITOR
 		if (Input.GetButtonDown("Quit"))
 		{
-			transition.SetFloat("_isInversed", 0);
+			ResetShaders();
 			SceneLoader.Quit();
 		}
 		if (Input.GetButtonDown("Mute"))
@@ -172,15 +173,26 @@ public abstract class SceneBase : MonoBehaviour
 		impulse.GenerateImpulse();
 	}
 
+	private void ResetShaders()
+	{
+		transition.SetFloat("_isInversed", 0);
+		transition.SetFloat("_setWhite", 0);
+	}
+
 	public void InverseColor(float duration = 0.05f)
 	{
 		if (inversingColor != null)
-		{
 			StopCoroutine(inversingColor);
-		}
 
-		transition.SetFloat("_isInversed", 0);
-		inversingColor = StartCoroutine(InversingColor(duration));
+		inversingColor = StartCoroutine(ApplingShader("_isInversed", duration));
+	}
+
+	public void SetWhiteScreen(float duration = 0.05f)
+	{
+		if (whiteScreen != null)
+			StopCoroutine(whiteScreen);
+
+		whiteScreen = StartCoroutine(ApplingShader("_setWhite", duration));
 	}
 
 	public void FreezeTime(float duration = 0.1f)
@@ -222,11 +234,11 @@ public abstract class SceneBase : MonoBehaviour
 		updatingChromatic = DOTween.To(() => chromatic.intensity.value, x => chromatic.intensity.value = x, value, duration).SetEase(ease).SetLoops(2, LoopType.Yoyo);
 	}
 
-	private IEnumerator InversingColor(float duration)
+	private IEnumerator ApplingShader(string parameter, float duration)
 	{
-		transition.SetFloat("_isInversed", 1);
+		transition.SetFloat(parameter, 1);
 		yield return new WaitForSeconds(duration);
-		transition.SetFloat("_isInversed", 0);
+		transition.SetFloat(parameter, 0);
 	}
 
 	#endregion Post-Processing and Effects

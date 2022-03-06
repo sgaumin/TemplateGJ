@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Lazlo;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +7,9 @@ using static Facade;
 
 public class FadeScreen : MonoBehaviour
 {
-	[SerializeField] private Image image;
+	[SerializeField] private Dependency<Image> _image;
+
+	private Image image => _image.Resolve(this);
 
 	private Color defaultFadeInColorTarget = Color.black;
 	private Color defaultFadeOutColorTarget = Color.black.WithAlpha(0);
