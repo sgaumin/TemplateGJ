@@ -173,22 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04dc52d7a03854747abbc90cc4458624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelMusic:
-    isUsingClips: 0
-    clip: {fileID: 0}
-    clips: []
-    mixerGroup: {fileID: 0}
-    loopType: 0
-    timeBetweenLoop:
-      min: 1
-      max: 3
-    isPitchModified: 0
-    pitchMaxVariation:
-      min: -0.1
-      max: 0.1
-    autoDestroy: 0
-    multiplier: 5
-  levelTransitionDuration: 0.2
+  music: {fileID: 0}
   _fader:
     _source: 2
     _localReference: {fileID: 0}

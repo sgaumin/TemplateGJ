@@ -1,10 +1,5 @@
-﻿using DG.Tweening;
-using System.Collections;
-using TMPro;
-using Tools;
-using Tools.Utils;
+﻿using TMPro;
 using UnityEngine;
-using static Facade;
 
 public class TextFontConfig : MonoBehaviour, ISingleton
 {
