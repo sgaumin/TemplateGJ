@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -72,3 +73,5 @@ public class FixClassName : Editor
 		catch (Exception exc) { Debug.Log(String.Format(errorMessage, exc.Message)); }
 	}
 }
+
+#endif

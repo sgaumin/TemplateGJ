@@ -92,7 +92,7 @@ public static class SceneLoader
 	public static void Quit()
 	{
 #if !UNITY_EDITOR
-			Application.Quit();
+		Application.Quit();
 #else
 		UnityEditor.EditorApplication.isPlaying = false;
 #endif

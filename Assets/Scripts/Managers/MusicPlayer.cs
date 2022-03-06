@@ -67,7 +67,7 @@ public class MusicPlayer : MonoBehaviour, ISingleton
 
 	public void TryUpdateClip(AudioClip clip)
 	{
-		if (audioSource.clip != clip)
+		if (clip != null && audioSource.clip != clip)
 		{
 			if (updateClip != null)
 			{

@@ -143,6 +143,7 @@ public abstract class SceneBase : MonoBehaviour
 #if UNITY_STANDALONE_OSX || UNITY_STANDALONE_WIN || UNITY_STANDALONE_LINUX || UNITY_EDITOR
 		if (Input.GetButtonDown("Quit"))
 		{
+			transition.SetFloat("_isInversed", 0);
 			SceneLoader.Quit();
 		}
 		if (Input.GetButtonDown("Mute"))

@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+using UnityEditor;
 
 public static class CompressionSettingsSetter
 {
@@ -22,3 +23,5 @@ public static class CompressionSettingsSetter
 		}
 	}
 }
+
+#endif
