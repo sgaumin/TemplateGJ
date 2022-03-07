@@ -28,8 +28,7 @@ public class AudioExpressEditor : PropertyDrawer
 		SerializedProperty mixerGroup = property.FindPropertyRelative("mixerGroup");
 		SerializedProperty loopType = property.FindPropertyRelative("loopType");
 		SerializedProperty timeBetweenLoop = property.FindPropertyRelative("timeBetweenLoop");
-		SerializedProperty isPitchModified = property.FindPropertyRelative("isPitchModified");
-		SerializedProperty pitchMaxVariation = property.FindPropertyRelative("pitchMaxVariation");
+		SerializedProperty pitchVariation = property.FindPropertyRelative("pitchVariation");
 		SerializedProperty autoDestroy = property.FindPropertyRelative("autoDestroy");
 		SerializedProperty multiplier = property.FindPropertyRelative("multiplier");
 
@@ -84,16 +83,7 @@ public class AudioExpressEditor : PropertyDrawer
 				}
 			}
 
-			EditorGUI.PropertyField(isPitchModifiedRect, isPitchModified, new GUIContent("Modify Pitch"));
-			if (isPitchModified.boolValue)
-			{
-				EditorGUI.PropertyField(pitchMaxVariationRect, pitchMaxVariation);
-				offsetPitch = EditorGUIUtility.singleLineHeight * 2.3f;
-			}
-			else
-			{
-				offsetPitch = 0f;
-			}
+			EditorGUI.PropertyField(isPitchModifiedRect, pitchVariation, new GUIContent("Pitch Variation"));
 
 			EditorGUI.PropertyField(loopTypeRect, loopType, new GUIContent("Loop"));
 			if (loopType.enumValueIndex == (int)AudioLoopType.Manuel)

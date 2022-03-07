@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
+using Random = UnityEngine.Random;
 
 [Serializable]
 public class AudioExpress
@@ -12,8 +13,7 @@ public class AudioExpress
 	[SerializeField] private AudioMixerGroup mixerGroup;
 	[SerializeField] private AudioLoopType loopType = AudioLoopType.No;
 	[SerializeField, FloatRangeSlider(0f, 10f)] private FloatRange timeBetweenLoop = new FloatRange(1f, 3f);
-	[SerializeField] private bool isPitchModified;
-	[SerializeField, FloatRangeSlider(-1f, 1f)] private FloatRange pitchMaxVariation = new FloatRange(-0.1f, 0.1f);
+	[SerializeField] private PitchVariation pitchVariation;
 	[SerializeField] private AudioStopType autoDestroy = AudioStopType.No;
 	[SerializeField, Range(0f, 10f)] private float multiplier = 5f;
 
@@ -40,7 +40,7 @@ public class AudioExpress
 
 		audioSource.clip = currentClip;
 		audioSource.clips = isUsingClips ? clips : null;
-		audioSource.pitch = isPitchModified ? 1f + pitchMaxVariation.RandomValue : 1f;
+		audioSource.pitch = SetPitch(pitchVariation);
 		audioSource.isGoingToStop = autoDestroy != AudioStopType.No;
 
 		if (!audioUnitPrefixName.IsEmpty())
@@ -66,5 +66,24 @@ public class AudioExpress
 		audioSource.Play();
 
 		return audioSource;
+	}
+
+	private float SetPitch(PitchVariation variation)
+	{
+		switch (variation)
+		{
+			case PitchVariation.VerySmall:
+				return Random.Range(0.95f, 1.05f);
+
+			case PitchVariation.Small:
+				return Random.Range(0.9f, 1.1f);
+
+			case PitchVariation.Medium:
+				return Random.Range(0.75f, 1.25f);
+
+			case PitchVariation.Large:
+				return Random.Range(0.5f, 1.5f);
+		}
+		return 1f;
 	}
 }

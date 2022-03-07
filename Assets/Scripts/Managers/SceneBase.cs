@@ -236,6 +236,7 @@ public abstract class SceneBase : MonoBehaviour
 
 	private IEnumerator ApplingShader(string parameter, float duration)
 	{
+		ResetShaders();
 		transition.SetFloat(parameter, 1);
 		yield return new WaitForSeconds(duration);
 		transition.SetFloat(parameter, 0);
