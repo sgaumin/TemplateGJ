@@ -9,12 +9,6 @@ public static class EnumerableExtensions
 	// The random number generator
 	public static Random defaultRNG = new Random();
 
-	public enum SelectionMode
-	{
-		Intersect,
-		Except
-	}
-
 	/// <summary>
 	/// Returns a list of (element, index) tuples to be able to iterate over the enumerable with the
 	/// index embedded.
@@ -94,15 +88,6 @@ public static class EnumerableExtensions
 	}
 
 	/// <summary>
-	/// Repeat the enumerable a certain number of times
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="e">The enumerable</param>
-	/// <param name="count">The number of copies</param>
-	/// <returns>An enumerable with each element count times</returns>
-	public static IEnumerable<T> Repeat<T>(this IEnumerable<T> e, int count) => e.SelectMany(i => Enumerable.Repeat(i, count));
-
-	/// <summary>
 	/// Returns the current enumerable without null values
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
@@ -127,163 +112,6 @@ public static class EnumerableExtensions
 	/// <param name="r">RNG to use</param>
 	/// <returns>A random value from the list</returns>
 	public static T Random<T>(this IList<T> e, Random rng = null) => e[(rng ?? defaultRNG).Next(0, e.Count)];
-
-	/// <summary>
-	/// Returns a random element from, but after transforming, the enumerable
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="e">The enumerable</param>
-	/// <param name="rng">RNG to use</param>
-	/// <param name="mode">Selection mode, for blackenumerableing or whitenumerableing</param>
-	/// <param name="values">Values that will be added into the blackenumerable or whiteenumerable</param>
-	/// <returns>A random value from the new processed enumerable</returns>
-	public static T Random<T>(this IEnumerable<T> e, Random rng, SelectionMode mode, params T[] values)
-	{
-		return e.ApplySelectionMode(mode, values)
-				.Random(rng);
-	}
-
-	/// <summary>
-	/// Returns a random element from, but after transforming, the enumerable
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="e">The enumerable</param>
-	/// <param name="mode">Selection mode, for blackenumerableing or whitenumerableing</param>
-	/// <param name="values">Values that will be added into the blackenumerable or whiteenumerable</param>
-	/// <returns>A random value from the new processed enumerable</returns>
-	public static T Random<T>(this IEnumerable<T> e, SelectionMode mode, params T[] values)
-	{
-		return e.ApplySelectionMode(mode, values)
-				.Random();
-	}
-
-	/// <summary>
-	/// Returns a random element from the enumerable except specified values
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="e">The enumerable</param>
-	/// <param name="values">Values that will be added into the blackenumerable or whiteenumerable</param>
-	/// <returns>A random value from the new processed enumerable</returns>
-	public static T RandomExcept<T>(this IEnumerable<T> e, Random rng, params T[] values)
-	{
-		return e.ApplySelectionMode(SelectionMode.Except, values)
-				.Random(rng);
-	}
-
-	/// <summary>
-	/// Returns a random element from the enumerable except specified values
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="e">The enumerable</param>
-	/// <param name="values">Values that will be added into the blackenumerable or whiteenumerable</param>
-	/// <returns>A random value from the new processed enumerable</returns>
-	public static T RandomExcept<T>(this IEnumerable<T> e, params T[] values)
-	{
-		return e.ApplySelectionMode(SelectionMode.Except, values)
-				.Random();
-	}
-
-	/// <summary>
-	/// Returns a random element from the enumerable except specified values or default(T) if the
-	/// enumerable is empty
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="e">The enumerable</param>
-	/// <param name="values">Values that will be added into the blackenumerable or whiteenumerable</param>
-	/// <returns>A random value from the new processed enumerable</returns>
-	public static T RandomExceptOrDefault<T>(this IEnumerable<T> e, Random rng, params T[] values)
-	{
-		return e.ApplySelectionMode(SelectionMode.Except, values)
-				.RandomOrDefault(rng);
-	}
-
-	/// <summary>
-	/// Returns a random element from the enumerable except specified values or default(T) if the
-	/// enumerable is empty
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="e">The enumerable</param>
-	/// <param name="values">Values that will be added into the blackenumerable or whiteenumerable</param>
-	/// <returns>A random value from the new processed enumerable</returns>
-	public static T RandomExceptOrDefault<T>(this IEnumerable<T> e, Random rng, IEnumerable<T> values, T defaultValue)
-	{
-		return e.ApplySelectionMode(SelectionMode.Except, values.ToArray())
-				.RandomOrDefault(defaultValue, rng);
-	}
-
-	/// <summary>
-	/// Returns a random element from the enumerable except specified values or default(T) if the
-	/// enumerable is empty
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="e">The enumerable</param>
-	/// <param name="values">Values that will be added into the blackenumerable or whiteenumerable</param>
-	/// <returns>A random value from the new processed enumerable</returns>
-	public static T RandomExceptOrDefault<T>(this IEnumerable<T> e, params T[] values)
-	{
-		return e.ApplySelectionMode(SelectionMode.Except, values)
-				.RandomOrDefault();
-	}
-
-	/// <summary>
-	/// Returns a random element from the enumerable or default(T) if the enumerable is empty
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="e">The enumerable</param>
-	/// <param name="rng">RNG to use</param>
-	/// <returns>A random value from the enumerable or default(T) if the enumerable is empty</returns>
-	public static T RandomOrDefault<T>(this IEnumerable<T> e, Random rng = null) =>
-		e.ElementAtOrDefault((rng ?? defaultRNG).Next(0, e.Count()));
-
-	/// <summary>
-	/// Returns a random element from the enumerable or a default value if the enumerable is empty
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="e">The enumerable</param>
-	/// <param name="rng">RNG to use</param>
-	/// <returns>A random value from the enumerable or default(T) if the enumerable is empty</returns>
-	public static T RandomOrDefault<T>(this IEnumerable<T> e, T defaultValue, Random rng = null)
-	{
-		try
-		{
-			return e.ElementAt((rng ?? defaultRNG).Next(0, e.Count()));
-		}
-		catch (ArgumentOutOfRangeException)
-		{
-			return defaultValue;
-		}
-	}
-
-	/// <summary>
-	/// Returns a random element from, but after transforming, the enumerable or default(T) if the
-	/// new enumerable is empty
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="e">The enumerable</param>
-	/// <param name="rng">RNG to use</param>
-	/// <param name="mode">Selection mode, for blackenumerableing or whitenumerableing</param>
-	/// <param name="values">Values that will be added into the blackenumerable or whiteenumerable</param>
-	/// <returns>A random value from the new processed enumerable</returns>
-	public static T RandomOrDefault<T>(this IEnumerable<T> e, Random rng, SelectionMode mode, params T[] values)
-	{
-		return e.ApplySelectionMode(mode, values)
-				.RandomOrDefault(rng);
-	}
-
-	/// <summary>
-	/// Returns a random element from, but after transforming, the enumerable or default(T) if the
-	/// new enumerable is empty
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="e">The enumerable</param>
-	/// <param name="mode">Selection mode, for blackenumerableing or whitenumerableing</param>
-	/// <param name="values">Values that will be added into the blackenumerable or whiteenumerable</param>
-	/// <returns>A random value from the new processed enumerable</returns>
-	public static T RandomOrDefault<T>(this IEnumerable<T> e, SelectionMode mode, params T[] values)
-	{
-		return e.ApplySelectionMode(mode, values)
-				.RandomOrDefault();
-	}
 
 	/// <summary>
 	/// Executes an action on each element of the enumerable
@@ -313,29 +141,6 @@ public static class EnumerableExtensions
 		foreach (T t in e)
 		{
 			action(t, i++);
-		}
-	}
-
-	/// <summary>
-	/// Transform an enumerable depending on a SelectionMode
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="e">The enumerable</param>
-	/// <param name="mode">Selection mode, for blackenumerableing or whitenumerableing</param>
-	/// <param name="values">Values that will be added into the blackenumerable or whiteenumerable</param>
-	/// <returns>The enumerable after applying selection</returns>
-	private static IEnumerable<T> ApplySelectionMode<T>(this IEnumerable<T> e, SelectionMode mode, params T[] values)
-	{
-		switch (mode)
-		{
-			case SelectionMode.Intersect:
-				return e.Intersect(values);
-
-			case SelectionMode.Except:
-				return e.Except(values);
-
-			default:
-				throw new NotImplementedException();
 		}
 	}
 
