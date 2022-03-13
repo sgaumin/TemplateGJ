@@ -4,122 +4,125 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-[Serializable]
-public struct IntRange
+namespace Utils
 {
-	[SerializeField]
-	private int min;
-
-	[SerializeField]
-	private int max;
-
-	public int Min
+	[Serializable]
+	public struct IntRange
 	{
-		get
+		[SerializeField]
+		private int min;
+
+		[SerializeField]
+		private int max;
+
+		public int Min
 		{
-			return this.min;
+			get
+			{
+				return this.min;
+			}
+			set
+			{
+				this.min = value;
+			}
 		}
-		set
+
+		public int Max
 		{
-			this.min = value;
+			get
+			{
+				return this.max;
+			}
+			set
+			{
+				this.max = value;
+			}
 		}
-	}
 
-	public int Max
-	{
-		get
+		public int RandomValue
 		{
-			return this.max;
+			get
+			{
+				return UnityEngine.Random.Range(this.min, this.max);
+			}
 		}
-		set
+
+		public IntRange(int min, int max)
 		{
-			this.max = value;
+			this.min = min;
+			this.max = max;
 		}
-	}
 
-	public int RandomValue
-	{
-		get
+		public int Clamp(int value)
 		{
-			return UnityEngine.Random.Range(this.min, this.max);
+			return Mathf.Clamp(value, this.min, this.max);
+		}
+
+		public bool Contains(int value)
+		{
+			return value >= this.min && value <= this.max;
 		}
 	}
 
-	public IntRange(int min, int max)
+	public class IntRangeSliderAttribute : PropertyAttribute
 	{
-		this.min = min;
-		this.max = max;
-	}
+		public readonly int Min;
+		public readonly int Max;
 
-	public int Clamp(int value)
-	{
-		return Mathf.Clamp(value, this.min, this.max);
+		public IntRangeSliderAttribute(int min, int max)
+		{
+			Min = min;
+			Max = max;
+		}
 	}
-
-	public bool Contains(int value)
-	{
-		return value >= this.min && value <= this.max;
-	}
-}
-
-public class IntRangeSliderAttribute : PropertyAttribute
-{
-	public readonly int Min;
-	public readonly int Max;
-
-	public IntRangeSliderAttribute(int min, int max)
-	{
-		Min = min;
-		Max = max;
-	}
-}
 
 #if UNITY_EDITOR
 
-[CustomPropertyDrawer(typeof(IntRange))]
-[CustomPropertyDrawer(typeof(IntRangeSliderAttribute))]
-public class IntRangeDrawer : PropertyDrawer
-{
-	public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+	[CustomPropertyDrawer(typeof(IntRange))]
+	[CustomPropertyDrawer(typeof(IntRangeSliderAttribute))]
+	public class IntRangeDrawer : PropertyDrawer
 	{
-		if (property.serializedObject.isEditingMultipleObjects)
+		public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
 		{
-			return 0f;
+			if (property.serializedObject.isEditingMultipleObjects)
+			{
+				return 0f;
+			}
+
+			return base.GetPropertyHeight(property, label) + 16f;
 		}
 
-		return base.GetPropertyHeight(property, label) + 16f;
-	}
-
-	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
-	{
-		if (property.serializedObject.isEditingMultipleObjects)
+		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
 		{
-			return;
+			if (property.serializedObject.isEditingMultipleObjects)
+			{
+				return;
+			}
+
+			SerializedProperty minProperty = property.FindPropertyRelative("min");
+			SerializedProperty maxProperty = property.FindPropertyRelative("max");
+			IntRangeSliderAttribute minmax = attribute as IntRangeSliderAttribute ?? new IntRangeSliderAttribute(0, 1);
+			position.height -= 16f;
+
+			label = EditorGUI.BeginProperty(position, label, property);
+			position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
+			float min = minProperty.intValue;
+			float max = maxProperty.intValue;
+
+			Rect left = new Rect(position.x, position.y, position.width / 2 - 11f, position.height);
+			Rect right = new Rect(position.x + position.width - left.width, position.y, left.width, position.height);
+			Rect mid = new Rect(left.xMax, position.y, 22, position.height);
+			min = Mathf.Clamp(EditorGUI.IntField(left, (int)min), minmax.Min, max);
+			EditorGUI.LabelField(mid, " to ");
+			max = Mathf.Clamp(EditorGUI.IntField(right, (int)max), min, minmax.Max);
+
+			position.y += 16f;
+			EditorGUI.MinMaxSlider(position, GUIContent.none, ref min, ref max, minmax.Min, minmax.Max);
+
+			minProperty.intValue = (int)min;
+			maxProperty.intValue = (int)max;
+			EditorGUI.EndProperty();
 		}
-
-		SerializedProperty minProperty = property.FindPropertyRelative("min");
-		SerializedProperty maxProperty = property.FindPropertyRelative("max");
-		IntRangeSliderAttribute minmax = attribute as IntRangeSliderAttribute ?? new IntRangeSliderAttribute(0, 1);
-		position.height -= 16f;
-
-		label = EditorGUI.BeginProperty(position, label, property);
-		position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
-		float min = minProperty.intValue;
-		float max = maxProperty.intValue;
-
-		Rect left = new Rect(position.x, position.y, position.width / 2 - 11f, position.height);
-		Rect right = new Rect(position.x + position.width - left.width, position.y, left.width, position.height);
-		Rect mid = new Rect(left.xMax, position.y, 22, position.height);
-		min = Mathf.Clamp(EditorGUI.IntField(left, (int)min), minmax.Min, max);
-		EditorGUI.LabelField(mid, " to ");
-		max = Mathf.Clamp(EditorGUI.IntField(right, (int)max), min, minmax.Max);
-
-		position.y += 16f;
-		EditorGUI.MinMaxSlider(position, GUIContent.none, ref min, ref max, minmax.Min, minmax.Max);
-
-		minProperty.intValue = (int)min;
-		maxProperty.intValue = (int)max;
-		EditorGUI.EndProperty();
 	}
 }
 

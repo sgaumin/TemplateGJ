@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using UnityEngine;
+using Utils;
 using static Facade;
 
 public class MusicPlayer : MonoBehaviour, ISingleton

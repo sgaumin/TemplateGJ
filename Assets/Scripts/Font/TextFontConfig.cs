@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using Utils;
 
 public class TextFontConfig : MonoBehaviour, ISingleton
 {

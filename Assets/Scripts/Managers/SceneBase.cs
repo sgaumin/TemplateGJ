@@ -1,12 +1,13 @@
 ﻿using Cinemachine;
 using DG.Tweening;
-using Lazlo;
 using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Rendering.PostProcessing;
+using Utils;
+using Utils.Dependency;
 using static Facade;
 
 public abstract class SceneBase : MonoBehaviour

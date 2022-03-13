@@ -1,6 +1,9 @@
-public interface ISingleton
+namespace Utils
 {
-	public SingletonPriority GetSingletonPriority();
+	public interface ISingleton
+	{
+		public SingletonPriority GetSingletonPriority();
 
-	public void OnSingletonSetup();
+		public void OnSingletonSetup();
+	}
 }

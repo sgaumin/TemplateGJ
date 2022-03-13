@@ -1,3 +1,5 @@
+using Utils;
+
 public class LevelController : SceneBase, ISingleton
 {
 	public static LevelController Instance { get; private set; }

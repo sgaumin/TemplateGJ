@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class DeactivateForWebGL : MonoBehaviour
+namespace Utils
 {
-	private void Awake()
+	public class DeactivateForWebGL : MonoBehaviour
 	{
+		private void Awake()
+		{
 #if !UNITY_EDITOR && UNITY_WEBGL
 			gameObject.SetActive(false);
 #endif
+		}
 	}
 }

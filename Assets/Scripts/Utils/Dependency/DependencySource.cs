@@ -1,4 +1,4 @@
-namespace Lazlo
+namespace Utils.Dependency
 {
 	public enum DependencySource
 	{

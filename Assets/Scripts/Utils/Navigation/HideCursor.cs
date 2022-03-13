@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 
-public class HideCursor : MonoBehaviour
+namespace Utils
 {
-	private void Start()
+	public class HideCursor : MonoBehaviour
 	{
-		Cursor.visible = false;
-		Cursor.lockState = CursorLockMode.Locked;
+		private void Start()
+		{
+			Cursor.visible = false;
+			Cursor.lockState = CursorLockMode.Locked;
+		}
 	}
 }

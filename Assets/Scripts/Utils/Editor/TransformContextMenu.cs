@@ -4,32 +4,35 @@ using UnityEditor.Experimental.SceneManagement;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-public class TransformContextMenu
+namespace Utils
 {
-	[MenuItem("CONTEXT/Transform/Apply Transform to Children and Reset")]
-	private static void ApplyTransformToChildrenAndReset()
+	public class TransformContextMenu
 	{
-		foreach (Transform child in Selection.activeTransform)
+		[MenuItem("CONTEXT/Transform/Apply Transform to Children and Reset")]
+		private static void ApplyTransformToChildrenAndReset()
 		{
-			if (child == Selection.activeTransform)
-				continue;
+			foreach (Transform child in Selection.activeTransform)
+			{
+				if (child == Selection.activeTransform)
+					continue;
 
-			child.position += Selection.activeTransform.position;
-			child.rotation *= Selection.activeTransform.rotation;
-			child.localScale = Vector3.Scale(Selection.activeTransform.localScale, child.localScale);
-		}
+				child.position += Selection.activeTransform.position;
+				child.rotation *= Selection.activeTransform.rotation;
+				child.localScale = Vector3.Scale(Selection.activeTransform.localScale, child.localScale);
+			}
 
-		Selection.activeTransform.position = Vector3.zero;
-		Selection.activeTransform.rotation = Quaternion.identity;
-		Selection.activeTransform.localScale = Vector3.one;
+			Selection.activeTransform.position = Vector3.zero;
+			Selection.activeTransform.rotation = Quaternion.identity;
+			Selection.activeTransform.localScale = Vector3.one;
 
-		// Make sure to save data
-		EditorUtility.SetDirty(Selection.activeTransform);
+			// Make sure to save data
+			EditorUtility.SetDirty(Selection.activeTransform);
 
-		var prefabStage = PrefabStageUtility.GetCurrentPrefabStage();
-		if (prefabStage != null)
-		{
-			EditorSceneManager.MarkSceneDirty(prefabStage.scene);
+			var prefabStage = PrefabStageUtility.GetCurrentPrefabStage();
+			if (prefabStage != null)
+			{
+				EditorSceneManager.MarkSceneDirty(prefabStage.scene);
+			}
 		}
 	}
 }

@@ -1,8 +1,11 @@
-public enum SingletonPriority
+namespace Utils
 {
-	VeryHigh,
-	High,
-	Medium,
-	Low,
-	VeryLow
+	public enum SingletonPriority
+	{
+		VeryHigh,
+		High,
+		Medium,
+		Low,
+		VeryLow
+	}
 }

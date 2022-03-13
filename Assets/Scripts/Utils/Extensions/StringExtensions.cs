@@ -1,7 +1,10 @@
-﻿public static class StringExtensions
+﻿namespace Utils
 {
-	public static bool IsEmpty(this string s)
+	public static class StringExtensions
 	{
-		return string.IsNullOrEmpty(s);
+		public static bool IsEmpty(this string s)
+		{
+			return string.IsNullOrEmpty(s);
+		}
 	}
 }

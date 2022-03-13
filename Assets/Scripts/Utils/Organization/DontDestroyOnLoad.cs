@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public class DontDestroyOnLoad : MonoBehaviour
+namespace Utils
 {
-	private void Start() => DontDestroyOnLoad(gameObject);
+	public class DontDestroyOnLoad : MonoBehaviour
+	{
+		private void Start() => DontDestroyOnLoad(gameObject);
+	}
 }

@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 
-[ExecuteInEditMode]
-public class CustomImageEffect : MonoBehaviour
+namespace Utils
 {
-	[SerializeField] private Material effectMaterial;
-
-	private void OnRenderImage(RenderTexture source, RenderTexture destination)
+	[ExecuteInEditMode]
+	public class CustomImageEffect : MonoBehaviour
 	{
-		Graphics.Blit(source, destination, effectMaterial);
+		[SerializeField] private Material effectMaterial;
+
+		private void OnRenderImage(RenderTexture source, RenderTexture destination)
+		{
+			Graphics.Blit(source, destination, effectMaterial);
+		}
 	}
 }

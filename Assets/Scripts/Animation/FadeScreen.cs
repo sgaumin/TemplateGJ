@@ -1,8 +1,9 @@
 ﻿using DG.Tweening;
-using Lazlo;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils;
+using Utils.Dependency;
 using static Facade;
 
 public class FadeScreen : MonoBehaviour

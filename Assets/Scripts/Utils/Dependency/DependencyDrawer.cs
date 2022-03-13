@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Lazlo
+namespace Utils.Dependency
 {
 	[CustomPropertyDrawer(typeof(IDependency), true)]
 	public sealed class DependencyDrawer : PropertyDrawer

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Lazlo
+namespace Utils.Dependency
 {
 	[Serializable]
 	public sealed class Dependency<T> : IDependency where T : Component

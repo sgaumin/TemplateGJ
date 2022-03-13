@@ -1,25 +1,28 @@
 ﻿#if UNITY_EDITOR
 using UnityEditor;
 
-public static class CompressionSettingsSetter
+namespace Utils
 {
-	private static TextureImporter buffer;
-
-	[MenuItem("CONTEXT/TextureImporter/Copy", priority = 201)]
-	private static void CopySettings(MenuCommand command)
+	public static class CompressionSettingsSetter
 	{
-		TextureImporter textureImporter = (TextureImporter)command.context;
-		buffer = textureImporter;
-	}
+		private static TextureImporter buffer;
 
-	[MenuItem("CONTEXT/TextureImporter/Paste", priority = 202)]
-	private static void PasteSettings(MenuCommand command)
-	{
-		if (buffer != null && buffer is TextureImporter)
+		[MenuItem("CONTEXT/TextureImporter/Copy", priority = 201)]
+		private static void CopySettings(MenuCommand command)
 		{
-			TextureImporter target = (TextureImporter)command.context;
-			EditorUtility.CopySerializedIfDifferent(buffer, target);
-			target.SaveAndReimport();
+			TextureImporter textureImporter = (TextureImporter)command.context;
+			buffer = textureImporter;
+		}
+
+		[MenuItem("CONTEXT/TextureImporter/Paste", priority = 202)]
+		private static void PasteSettings(MenuCommand command)
+		{
+			if (buffer != null && buffer is TextureImporter)
+			{
+				TextureImporter target = (TextureImporter)command.context;
+				EditorUtility.CopySerializedIfDifferent(buffer, target);
+				target.SaveAndReimport();
+			}
 		}
 	}
 }

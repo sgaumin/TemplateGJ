@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Lazlo
+namespace Utils.Dependency
 {
 	public interface IDependency
 	{

@@ -1,6 +1,9 @@
-﻿public enum TransformerType
+﻿namespace Utils
 {
-	Position,
-	Rotation,
-	Scale
+	public enum TransformerType
+	{
+		Position,
+		Rotation,
+		Scale
+	}
 }

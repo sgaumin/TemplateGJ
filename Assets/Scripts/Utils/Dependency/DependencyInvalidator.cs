@@ -1,7 +1,7 @@
 #if UNITY_EDITOR
 using UnityEditor;
 
-namespace Lazlo
+namespace Utils.Dependency
 {
 	public static class DependencyInvalidator
 	{

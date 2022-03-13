@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 
-public class DestroyAfterLoad : MonoBehaviour
+namespace Utils
 {
-	[SerializeField] private float durationBeforeDestroy = 5f;
+	public class DestroyAfterLoad : MonoBehaviour
+	{
+		[SerializeField] private float durationBeforeDestroy = 5f;
 
-	private void Start() => Initialize(durationBeforeDestroy);
+		private void Start() => Initialize(durationBeforeDestroy);
 
-	public void Initialize(float duration) => Destroy(gameObject, duration);
+		public void Initialize(float duration) => Destroy(gameObject, duration);
+	}
 }

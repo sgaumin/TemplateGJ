@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using UnityEditor;
 
-namespace Lazlo
+namespace Utils.Dependency
 {
 	public static class SerializedPropertyUtility
 	{

@@ -1,21 +1,26 @@
 using UnityEngine;
 
-public abstract class BaseIndex : ScriptableObject
+namespace Utils
 {
-	protected static T GetOrLoad<T>(ref T _instance) where T : BaseIndex
+	// See Design Pattern example: https://www.notion.so/Index-8c49dc7f08e241238ca8b933268d2661
+
+	public abstract class BaseIndex : ScriptableObject
 	{
-		if (_instance == null)
+		protected static T GetOrLoad<T>(ref T _instance) where T : BaseIndex
 		{
-			var name = typeof(T).Name;
-
-			_instance = Resources.Load<T>(name);
-
 			if (_instance == null)
 			{
-				Debug.LogWarning($"Failed to load index: '{name}'.\nIndex file must be placed at: Resources/{name}.asset");
-			}
-		}
+				var name = typeof(T).Name;
 
-		return _instance;
+				_instance = Resources.Load<T>(name);
+
+				if (_instance == null)
+				{
+					Debug.LogWarning($"Failed to load index: '{name}'.\nIndex file must be placed at: Resources/{name}.asset");
+				}
+			}
+
+			return _instance;
+		}
 	}
 }
