@@ -124,6 +124,6 @@ namespace Utils
 			EditorGUI.EndProperty();
 		}
 	}
-}
 
 #endif
+}

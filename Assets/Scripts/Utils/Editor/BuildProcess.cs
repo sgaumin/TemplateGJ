@@ -8,27 +8,42 @@ namespace Utils
 	// Based on documentation: https://docs.unity3d.com/Manual/BuildPlayerPipeline.html
 	public class ScriptBatch
 	{
+		private static string GeneralBuildsFolder => Path.Combine(Path.GetDirectoryName(Application.dataPath), "Builds");
+
 		[MenuItem("Tools/Build Main Platforms %B", false, 1)]
 		public static void BuildMainPlatform()
 		{
 			BuildTarget startTarget = EditorUserBuildSettings.activeBuildTarget;
 			BuildTargetGroup startTargetGroup = EditorUserBuildSettings.selectedBuildTargetGroup;
-			BuildProcess(BuildTarget.WebGL);
-			BuildProcess(BuildTarget.StandaloneWindows64);
-			BuildProcess(BuildTarget.StandaloneWindows, true);
-			EditorUserBuildSettings.SwitchActiveBuildTarget(startTargetGroup, startTarget);
+			try
+			{
+				BuildProcess(BuildTarget.WebGL);
+				BuildProcess(BuildTarget.StandaloneWindows64);
+				BuildProcess(BuildTarget.StandaloneWindows);
+				EditorUserBuildSettings.SwitchActiveBuildTarget(startTargetGroup, startTarget);
+			}
+			catch (System.Exception)
+			{
+				return;
+			}
+
+			ShowExplorer();
 		}
 
-		public static void BuildProcess(BuildTarget target, bool showBuildLocation = false)
+		private static void ShowExplorer()
 		{
-			string generalBuildsFolder = Path.Combine(Path.GetDirectoryName(Application.dataPath), "Builds");
-			if (!Directory.Exists(generalBuildsFolder))
+			System.Diagnostics.Process.Start(GeneralBuildsFolder);
+		}
+
+		public static void BuildProcess(BuildTarget target)
+		{
+			if (!Directory.Exists(GeneralBuildsFolder))
 			{
-				Directory.CreateDirectory(generalBuildsFolder);
+				Directory.CreateDirectory(GeneralBuildsFolder);
 			}
 
 			string templateName = $"{ Application.productName.Replace(" ", "") }_{ target}_{ Application.version}";
-			string buildFolder = Path.Combine(generalBuildsFolder, templateName);
+			string buildFolder = Path.Combine(GeneralBuildsFolder, templateName);
 			if (!Directory.Exists(buildFolder))
 			{
 				Directory.CreateDirectory(buildFolder);
@@ -49,24 +64,12 @@ namespace Utils
 			}
 
 			// Compression
-			string zipFolder = Path.Combine(generalBuildsFolder, $"{templateName}.zip");
+			string zipFolder = Path.Combine(GeneralBuildsFolder, $"{templateName}.zip");
 			if (File.Exists(zipFolder))
 			{
 				File.Delete(zipFolder);
 			}
 			System.IO.Compression.ZipFile.CreateFromDirectory(buildFolder, zipFolder, System.IO.Compression.CompressionLevel.Fastest, false);
-
-			// Deletion build folder
-			if (Directory.Exists(buildFolder))
-			{
-				Directory.Delete(buildFolder, true);
-			}
-
-			// Open Explorer
-			if (showBuildLocation)
-			{
-				System.Diagnostics.Process.Start(generalBuildsFolder);
-			}
 		}
 	}
 }
