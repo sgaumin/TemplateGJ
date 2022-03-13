@@ -1,4 +1,4 @@
-// To Replace under C:\Program Files\Unity\Hub\Editor\2020.3.17f1\Editor\Data\Resources\ScriptTemplates
+// To Replace under C:\Program Files\Unity\Hub\Editor\202X.Y.Zf1\Editor\Data\Resources\ScriptTemplates
 
 using DG.Tweening;
 using System;
@@ -6,8 +6,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using Tools;
-using Tools.Utils;
+using Utils;
+using Utils.Dependency;
 using UnityEngine;
 using UnityEngine.UI;
 using static Facade;
