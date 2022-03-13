@@ -176,7 +176,7 @@ public abstract class SceneBase : MonoBehaviour
 	private void ResetShaders()
 	{
 		transition.SetFloat("_isInversed", 0);
-		transition.SetFloat("_setWhite", 0);
+		transition.SetFloat("_forceColor", 0);
 	}
 
 	public void InverseColor(float duration = 0.05f)
@@ -187,12 +187,13 @@ public abstract class SceneBase : MonoBehaviour
 		inversingColor = StartCoroutine(ApplingShader("_isInversed", duration));
 	}
 
-	public void SetWhiteScreen(float duration = 0.05f)
+	public void ForceColorScreen(Color color, float duration = 0.05f)
 	{
 		if (whiteScreen != null)
 			StopCoroutine(whiteScreen);
 
-		whiteScreen = StartCoroutine(ApplingShader("_setWhite", duration));
+		transition.SetColor("_Color", color);
+		whiteScreen = StartCoroutine(ApplingShader("_forceColor", duration));
 	}
 
 	public void FreezeTime(float duration = 0.1f)
