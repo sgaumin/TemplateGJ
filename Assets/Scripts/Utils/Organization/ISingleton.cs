@@ -1,6 +1,6 @@
 public interface ISingleton
 {
-	public int GetSingletonPriority();
+	public SingletonPriority GetSingletonPriority();
 
 	public void OnSingletonSetup();
 }

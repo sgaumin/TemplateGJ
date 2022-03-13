@@ -2,9 +2,9 @@ public class LevelController : SceneBase, ISingleton
 {
 	public static LevelController Instance { get; private set; }
 
-	public int GetSingletonPriority()
+	public SingletonPriority GetSingletonPriority()
 	{
-		return 100;
+		return SingletonPriority.VeryHigh;
 	}
 
 	public void OnSingletonSetup()

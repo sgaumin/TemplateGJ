@@ -25,9 +25,9 @@ public class MusicPlayer : MonoBehaviour, ISingleton
 		}
 	}
 
-	public int GetSingletonPriority()
+	public SingletonPriority GetSingletonPriority()
 	{
-		return 99;
+		return SingletonPriority.High;
 	}
 
 	public void OnSingletonSetup()

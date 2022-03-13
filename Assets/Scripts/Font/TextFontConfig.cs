@@ -8,9 +8,9 @@ public class TextFontConfig : MonoBehaviour, ISingleton
 	public TMP_FontAsset TMPFont;
 	public Font PlainFont;
 
-	public int GetSingletonPriority()
+	public SingletonPriority GetSingletonPriority()
 	{
-		return 0;
+		return SingletonPriority.VeryLow;
 	}
 
 	public void OnSingletonSetup()

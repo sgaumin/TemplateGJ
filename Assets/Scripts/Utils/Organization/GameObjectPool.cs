@@ -6,9 +6,9 @@ public class GameObjectPool : MonoBehaviour, ISingleton
 {
 	public static GameObjectPool Instance { private set; get; }
 
-	public int GetSingletonPriority()
+	public SingletonPriority GetSingletonPriority()
 	{
-		return 10;
+		return SingletonPriority.VeryLow;
 	}
 
 	public void OnSingletonSetup()

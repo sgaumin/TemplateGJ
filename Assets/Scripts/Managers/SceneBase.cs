@@ -97,7 +97,7 @@ public abstract class SceneBase : MonoBehaviour
 
 	private void SetupAllSingleton()
 	{
-		FindObjectsOfType<MonoBehaviour>().OfType<ISingleton>().OrderByDescending(x => x.GetSingletonPriority()).ForEach(x => x.OnSingletonSetup());
+		FindObjectsOfType<MonoBehaviour>().OfType<ISingleton>().OrderBy(x => (int)x.GetSingletonPriority()).ForEach(x => x.OnSingletonSetup());
 	}
 
 	protected virtual void Start()
