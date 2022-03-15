@@ -9,7 +9,13 @@ namespace Utils
 
 		public void Run(IEnumerator routineMethod)
 		{
-			this.StartCoroutine(routineMethod, ref routine);
+			this.StartCoroutine(RunCore(routineMethod), ref routine);
+		}
+
+		private IEnumerator RunCore(IEnumerator routineMethod)
+		{
+			yield return routineMethod;
+			RoutinePool.ReturnToPool(this);
 		}
 	}
 }
