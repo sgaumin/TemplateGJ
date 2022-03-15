@@ -8,10 +8,9 @@ public static class AudioPool
 	private const string audioUnitPrefix = "AudioUnit: ";
 
 	private static List<AudioUnit> audioPool = new List<AudioUnit>();
-
 	private static GameObject audioParent;
 
-	public static void ResetAudioPool()
+	public static void Reset()
 	{
 		audioPool = new List<AudioUnit>();
 		audioParent = null;

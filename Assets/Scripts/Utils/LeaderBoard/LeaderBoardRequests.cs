@@ -9,17 +9,28 @@ namespace Utils
 	{
 		private static string URL = "https://personal-unity-games.herokuapp.com/";
 
-		public static IEnumerator GetLeaderBoardScore(Action<string> callback)
+		public static void Get(Action<string> callback = null)
+		{
+			RoutinePool.Run(GetCore(callback));
+		}
+
+		public static void Post(string name, float value, Action<string> callback = null)
+		{
+			RoutinePool.Run(PostCore(name, value, callback));
+		}
+
+		private static IEnumerator GetCore(Action<string> callback = null)
 		{
 			var url = $"{URL}getLeaderBoard.php";
 			using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
 			{
 				yield return webRequest.SendWebRequest();
-				callback?.Invoke(DoValidation(url, webRequest));
+				var result = DoValidation(url, webRequest);
+				callback?.Invoke(result);
 			}
 		}
 
-		public static IEnumerator PostLeaderBoardScore(Action<string> callback, string name, float value)
+		private static IEnumerator PostCore(string name, float value, Action<string> callback = null)
 		{
 			var url = $"{URL}addLeaderBoardEntry.php";
 
@@ -32,7 +43,8 @@ namespace Utils
 			using (UnityWebRequest webRequest = UnityWebRequest.Post(url, form))
 			{
 				yield return webRequest.SendWebRequest();
-				callback?.Invoke(DoValidation(url, webRequest));
+				var result = DoValidation(url, webRequest);
+				callback?.Invoke(result);
 			}
 		}
 

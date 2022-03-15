@@ -3,6 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 #endif
 using UnityEngine.SceneManagement;
+using Utils;
 
 public static class SceneLoader
 {
@@ -100,7 +101,8 @@ public static class SceneLoader
 
 	private static void SceneClear()
 	{
-		AudioPool.ResetAudioPool();
+		AudioPool.Reset();
+		RoutinePool.Reset();
 		DOTween.Clear(false);
 	}
 }
