@@ -4,26 +4,10 @@ using UnityEngine;
 
 namespace Utils
 {
-	public class GameObjectPool : MonoBehaviour, ISingleton
+	public class GameObjectPool : Singleton<GameObjectPool>
 	{
-		public static GameObjectPool Instance { private set; get; }
-
-		public SingletonPriority GetSingletonPriority()
-		{
-			return SingletonPriority.VeryLow;
-		}
-
 		public void OnSingletonSetup()
 		{
-			Instance = this;
-
-			// Create pool holders gameObjects
-			foreach (GameObject prefab in prefabs)
-			{
-				GameObject o = new GameObject(prefab.name);
-				o.transform.SetParent(transform, false);
-				objectHolders.Add(prefab.name, o.transform);
-			}
 		}
 
 		[SerializeField] private List<GameObject> prefabs = null;

@@ -2,28 +2,11 @@
 using UnityEngine;
 using Utils;
 
-public class TextFontConfig : MonoBehaviour, ISingleton
+public class TextFontConfig : Singleton<TextFontConfig>
 {
-	public static TextFontConfig Instance { get; private set; }
+	[SerializeField] private TMP_FontAsset _TMPFont;
+	[SerializeField] private Font _PlainFont;
 
-	public TMP_FontAsset TMPFont;
-	public Font PlainFont;
-
-	public SingletonPriority GetSingletonPriority()
-	{
-		return SingletonPriority.VeryLow;
-	}
-
-	public void OnSingletonSetup()
-	{
-		Instance = this;
-	}
-
-	protected void OnDestroy()
-	{
-		if (Instance == this)
-		{
-			Instance = null;
-		}
-	}
+	public TMP_FontAsset TMPFont => _TMPFont;
+	public Font PlainFont => _PlainFont;
 }

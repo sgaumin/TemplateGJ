@@ -10,19 +10,9 @@ using Utils;
 using Utils.Dependency;
 using static Facade;
 
-public class LevelController : SceneBase, ISingleton
+public class LevelController : SceneBase
 {
-	public static LevelController Instance { get; private set; }
-
-	public SingletonPriority GetSingletonPriority()
-	{
-		return SingletonPriority.VeryHigh;
-	}
-
-	public void OnSingletonSetup()
-	{
-		Instance = this;
-	}
+	public string hello;
 
 	protected override void Start()
 	{
@@ -32,13 +22,5 @@ public class LevelController : SceneBase, ISingleton
 	protected override void Update()
 	{
 		base.Update();
-	}
-
-	protected void OnDestroy()
-	{
-		if (Instance == this)
-		{
-			Instance = null;
-		}
 	}
 }

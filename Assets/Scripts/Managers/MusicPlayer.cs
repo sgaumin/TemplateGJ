@@ -4,10 +4,8 @@ using UnityEngine;
 using Utils;
 using static Facade;
 
-public class MusicPlayer : MonoBehaviour, ISingleton
+public class MusicPlayer : Singleton<MusicPlayer>
 {
-	public static MusicPlayer Instance { get; private set; }
-
 	[SerializeField] private AudioSource audioSource;
 
 	private AudioUnit musicOverride;
@@ -23,24 +21,6 @@ public class MusicPlayer : MonoBehaviour, ISingleton
 			{
 				FadOut();
 			}
-		}
-	}
-
-	public SingletonPriority GetSingletonPriority()
-	{
-		return SingletonPriority.High;
-	}
-
-	public void OnSingletonSetup()
-	{
-		if (Instance == null)
-		{
-			DontDestroyOnLoad(gameObject);
-			Instance = this;
-		}
-		else if (Instance != null && Instance != this)
-		{
-			Destroy(gameObject);
 		}
 	}
 

@@ -10,7 +10,7 @@ using Utils;
 using Utils.Dependency;
 using static Facade;
 
-public abstract class SceneBase : MonoBehaviour
+public abstract class SceneBase : Singleton<SceneBase>
 {
 	public const string MASTER_VOLUME = "masterVolume";
 	public const string MUSIC_VOLUME = "musicVolume";
@@ -83,8 +83,10 @@ public abstract class SceneBase : MonoBehaviour
 	protected CinemachineVirtualCamera currentCamera => _camera.Resolve(this);
 	protected PostProcessVolume volume => _volume.Resolve(this);
 
-	protected virtual void Awake()
+	protected override void Awake()
 	{
+		base.Awake();
+
 		Application.targetFrameRate = 60;
 
 		DOTween.Init();
@@ -92,13 +94,6 @@ public abstract class SceneBase : MonoBehaviour
 
 		// Disable screen dimming
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
-
-		SetupAllSingleton();
-	}
-
-	private void SetupAllSingleton()
-	{
-		FindObjectsOfType<MonoBehaviour>().OfType<ISingleton>().OrderBy(x => (int)x.GetSingletonPriority()).ForEach(x => x.OnSingletonSetup());
 	}
 
 	protected virtual void Start()
