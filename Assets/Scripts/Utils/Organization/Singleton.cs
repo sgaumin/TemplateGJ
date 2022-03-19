@@ -49,7 +49,10 @@ namespace Utils
 			if (instance == null)
 			{
 				instance = this as T;
-				DontDestroyOnLoad(gameObject);
+				if (gameObject.transform.parent == null)
+				{
+					DontDestroyOnLoad(gameObject);
+				}
 			}
 			else
 			{

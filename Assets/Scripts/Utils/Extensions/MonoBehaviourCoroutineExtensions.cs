@@ -11,7 +11,7 @@ namespace Utils
 		/// <param name="m">Monobehavior holder</param>
 		/// <param name="routineMethod">Method</param>
 		/// <param name="routine">Coroutine</param>
-		public static void StartCoroutine(this MonoBehaviour m, IEnumerator routineMethod, ref Coroutine routine)
+		public static void TryStartCoroutine(this MonoBehaviour m, IEnumerator routineMethod, ref Coroutine routine)
 		{
 			TryStopCoroutine(m, ref routine);
 			routine = m.StartCoroutine(routineMethod);
