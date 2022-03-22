@@ -2,9 +2,8 @@
 {
     Properties
     {
+        _MainTex ("Texture", 2D) = "white" {}
         [MaterialToggle] _isInversed("Inverse", Float) = 0
-        [MaterialToggle] _forceColor("ForceColor", Float) = 0
-        _Color ("Color", Color) = (1, 1, 1, 1)
     }
     SubShader
     {
@@ -35,8 +34,6 @@
             sampler2D _MainTex;
             float4 _MainTex_ST;
             float _isInversed;
-            float _forceColor;
-            float4 _Color;
 
             v2f vert (appdata v)
             {
@@ -55,10 +52,6 @@
                 if (_isInversed)
                 {
                     return 1 - col;
-                }
-                else if(_forceColor)
-                {
-                    return _Color;    
                 }
                 else
                 {
