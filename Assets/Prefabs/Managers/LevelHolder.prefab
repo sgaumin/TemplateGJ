@@ -188,6 +188,7 @@ MonoBehaviour:
     _localReference: {fileID: 0}
   mixer: {fileID: 24100000, guid: dbd143edd4df0224d92ac4ff39f0844e, type: 2}
   transition: {fileID: 2100000, guid: bbb5062d96b699f4d9c1b1bfbf109ce9, type: 2}
+  hello: 
 --- !u!114 &6724002783205896963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,8 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78ae2a0a0a0d2d34ba5b5aefe641c2e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TMPFont: {fileID: 11400000, guid: d3a80119ae0cab345a9e90dc16828958, type: 2}
-  PlainFont: {fileID: 12800000, guid: 46823fe736ed2c147988e8349f0d1e26, type: 3}
+  _TMPFont: {fileID: 11400000, guid: d3a80119ae0cab345a9e90dc16828958, type: 2}
+  _PlainFont: {fileID: 12800000, guid: 46823fe736ed2c147988e8349f0d1e26, type: 3}
 --- !u!114 &3551343010801642665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ChannelMask: 1
   m_Gain: 1
-  m_Use2DDistance: 0
+  m_Use2DDistance: 1
 --- !u!1001 &576153364358352620
 PrefabInstance:
   m_ObjectHideFlags: 0
