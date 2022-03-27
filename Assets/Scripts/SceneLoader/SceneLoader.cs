@@ -101,6 +101,7 @@ public static class SceneLoader
 
 	private static void SceneClear()
 	{
+		ConsoleUtils.ClearConsole();
 		AudioPool.Reset();
 		RoutinePool.Reset();
 		DOTween.Clear(false);
