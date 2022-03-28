@@ -4,6 +4,7 @@ using Utils;
 
 public class TextFontConfig : Singleton<TextFontConfig>
 {
+	[Header("References")]
 	[SerializeField] private TMP_FontAsset _TMPFont;
 	[SerializeField] private Font _PlainFont;
 

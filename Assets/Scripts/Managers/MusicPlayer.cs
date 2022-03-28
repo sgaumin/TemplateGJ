@@ -6,6 +6,7 @@ using static Facade;
 
 public class MusicPlayer : Singleton<MusicPlayer>
 {
+	[Header("References")]
 	[SerializeField] private AudioSource audioSource;
 
 	private AudioUnit musicOverride;

@@ -12,8 +12,6 @@ using static Facade;
 
 public class LevelController : SceneBase
 {
-	public string hello;
-
 	protected override void Start()
 	{
 		base.Start();
