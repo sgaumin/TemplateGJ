@@ -63,17 +63,6 @@ namespace Utils
 			}
 		}
 
-		/// <summary>
-		/// Destruction of instance.
-		/// </summary>
-		protected virtual void OnDestroy()
-		{
-			if (instance = this as T)
-			{
-				instance = null;
-			}
-		}
-
 		#endregion Methods
 	}
 }
