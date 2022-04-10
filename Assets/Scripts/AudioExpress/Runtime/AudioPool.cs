@@ -23,7 +23,7 @@ public static class AudioPool
 			audioParent = new GameObject(audioPoolParent);
 		}
 
-		AudioUnit audio = audioPool.Where(x => !x.gameObject.activeSelf).FirstOrDefault();
+		AudioUnit audio = audioPool.Where(x => x != null && !x.gameObject.activeSelf).FirstOrDefault();
 		if (audio == null)
 		{
 			audio = new GameObject(audioUnitPrefix, typeof(AudioSource), typeof(AudioUnit)).GetComponent<AudioUnit>();
