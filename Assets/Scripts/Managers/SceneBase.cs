@@ -53,6 +53,7 @@ public abstract class SceneBase : Singleton<SceneBase>
 	protected Tween updatingChromatic;
 	protected Vignette vignette;
 	protected ChromaticAberration chromatic;
+	protected Transform defaultCameraTarget;
 
 	public SceneState State
 	{
@@ -198,11 +199,30 @@ public abstract class SceneBase : Singleton<SceneBase>
 		DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 1, duration).SetEase(Ease.OutSine).SetUpdate(true);
 	}
 
-	public void Zoom(float value, float duration, Ease ease)
+	public void SetCameraTarget(Transform target)
+	{
+		if (defaultCameraTarget == null)
+			defaultCameraTarget = currentCamera.m_Follow;
+
+		currentCamera.m_Follow = target;
+	}
+
+	public void ResetCameraTarget()
+	{
+		currentCamera.m_Follow = defaultCameraTarget;
+	}
+
+	public void Zoom(float value, float duration = 1f, Ease ease = Ease.OutSine)
 	{
 		zooming?.Kill();
 		currentCamera.m_Lens.OrthographicSize = startOrthographicSize;
-		zooming = DOTween.To(() => currentCamera.m_Lens.OrthographicSize, x => currentCamera.m_Lens.OrthographicSize = x, value, duration).SetEase(ease).SetLoops(2, LoopType.Yoyo);
+		zooming = DOTween.To(() => currentCamera.m_Lens.OrthographicSize, x => currentCamera.m_Lens.OrthographicSize = x, value, duration).SetEase(ease);
+	}
+
+	public void ResetZoom(float duration = 1f, Ease ease = Ease.OutSine)
+	{
+		zooming?.Kill();
+		zooming = DOTween.To(() => currentCamera.m_Lens.OrthographicSize, x => currentCamera.m_Lens.OrthographicSize = x, startOrthographicSize, duration).SetEase(ease);
 	}
 
 	public void SetVignette(float value, float duration, Ease ease)
