@@ -1,11 +1,12 @@
 {
-    "name": "Utils",
+    "name": "Project.AudioExpress.Editor",
     "rootNamespace": "",
     "references": [
-        "Unity.TextMeshPro",
-        "Dependency"
+        "GUID:d55fea9d4d2eb84458bd13ab232a31ff"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

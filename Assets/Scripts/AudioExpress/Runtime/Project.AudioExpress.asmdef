@@ -1,0 +1,17 @@
+{
+    "name": "Project.AudioExpress",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c8b10eac7c97de54db609f6e4cf27c50",
+        "GUID:17b87b335197f094ab3cb62953eab399"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

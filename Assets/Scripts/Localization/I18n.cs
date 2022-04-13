@@ -46,7 +46,7 @@ internal class I18n
 			Fields = new Dictionary<string, string>();
 
 		Fields.Clear();
-		string lang = forceLanguage == Language.None ? GameData.CurrentLanguage.ToString() : forceLanguage.ToString();
+		string lang = forceLanguage == Language.None ? "en" : forceLanguage.ToString();
 		var textAsset = Resources.Load(@"I18n/" + lang); //no .txt needed
 		string allTexts = "";
 		if (textAsset == null)

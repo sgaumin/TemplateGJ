@@ -32,8 +32,8 @@ Unity generated
 /[Mm]emoryCaptures/
 Logs/
 
-Assets/ConsolePro/
-Assets/ConsolePro.meta
+Assets/**/ConsolePro/
+Assets/**/ConsolePro.meta
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
