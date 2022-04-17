@@ -30,8 +30,7 @@ public class I18nImageSelector : MonoBehaviour
 
 	private void SetSprite()
 	{
-		// TODO: Check for player language
-		I18nImageData op = options.Where(x => x.language == Language.English).FirstOrDefault();
+		I18nImageData op = options.Where(x => x.language == I18n.CurrentLanguage).FirstOrDefault();
 		if (image != null)
 			image.sprite = op.sprite;
 		else if (spriteRenderer != null)

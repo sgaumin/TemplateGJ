@@ -25,6 +25,8 @@ using UnityEngine;
 
 internal class I18n
 {
+	private const string LANGUAGE = "language";
+
 	/// <summary>
 	/// Text Fields
 	/// Useage: Fields[key]
@@ -40,13 +42,26 @@ internal class I18n
 		LoadLanguageFromGameData();
 	}
 
+	public static Language CurrentLanguage
+	{
+		get
+		{
+			return PlayerPrefs.HasKey(LANGUAGE) ? (Language)Enum.Parse(typeof(Language), PlayerPrefs.GetString(LANGUAGE)) : Language.French;
+		}
+		set
+		{
+			PlayerPrefs.SetString(LANGUAGE, value.ToString());
+			PlayerPrefs.Save();
+		}
+	}
+	
 	public static void LoadLanguageFromGameData(Language forceLanguage = Language.None)
 	{
 		if (Fields == null)
 			Fields = new Dictionary<string, string>();
 
 		Fields.Clear();
-		string lang = forceLanguage == Language.None ? "en" : forceLanguage.ToString();
+		string lang = forceLanguage == Language.None ? CurrentLanguage.ToString() : forceLanguage.ToString();
 		var textAsset = Resources.Load(@"I18n/" + lang); //no .txt needed
 		string allTexts = "";
 		if (textAsset == null)
