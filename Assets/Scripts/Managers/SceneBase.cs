@@ -2,7 +2,6 @@
 using DG.Tweening;
 using System;
 using System.Collections;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Rendering.PostProcessing;
@@ -37,23 +36,23 @@ public abstract class SceneBase : Singleton<SceneBase>
 	[SerializeField] protected AudioMixer mixer;
 	[SerializeField] protected Material transition;
 
-	protected SceneState state;
-	protected float masterVolume;
-	protected float musicVolume;
-	protected float musicLowPass;
-	protected float startOrthographicSize;
-	protected bool isMusicMuted;
-	protected Coroutine loading;
-	protected Coroutine inversingColor;
-	protected Coroutine whiteScreen;
-	protected FloatParameter startVignetteIntensity;
-	protected FloatParameter startChromaticAberation;
-	protected Tween zooming;
-	protected Tween updatingVignette;
-	protected Tween updatingChromatic;
-	protected Vignette vignette;
-	protected ChromaticAberration chromatic;
-	protected Transform defaultCameraTarget;
+	private SceneState state;
+	private float masterVolume;
+	private float musicVolume;
+	private float musicLowPass;
+	private float startOrthographicSize;
+	private bool isMusicMuted;
+	private Coroutine loading;
+	private Coroutine inversingColor;
+	private Coroutine whiteScreen;
+	private FloatParameter startVignetteIntensity;
+	private FloatParameter startChromaticAberation;
+	private Tween zooming;
+	private Tween updatingVignette;
+	private Tween updatingChromatic;
+	private Vignette vignette;
+	private ChromaticAberration chromatic;
+	private Transform defaultCameraTarget;
 
 	public SceneState State
 	{
