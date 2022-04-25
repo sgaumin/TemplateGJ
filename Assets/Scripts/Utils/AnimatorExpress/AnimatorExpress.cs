@@ -22,7 +22,7 @@ namespace Utils
 		private SpriteRenderer spriteRenderer => _spriteRenderer.Resolve(this);
 
 		private int currentIndex;
-		private Coroutine animation;
+		private Coroutine animationRoutine;
 
 		private void Start()
 		{
@@ -35,7 +35,7 @@ namespace Utils
 		public void Play()
 		{
 			currentIndex = 0;
-			this.TryStartCoroutine(PlayCore(), ref animation);
+			this.TryStartCoroutine(PlayCore(), ref animationRoutine);
 		}
 
 		private IEnumerator PlayCore()
@@ -52,7 +52,7 @@ namespace Utils
 
 		public void Stop()
 		{
-			this.TryStopCoroutine(ref animation);
+			this.TryStopCoroutine(ref animationRoutine);
 		}
 	}
 }

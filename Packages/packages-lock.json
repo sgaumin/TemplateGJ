@@ -1,11 +1,20 @@
 {
   "dependencies": {
-    "com.talecrafter.animationimporter": {
-      "version": "https://github.com/talecrafter/AnimationImporter.git?path=/Assets",
+    "com.github.superunitybuild.buildactions": {
+      "version": "https://github.com/superunitybuild/buildactions.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.github.superunitybuild.buildtool": "2.1.0"
+      },
+      "hash": "f6d54c4a224acc5d491e1350b38b6f943939be5f"
+    },
+    "com.github.superunitybuild.buildtool": {
+      "version": "https://github.com/superunitybuild/buildtool.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "517f4667d21a94680cec8118cf63a15053bff711"
+      "hash": "18fd7c1b9295d3afb802531824d3bfaa1b1ad885"
     },
     "com.unity.2d.pixel-perfect": {
       "version": "4.0.1",
@@ -107,6 +116,15 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
+    },
+    "io.tinu.asepriteimporter": {
+      "version": "https://github.com/martinhodler/unity-aseprite-importer.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.2d.sprite": "1.0.0"
+      },
+      "hash": "dce15fde717b175d9a549cde681514f970d90c02"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
