@@ -8,16 +8,16 @@ namespace Utils
 {
 	public static class LeaderBoardRequests
 	{
-		private static string URL = "https://mahjoub.xyz/";
+		private static string URL = "https://sgaumin.com/";
 
 		public static void Get(Action<List<LeaderBoardEntry>> callback = null)
 		{
-			RoutinePool.Run(GetCore(callback));
+			RoutineExpress.Run(GetCore(callback));
 		}
 
 		public static void Post(string name, float value, Action<string> callback = null)
 		{
-			RoutinePool.Run(PostCore(name, value, callback));
+			RoutineExpress.Run(PostCore(name, value, callback));
 		}
 
 		private static IEnumerator GetCore(Action<List<LeaderBoardEntry>> callback = null)
@@ -48,6 +48,8 @@ namespace Utils
 
 		private static IEnumerator PostCore(string name, float value, Action<string> callback = null)
 		{
+			yield return GetExternalIPAddress.Get();
+
 			var url = $"{URL}addLeaderBoardEntry.php";
 
 			// Cleanup name parameter for avoiding potential content parsing issues
@@ -55,6 +57,7 @@ namespace Utils
 
 			WWWForm form = new WWWForm();
 			form.AddField("game", Application.productName);
+			form.AddField("ip", GetExternalIPAddress.IP);
 			form.AddField("name", name);
 			form.AddField("value", value.ToString());
 			form.AddField("utx", TimeManager.UnixTimeNow().ToString());

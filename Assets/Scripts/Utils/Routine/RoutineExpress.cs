@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Utils
 {
-	public static class RoutinePool
+	public static class RoutineExpress
 	{
 		private const string holderName = "RoutinePool";
 		private const string unitPrefix = "RoutineUnit";
