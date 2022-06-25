@@ -22,6 +22,8 @@ namespace Utils
 
 		private static IEnumerator GetCore(Action<List<LeaderBoardEntry>> callback = null)
 		{
+			yield return GetExternalIPAddress.Get();
+
 			var url = $"{URL}getLeaderBoard.php";
 
 			WWWForm form = new WWWForm();
@@ -36,10 +38,10 @@ namespace Utils
 				List<LeaderBoardEntry> entries = new List<LeaderBoardEntry>();
 				foreach (var entry in result.Split('|'))
 				{
-					string[] p = entry.Split(',');
-					if (p.Length != 3) continue;
+					string[] p = entry.Split('#');
+					if (p.Length != 4) continue;
 
-					entries.Add(new LeaderBoardEntry(p[0], float.Parse(p[1]), long.Parse(p[2])));
+					entries.Add(new LeaderBoardEntry(p[0], p[1], float.Parse(p[2]), long.Parse(p[3])));
 				}
 
 				callback?.Invoke(entries);
