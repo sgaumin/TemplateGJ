@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Utils
 {
+	[DisallowMultipleComponent]
 	public abstract class Singleton<T> : MonoBehaviour where T : Component
 	{
 		#region Fields
