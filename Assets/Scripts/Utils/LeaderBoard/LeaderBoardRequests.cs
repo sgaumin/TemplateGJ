@@ -8,7 +8,8 @@ namespace Utils
 {
 	public static class LeaderBoardRequests
 	{
-		private static string URL = "https://sgaumin.com/";
+		private static readonly string URL = "https://sgaumin.com/";
+		private static readonly string TESTING_USER = "TestingUser_";
 
 		public static void Get(Action<List<LeaderBoardEntry>> callback = null)
 		{
@@ -40,6 +41,9 @@ namespace Utils
 				{
 					string[] p = entry.Split('#');
 					if (p.Length != 4) continue;
+#if !UNITY_EDITOR
+					if (p[0].StartsWith(TESTING_USER)) continue;
+#endif
 
 					float val = 0f;
 #if UNITY_WEBGL && !UNITY_EDITOR
@@ -62,7 +66,11 @@ namespace Utils
 			var url = $"{URL}addLeaderBoardEntry.php";
 
 			// Cleanup name parameter for avoiding potential content parsing issues
-			name = name.Replace("|", "").Replace(",", "");
+			name = name.Replace("|", "").Replace(",", "").Replace("#", "");
+
+#if UNITY_EDITOR
+			name = TESTING_USER + name;
+#endif
 
 			WWWForm form = new WWWForm();
 			form.AddField("game", Application.productName);
