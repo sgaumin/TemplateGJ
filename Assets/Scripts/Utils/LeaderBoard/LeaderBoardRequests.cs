@@ -41,7 +41,14 @@ namespace Utils
 					string[] p = entry.Split('#');
 					if (p.Length != 4) continue;
 
-					entries.Add(new LeaderBoardEntry(p[0], p[1], float.Parse(p[2]), long.Parse(p[3])));
+					float val = 0f;
+#if UNITY_WEBGL && !UNITY_EDITOR
+					val = float.Parse(p[2].Replace('.', ','));
+#else
+					val = float.Parse(p[2]);
+#endif
+
+					entries.Add(new LeaderBoardEntry(p[0], p[1], val, long.Parse(p[3])));
 				}
 
 				callback?.Invoke(entries);
