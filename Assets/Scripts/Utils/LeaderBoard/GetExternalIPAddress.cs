@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using UnityEngine;
 using UnityEngine.Networking;
 
 namespace Utils
@@ -24,6 +25,7 @@ namespace Utils
 			{
 				IP = www.downloadHandler.text;
 			}
+			Debug.Log(IP);
 		}
 	}
 }
