@@ -9,11 +9,10 @@ namespace Utils
 	public static class LeaderBoardRequests
 	{
 		private static readonly string URL = "https://sgaumin.com/";
-		private static readonly string TESTING_USER = "TestingUser_";
 
-		public static void Get(Action<List<LeaderBoardEntry>> callback = null)
+		public static void Get(LeaderBoardOrder order = LeaderBoardOrder.DESC, Action<List<LeaderBoardEntry>> callback = null)
 		{
-			RoutineExpress.Run(GetCore(callback));
+			RoutineExpress.Run(GetCore(order, callback));
 		}
 
 		public static void Post(string name, float value, Action<string> callback = null)
@@ -21,7 +20,7 @@ namespace Utils
 			RoutineExpress.Run(PostCore(name, value, callback));
 		}
 
-		private static IEnumerator GetCore(Action<List<LeaderBoardEntry>> callback = null)
+		private static IEnumerator GetCore(LeaderBoardOrder order = LeaderBoardOrder.DESC, Action<List<LeaderBoardEntry>> callback = null)
 		{
 			yield return GetExternalIPAddress.Get();
 
@@ -29,6 +28,8 @@ namespace Utils
 
 			WWWForm form = new WWWForm();
 			form.AddField("game", Application.productName);
+			form.AddField("prd", (!Application.isEditor).ToString());
+			form.AddField("order", order.ToString());
 
 			using (UnityWebRequest webRequest = UnityWebRequest.Post(url, form))
 			{
@@ -41,12 +42,9 @@ namespace Utils
 				{
 					string[] p = entry.Split('#');
 					if (p.Length != 4) continue;
-#if !UNITY_EDITOR
-					if (p[0].StartsWith(TESTING_USER)) continue;
-#endif
 
 					float val = 0f;
-#if UNITY_WEBGL && !UNITY_EDITOR
+#if UNITY_WEBGL && !UNITY_EDITOR // Fixing potential float passing issues on WebGL
 					val = float.Parse(p[2].Replace('.', ','));
 #else
 					val = float.Parse(p[2]);
@@ -68,12 +66,9 @@ namespace Utils
 			// Cleanup name parameter for avoiding potential content parsing issues
 			name = name.Replace("|", "").Replace(",", "").Replace("#", "");
 
-#if UNITY_EDITOR
-			name = TESTING_USER + name;
-#endif
-
 			WWWForm form = new WWWForm();
 			form.AddField("game", Application.productName);
+			form.AddField("prd", (!Application.isEditor).ToString());
 			form.AddField("ip", GetExternalIPAddress.IP);
 			form.AddField("name", name);
 			form.AddField("value", value.ToString());
