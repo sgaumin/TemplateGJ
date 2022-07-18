@@ -108,15 +108,6 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
-    "io.tinu.asepriteimporter": {
-      "version": "https://github.com/martinhodler/unity-aseprite-importer.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.2d.sprite": "1.0.0"
-      },
-      "hash": "dce15fde717b175d9a549cde681514f970d90c02"
-    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
