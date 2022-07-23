@@ -25,6 +25,9 @@ public class AssignScenesToBuildProcessor : UnityEditor.AssetModificationProcess
 
 		DirectoryInfo d = new DirectoryInfo(@MainFolder);
 		FileInfo[] Files = d.GetFiles("*.unity");
+
+		if (Files.Count() == editorBuildSettingsScenes.Count()) return;
+
 		foreach (FileInfo file in Files)
 		{
 			scenes.Add(file.Name);
