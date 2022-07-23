@@ -15,13 +15,11 @@ public abstract class SceneBase : Singleton<SceneBase>
 	public const string MUSIC_VOLUME = "musicVolume";
 	public const string MUSIC_LOWPASS = "musicLowPass";
 
-	public delegate void SceneEventHandler();
+	public event Action OnStart;
 
-	public event SceneEventHandler OnStart;
+	public event Action OnEnd;
 
-	public event SceneEventHandler OnEnd;
-
-	public event SceneEventHandler OnPause;
+	public event Action OnPause;
 
 	[Header("Audio")]
 	[SerializeField] protected AudioClip music;
