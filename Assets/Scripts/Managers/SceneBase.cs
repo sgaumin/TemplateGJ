@@ -53,6 +53,7 @@ public abstract class SceneBase : Singleton<SceneBase>
 	private Vignette vignette;
 	private ChromaticAberration chromatic;
 	private Transform defaultCameraTarget;
+	private Tweener timerScaler;
 
 	public SceneState State
 	{
@@ -192,10 +193,18 @@ public abstract class SceneBase : Singleton<SceneBase>
 		whiteScreen = StartCoroutine(ApplingShader("_forceColor", duration));
 	}
 
-	public void FreezeTime(float duration = 0.1f)
+	public void FreezeTime(float duration = 0.1f, Ease ease = Ease.OutSine)
 	{
+		timerScaler.Kill();
 		Time.timeScale = 0f;
-		DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 1, duration).SetEase(Ease.OutSine).SetUpdate(true);
+		timerScaler = DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 1, duration).SetEase(ease).SetUpdate(true);
+	}
+
+	public void BoostTime(float startValue, float duration = 0.1f, Ease ease = Ease.OutSine)
+	{
+		timerScaler.Kill();
+		Time.timeScale = startValue;
+		timerScaler = DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 1, duration).SetEase(ease).SetUpdate(true);
 	}
 
 	public void SetCameraTarget(Transform target)
