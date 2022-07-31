@@ -5,7 +5,7 @@ namespace Utils
 {
 	[ExecuteInEditMode]
 	[RequireComponent(typeof(PolygonCollider2D))]
-	public class BoxAreaCollider : MonoBehaviour
+	public class BoxAreaCollider2D : MonoBehaviour
 	{
 		[SerializeField] private float width = 14f;
 		[SerializeField] private float height = 6f;
