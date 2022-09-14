@@ -1,29 +1,38 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using UnityEngine;
-using Utils;
+using UnityEngine.Audio;
 using static Facade;
 
-public class MusicPlayer : Singleton<MusicPlayer>
+public class MusicPlayer : MonoBehaviour
 {
+	public const string MASTER_VOLUME = "masterVolume";
+	public const string MUSIC_VOLUME = "musicVolume";
+	public const string MUSIC_LOWPASS = "musicLowPass";
+
 	[Header("References")]
+	[SerializeField] protected AudioMixer mixer;
 	[SerializeField] private AudioSource audioSource;
 
-	private AudioUnit musicOverride;
-	private Coroutine updateClip;
+	private AudioUnit _musicOverride;
+	private Coroutine _updateClip;
+	private float _masterVolume;
+	private float _musicVolume;
+	private float _musicLowPass;
 
 	public AudioUnit MusicOverride
 	{
-		get => musicOverride;
+		get => _musicOverride;
 		set
 		{
-			musicOverride = value;
-			if (musicOverride != null)
+			_musicOverride = value;
+			if (_musicOverride != null)
 			{
 				FadOut();
 			}
 		}
 	}
+	public bool IsMuted => _masterVolume == -80f;
 
 	public void SwitchBackToMain()
 	{
@@ -51,11 +60,11 @@ public class MusicPlayer : Singleton<MusicPlayer>
 	{
 		if (clip != null && audioSource.clip != clip)
 		{
-			if (updateClip != null)
+			if (_updateClip != null)
 			{
-				StopCoroutine(updateClip);
+				StopCoroutine(_updateClip);
 			}
-			updateClip = StartCoroutine(TryUpdateClipCore(clip));
+			_updateClip = StartCoroutine(TryUpdateClipCore(clip));
 		}
 	}
 
@@ -70,5 +79,35 @@ public class MusicPlayer : Singleton<MusicPlayer>
 
 		Tween fadIn = audioSource.DOFade(1f, Settings.audioFadeDuration);
 		yield return fadIn.WaitForCompletion();
+	}
+
+	public void UpdateSceneMasterVolume(float percentage)
+	{
+		_masterVolume = Mathf.Lerp(-80f, 0f, percentage);
+		mixer.SetFloat(MASTER_VOLUME, _masterVolume);
+	}
+
+	public void UpdateSceneMusicVolume(float percentage)
+	{
+		_musicVolume = Mathf.Lerp(-80f, 0f, percentage);
+		mixer.SetFloat(MUSIC_VOLUME, _musicVolume);
+	}
+
+	public void UpdateSceneMusicLowPass(float percentage)
+	{
+		_musicLowPass = Mathf.Lerp(800f, 22000f, percentage);
+		mixer.SetFloat(MUSIC_LOWPASS, _musicLowPass);
+	}
+
+	public void Mute()
+	{
+		if (IsMuted)
+		{
+			UpdateSceneMasterVolume(1f);
+		}
+		else
+		{
+			UpdateSceneMasterVolume(0f);
+		}
 	}
 }

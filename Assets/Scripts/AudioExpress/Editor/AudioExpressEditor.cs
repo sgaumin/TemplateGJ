@@ -5,16 +5,16 @@ using UnityEngine.Audio;
 [CustomPropertyDrawer(typeof(AudioExpress))]
 public class AudioExpressEditor : PropertyDrawer
 {
-	private float offset = EditorGUIUtility.singleLineHeight * 0.3f;
-	private float offsetClipsArray;
-	private float offsetPitch;
-	private float offsetLoop;
-	private float offsetAutoDestroy;
-	private bool isExpanded;
+	private float _offset = EditorGUIUtility.singleLineHeight * 0.3f;
+	private float _offsetClipsArray;
+	private float _offsetPitch;
+	private float _offsetLoop;
+	private float _offsetAutoDestroy;
+	private bool _isExpanded;
 
 	public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
 	{
-		return isExpanded ? base.GetPropertyHeight(property, label) * 8.2f + offsetClipsArray + offsetPitch + offsetLoop + offsetAutoDestroy + EditorGUIUtility.singleLineHeight * 1f : EditorGUIUtility.singleLineHeight * 1f;
+		return _isExpanded ? base.GetPropertyHeight(property, label) * 8.2f + _offsetClipsArray + _offsetPitch + _offsetLoop + _offsetAutoDestroy + EditorGUIUtility.singleLineHeight * 1f : EditorGUIUtility.singleLineHeight * 1f;
 	}
 
 	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -34,21 +34,20 @@ public class AudioExpressEditor : PropertyDrawer
 
 		// Calculate rects
 		Rect labelRect = new Rect(position.x, position.y, position.width, EditorGUIUtility.singleLineHeight);
-		Rect isUsingClipsRect = new Rect(position.x, position.y + offset + EditorGUIUtility.singleLineHeight, position.width, EditorGUIUtility.singleLineHeight);
-		Rect clipRect = new Rect(position.x, position.y + offset + EditorGUIUtility.singleLineHeight * 2.1f, position.width, EditorGUIUtility.singleLineHeight);
-		Rect mixerGroupRect = new Rect(position.x, position.y + offset + offsetClipsArray + EditorGUIUtility.singleLineHeight * 3.2f, position.width, EditorGUIUtility.singleLineHeight);
-		Rect isPitchModifiedRect = new Rect(position.x, position.y + offset + offsetClipsArray + EditorGUIUtility.singleLineHeight * 5f, position.width, EditorGUIUtility.singleLineHeight);
-		Rect pitchMaxVariationRect = new Rect(position.x, position.y + offset + offsetClipsArray + EditorGUIUtility.singleLineHeight * 6.2f, position.width, EditorGUIUtility.singleLineHeight * 1.85f);
-		Rect loopTypeRect = new Rect(position.x, position.y + offset + offsetClipsArray + offsetPitch + EditorGUIUtility.singleLineHeight * 6.2f, position.width, EditorGUIUtility.singleLineHeight);
-		Rect timeBetweenLoopRect = new Rect(position.x, position.y + offset + offsetClipsArray + offsetPitch + EditorGUIUtility.singleLineHeight * 7.4f, position.width, EditorGUIUtility.singleLineHeight * 1.85f);
-		Rect autoDestroyRect = new Rect(position.x, position.y + offset + offsetClipsArray + offsetPitch + offsetLoop + EditorGUIUtility.singleLineHeight * 7.4f, position.width, EditorGUIUtility.singleLineHeight);
-		Rect multiplierRect = new Rect(position.x, position.y + offset + offsetClipsArray + offsetPitch + offsetLoop + EditorGUIUtility.singleLineHeight * 8.6f, position.width, EditorGUIUtility.singleLineHeight * 1.15f);
+		Rect isUsingClipsRect = new Rect(position.x, position.y + _offset + EditorGUIUtility.singleLineHeight, position.width, EditorGUIUtility.singleLineHeight);
+		Rect clipRect = new Rect(position.x, position.y + _offset + EditorGUIUtility.singleLineHeight * 2.1f, position.width, EditorGUIUtility.singleLineHeight);
+		Rect mixerGroupRect = new Rect(position.x, position.y + _offset + _offsetClipsArray + EditorGUIUtility.singleLineHeight * 3.2f, position.width, EditorGUIUtility.singleLineHeight);
+		Rect isPitchModifiedRect = new Rect(position.x, position.y + _offset + _offsetClipsArray + EditorGUIUtility.singleLineHeight * 5f, position.width, EditorGUIUtility.singleLineHeight);
+		Rect loopTypeRect = new Rect(position.x, position.y + _offset + _offsetClipsArray + _offsetPitch + EditorGUIUtility.singleLineHeight * 6.2f, position.width, EditorGUIUtility.singleLineHeight);
+		Rect timeBetweenLoopRect = new Rect(position.x, position.y + _offset + _offsetClipsArray + _offsetPitch + EditorGUIUtility.singleLineHeight * 7.4f, position.width, EditorGUIUtility.singleLineHeight * 1.85f);
+		Rect autoDestroyRect = new Rect(position.x, position.y + _offset + _offsetClipsArray + _offsetPitch + _offsetLoop + EditorGUIUtility.singleLineHeight * 7.4f, position.width, EditorGUIUtility.singleLineHeight);
+		Rect multiplierRect = new Rect(position.x, position.y + _offset + _offsetClipsArray + _offsetPitch + _offsetLoop + EditorGUIUtility.singleLineHeight * 8.6f, position.width, EditorGUIUtility.singleLineHeight * 1.15f);
 
 		// Draw label
 		property.isExpanded = EditorGUI.Foldout(labelRect, property.isExpanded, label);
-		isExpanded = property.isExpanded;
+		_isExpanded = property.isExpanded;
 
-		if (isExpanded)
+		if (_isExpanded)
 		{
 			EditorGUI.indentLevel++;
 
@@ -65,11 +64,11 @@ public class AudioExpressEditor : PropertyDrawer
 			// Expand field
 			if (isUsingClips.boolValue && clips.isExpanded)
 			{
-				offsetClipsArray = EditorGUIUtility.singleLineHeight * (1.3f + clips.arraySize * 0.115f + clips.arraySize);
+				_offsetClipsArray = EditorGUIUtility.singleLineHeight * (1.3f + clips.arraySize * 0.115f + clips.arraySize);
 			}
 			else
 			{
-				offsetClipsArray = 0f;
+				_offsetClipsArray = 0f;
 			}
 
 			EditorGUI.PropertyField(mixerGroupRect, mixerGroup, GUIContent.none);
@@ -89,11 +88,11 @@ public class AudioExpressEditor : PropertyDrawer
 			if (loopType.enumValueIndex == (int)AudioLoopType.Manuel)
 			{
 				EditorGUI.PropertyField(timeBetweenLoopRect, timeBetweenLoop);
-				offsetLoop = EditorGUIUtility.singleLineHeight * 2.3f;
+				_offsetLoop = EditorGUIUtility.singleLineHeight * 2.3f;
 			}
 			else
 			{
-				offsetLoop = 0f;
+				_offsetLoop = 0f;
 			}
 
 			EditorGUI.PropertyField(autoDestroyRect, autoDestroy);
@@ -102,11 +101,11 @@ public class AudioExpressEditor : PropertyDrawer
 				EditorGUI.PropertyField(
 				  multiplierRect, multiplier, new GUIContent(autoDestroy.enumValueIndex == (int)AudioStopType.StopAfterDuration ?
 				  "Seconds" : "Play Count"));
-				offsetAutoDestroy = EditorGUIUtility.singleLineHeight * 1.3f;
+				_offsetAutoDestroy = EditorGUIUtility.singleLineHeight * 1.3f;
 			}
 			else
 			{
-				offsetAutoDestroy = 0f;
+				_offsetAutoDestroy = 0f;
 			}
 
 			EditorGUI.indentLevel--;

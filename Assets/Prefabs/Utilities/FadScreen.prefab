@@ -28,6 +28,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2177832480006244971}
   m_RootOrder: 0
@@ -103,6 +104,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2177832479756942574}
   m_Father: {fileID: 0}
@@ -146,6 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5308451c74ab5c34fa1fddce93ab95be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _image:
+  __image:
     _source: 2
     _localReference: {fileID: 0}

@@ -12,9 +12,6 @@ namespace Utils
 		/// </summary>
 		private static T instance;
 
-		[Header("Singleton Behavior")]
-		[SerializeField] private bool dontDestroy;
-
 		#endregion Fields
 
 		#region Properties
@@ -53,14 +50,6 @@ namespace Utils
 			if (instance == null)
 			{
 				instance = this as T;
-				if (dontDestroy && gameObject.transform.parent == null)
-				{
-					DontDestroyOnLoad(gameObject);
-				}
-			}
-			else
-			{
-				Destroy(gameObject);
 			}
 		}
 

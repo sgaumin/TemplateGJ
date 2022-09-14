@@ -4,4 +4,5 @@
 	Reload,
 	Next,
 	First,
+	Last
 }

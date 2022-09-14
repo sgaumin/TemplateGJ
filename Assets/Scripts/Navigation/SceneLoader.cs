@@ -16,7 +16,7 @@ public static class SceneLoader
 		switch (sceneLoading)
 		{
 			case SceneLoading.Previous:
-				LoadPrevious();
+				Previous();
 				break;
 
 			case SceneLoading.Reload:
@@ -29,6 +29,10 @@ public static class SceneLoader
 
 			case SceneLoading.First:
 				LoadScene(0);
+				break;
+
+			case SceneLoading.Last:
+				Last();
 				break;
 		}
 	}
@@ -58,7 +62,7 @@ public static class SceneLoader
 	/// <summary>
 	/// Load next scene present in the build settings window.
 	/// </summary>
-	public static void LoadPrevious()
+	public static void Previous()
 	{
 		SceneClear();
 		int currentBuildIndex = SceneManager.GetActiveScene().buildIndex;
@@ -75,6 +79,12 @@ public static class SceneLoader
 	{
 		SceneClear();
 		SceneManager.LoadScene(name);
+	}
+
+	public static void Last()
+	{
+		SceneClear();
+		SceneManager.LoadScene(SceneManager.sceneCountInBuildSettings);
 	}
 
 	/// <summary>
