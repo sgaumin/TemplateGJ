@@ -1,12 +1,11 @@
 {
-    "name": "com.talecrafter.animationimporter.Editor",
+    "name": "Project.AnimatorExpress",
     "rootNamespace": "",
     "references": [
-        "GUID:ba3c18ee443f5fc428ce11b0dc16eb4b"
+        "GUID:c8b10eac7c97de54db609f6e4cf27c50",
+        "GUID:9e49e2cda224a184daea5fbeb60f0c4e"
     ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
