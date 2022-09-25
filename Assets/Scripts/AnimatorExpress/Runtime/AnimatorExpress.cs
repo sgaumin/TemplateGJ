@@ -5,21 +5,27 @@ using UnityEngine;
 using Utils;
 using System;
 
-namespace AnimatorExpress
+namespace AnimExpress
 {
-	[RequireComponent(typeof(SpriteRenderer))]
+	[RequireComponent(typeof(SpriteRenderer), typeof(AnimatorExpressTester))]
 	public class AnimatorExpress : MonoBehaviour
 	{
 		[SerializeField] private List<AnimationExpress> animations = new List<AnimationExpress>();
+
+		[Header("References")]
 		[SerializeField] protected Dependency<SpriteRenderer> _spriteRenderer;
+		[SerializeField] protected Dependency<AnimatorExpressTester> _animatorExpressTester;
 
 		private SpriteRenderer spriteRenderer => _spriteRenderer.Resolve(this);
+		private AnimatorExpressTester animatorExpressTester => _animatorExpressTester.Resolve(this);
 
 		private bool hasBeenInitialized;
 		private Coroutine animationRoutine;
 		private AnimationExpress currentAnimation;
 		private Dictionary<string, AnimationExpress> declaredAnimations;
 		private Dictionary<string, Dictionary<string, AnimationExpressEvent>> declaredAnimationEvents;
+
+		public List<AnimationExpress> Animations => animations;
 
 		private void OnValidate()
 		{
@@ -32,7 +38,7 @@ namespace AnimatorExpress
 
 		private void Awake()
 		{
-			Init();
+			CheckInitialization();
 		}
 
 		private void Start()
@@ -60,22 +66,37 @@ namespace AnimatorExpress
 
 		private void PlayDefault()
 		{
-			if (!hasBeenInitialized) Init();
+			CheckInitialization();
+
+			if (currentAnimation == animations[0]) return;
 
 			currentAnimation = animations[0]; // First animation is default
 			this.TryStartCoroutine(PlayCore(), ref animationRoutine);
 		}
 
+		public void PlayTesting(string animationKey = "")
+		{
+			DoPlay(animationKey);
+		}
+
 		public void Play(string animationKey = "")
 		{
-			if (!hasBeenInitialized) Init();
+			if (animatorExpressTester.IsTakingControls) return;
+			DoPlay(animationKey);
+		}
+
+		private void DoPlay(string animationKey)
+		{
+			CheckInitialization();
 
 			if (string.IsNullOrEmpty(animationKey))
 			{
+				Debug.LogError($"Animation empty detected for {gameObject.name}");
 				PlayDefault();
 			}
 			else if (declaredAnimations.TryGetValue(animationKey, out AnimationExpress animation))
 			{
+				if (currentAnimation == animation) return;
 				currentAnimation = animation;
 			}
 			else
@@ -84,6 +105,14 @@ namespace AnimatorExpress
 			}
 
 			this.TryStartCoroutine(PlayCore(), ref animationRoutine);
+		}
+
+		private void CheckInitialization()
+		{
+			if (!hasBeenInitialized)
+			{
+				Init();
+			}
 		}
 
 		private IEnumerator PlayCore()
@@ -137,7 +166,10 @@ namespace AnimatorExpress
 				yield return null;
 			}
 
-			PlayDefault();
+			if (currentAnimation.PlayDefaultOnCompletion)
+			{
+				PlayDefault();
+			}
 		}
 
 		public void AddListener(string animationName, string eventName, Action action)
@@ -150,7 +182,7 @@ namespace AnimatorExpress
 				}
 				else
 				{
-					Debug.LogError($"Animation event {eventName} not found for {gameObject.name}");
+					Debug.LogError($"Event {eventName} on animation {animationName} not found for {gameObject.name}");
 				}
 			}
 			else

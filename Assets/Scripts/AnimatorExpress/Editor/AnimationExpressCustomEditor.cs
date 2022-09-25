@@ -1,8 +1,7 @@
-using System.Runtime.Remoting.Contexts;
 using UnityEditor;
 using UnityEngine;
 
-namespace AnimatorExpress
+namespace AnimExpress
 {
 	[CustomEditor(typeof(AnimationExpress))]
 	public class AnimationExpressCustomEditor : Editor

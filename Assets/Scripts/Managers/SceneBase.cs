@@ -88,6 +88,16 @@ public class SceneBase : Singleton<SceneBase>
 		effectHandler.BoostTime(startValue, duration);
 	}
 
+	public void FreezeTime(float duration = 0.1f)
+	{
+		effectHandler.FreezeTime(duration);
+	}
+
+	public void InverseColor(float duration = 0.05f)
+	{
+		effectHandler.InverseColor(duration);
+	}
+
 	public void ResetShaders()
 	{
 		effectHandler.ResetShaders();

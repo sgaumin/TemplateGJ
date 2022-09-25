@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace AnimatorExpress
+namespace AnimExpress
 {
 	[CustomPropertyDrawer(typeof(Frame))]
 	public class FramePropertyDrawer : PropertyDrawer

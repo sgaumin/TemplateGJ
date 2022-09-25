@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf71752e22bd0a2478c8074f8452590b, type: 3}
-  m_Name: Characters-IdleAnimation
+  m_Name: Characters-Idle
   m_EditorClassIdentifier: 
   isLooping: 1
+  playDefaultOnCompletion: 1
   frames:
   - sprite: {fileID: -1125467155, guid: 8443d2d359906ce45be213cc8a5bb39a, type: 3}
     duration: 0.1
@@ -27,5 +28,5 @@ MonoBehaviour:
   - sprite: {fileID: 971358932, guid: 8443d2d359906ce45be213cc8a5bb39a, type: 3}
     duration: 0.1
   events:
-  - name: OnIdle
+  - eventName: OnIdle
     triggerTime: 0.5

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace AnimatorExpress
+namespace AnimExpress
 {
 	[Serializable]
 	public class Frame
@@ -15,6 +15,7 @@ namespace AnimatorExpress
 		public Frame(Sprite sprite)
 		{
 			this.sprite = sprite;
+			this.duration = 0.1f;
 		}
 	}
 }

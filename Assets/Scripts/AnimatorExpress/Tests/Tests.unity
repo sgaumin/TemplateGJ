@@ -134,33 +134,15 @@ GameObject:
   m_Component:
   - component: {fileID: 1217804667}
   - component: {fileID: 1217804666}
-  - component: {fileID: 1217804665}
-  - component: {fileID: 1217804668}
+  - component: {fileID: 1217804671}
+  - component: {fileID: 1217804670}
   m_Layer: 0
-  m_Name: AnimatorExpress
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1217804665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1217804664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca1d02e5172e20f418b4817c5dc69cc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animations:
-  - {fileID: 11400000, guid: f4e8674c065030a4084bc309c834b289, type: 2}
-  - {fileID: 11400000, guid: 6284e52a6a551674f9308b9ac6781172, type: 2}
-  _spriteRenderer:
-    _source: 0
-    _localReference: {fileID: 0}
 --- !u!212 &1217804666
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -228,7 +210,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1217804668
+--- !u!114 &1217804670
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -237,7 +219,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 1217804664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cd2972b22248bb4b9726109f0ebaba2, type: 3}
+  m_Script: {fileID: 11500000, guid: ca1d02e5172e20f418b4817c5dc69cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animations:
+  - {fileID: 11400000, guid: f4e8674c065030a4084bc309c834b289, type: 2}
+  - {fileID: 11400000, guid: 6284e52a6a551674f9308b9ac6781172, type: 2}
+  - {fileID: 11400000, guid: d0160f63772c4174a92fd494ee549f5e, type: 2}
+  - {fileID: 11400000, guid: 2faa55f097d966d4284fb425275e5232, type: 2}
+  - {fileID: 11400000, guid: 61d76380657305041b53f163242b6e13, type: 2}
+  - {fileID: 11400000, guid: df9ada016ecc14e4fbf1cc14a4ad7091, type: 2}
+  _spriteRenderer:
+    _source: 0
+    _localReference: {fileID: 0}
+  _animatorExpressTester:
+    _source: 0
+    _localReference: {fileID: 0}
+--- !u!114 &1217804671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217804664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c29140cbeca0840a276dc3e632d826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &3502643509986546824

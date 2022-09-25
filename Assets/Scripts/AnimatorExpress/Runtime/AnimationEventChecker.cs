@@ -1,4 +1,4 @@
-﻿namespace AnimatorExpress
+﻿namespace AnimExpress
 {
 	internal class AnimationEventChecker
 	{

@@ -1,16 +1,16 @@
 ﻿using System;
 using UnityEngine;
 
-namespace AnimatorExpress
+namespace AnimExpress
 {
 	[Serializable]
 	public class AnimationExpressEvent
 	{
-		[SerializeField] private string name;
+		[SerializeField] private string eventName;
 		[SerializeField, Range(0f, 1f)] private float triggerTime;
 		[SerializeField] private Action action;
 
-		public string Name => name;
+		public string Name => eventName;
 		public float TriggerTime => triggerTime;
 
 		public void AddListener(Action action)

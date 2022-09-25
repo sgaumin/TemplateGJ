@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Characters-Idle_0
+      name: Characters-Jump_0
       rect:
         serializedVersion: 2
         x: 0
@@ -125,7 +125,7 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -138,7 +138,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Characters-Idle_1
+      name: Characters-Jump_1
       rect:
         serializedVersion: 2
         x: 32
@@ -146,7 +146,7 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -159,7 +159,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Characters-Idle_2
+      name: Characters-Jump_2
       rect:
         serializedVersion: 2
         x: 64
@@ -167,7 +167,7 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -180,7 +180,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Characters-Idle_3
+      name: Characters-Jump_3
       rect:
         serializedVersion: 2
         x: 96
@@ -188,7 +188,7 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -209,7 +209,7 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -230,7 +230,7 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -253,11 +253,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Characters-Idle_1: 1481211845
-      Characters-Idle_2: 675496584
+      Characters-Jump_0: -1125467155
+      Characters-Jump_2: 675496584
+      Characters-Jump_3: -936491132
       Characters-Idle_5: 971358932
-      Characters-Idle_3: -936491132
-      Characters-Idle_0: -1125467155
+      Characters-Jump_1: 1481211845
       Characters-Idle_4: 718503526
   spritePackingTag: 
   pSDRemoveMatte: 0
