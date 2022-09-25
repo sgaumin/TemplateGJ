@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf71752e22bd0a2478c8074f8452590b, type: 3}
+  m_Name: Characters-IdleAnimation
+  m_EditorClassIdentifier: 
+  isLooping: 1
+  frames:
+  - sprite: {fileID: -1125467155, guid: 8443d2d359906ce45be213cc8a5bb39a, type: 3}
+    duration: 0.1
+  - sprite: {fileID: 1481211845, guid: 8443d2d359906ce45be213cc8a5bb39a, type: 3}
+    duration: 0.1
+  - sprite: {fileID: 675496584, guid: 8443d2d359906ce45be213cc8a5bb39a, type: 3}
+    duration: 0.1
+  - sprite: {fileID: -936491132, guid: 8443d2d359906ce45be213cc8a5bb39a, type: 3}
+    duration: 0.1
+  - sprite: {fileID: 718503526, guid: 8443d2d359906ce45be213cc8a5bb39a, type: 3}
+    duration: 0.1
+  - sprite: {fileID: 971358932, guid: 8443d2d359906ce45be213cc8a5bb39a, type: 3}
+    duration: 0.1
+  events:
+  - name: OnIdle
+    triggerTime: 0.5
