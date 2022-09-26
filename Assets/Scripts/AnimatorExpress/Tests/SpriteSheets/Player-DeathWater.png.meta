@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3d034c79162746d4586e540ed3ec1102
+guid: 87b6622c8541568468da573a728a0518
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -44,7 +44,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: 4
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Characters-Walk_0
+      name: Player-DeathWater_0
       rect:
         serializedVersion: 2
         x: 0
@@ -125,20 +125,20 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcbedd6d5fa6ac048b39314c9215effc
-      internalID: -1125467155
+      spriteID: a28977bd249055f45a4c0eebb8a8ada8
+      internalID: -1278877302
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Characters-Walk_1
+      name: Player-DeathWater_1
       rect:
         serializedVersion: 2
         x: 32
@@ -146,20 +146,20 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f0780749f5423f4283461e7de77980f
-      internalID: 1481211845
+      spriteID: 2658a9ec7eacda142a93280b4a2ef6c7
+      internalID: -796159301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Characters-Walk_2
+      name: Player-DeathWater_2
       rect:
         serializedVersion: 2
         x: 64
@@ -167,20 +167,20 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f5a37c81812a7643a6a2af138721f55
-      internalID: 675496584
+      spriteID: b30475cd7ff2b3146af7338344af8dda
+      internalID: 1460344754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Characters-Walk_3
+      name: Player-DeathWater_3
       rect:
         serializedVersion: 2
         x: 96
@@ -188,56 +188,14 @@ TextureImporter:
         width: 32
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87e7e286a2b3ae04b92dfd979d745e06
-      internalID: -936491132
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Characters-Idle_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 92d4c93d14b6b704390625f6d87f1adf
-      internalID: 718503526
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Characters-Idle_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 387b28cf24b0c9e49ab2bfcccb0fc04d
-      internalID: 971358932
+      spriteID: ce442486a8b270d49a4c1983daf15177
+      internalID: 1968147782
       vertices: []
       indices: 
       edges: []
@@ -253,12 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Characters-Walk_3: -936491132
-      Characters-Walk_0: -1125467155
-      Characters-Walk_1: 1481211845
-      Characters-Idle_5: 971358932
-      Characters-Walk_2: 675496584
-      Characters-Idle_4: -1125467155
+      Player-DeathWater_1: -796159301
+      Player-DeathWater_0: -1278877302
+      Player-DeathWater_2: 1460344754
+      Player-DeathWater_3: 1968147782
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

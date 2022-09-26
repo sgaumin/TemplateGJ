@@ -31,7 +31,10 @@ namespace AnimExpress
 		{
 			try
 			{
-				spriteRenderer.sprite = animations[0].Frames[0].Sprite;
+				if (!Application.isPlaying)
+				{
+					spriteRenderer.sprite = animations[0].Frames[0].Sprite;
+				}
 			}
 			catch (System.Exception) { }
 		}
@@ -64,11 +67,20 @@ namespace AnimExpress
 			}
 		}
 
+#if UNITY_EDITOR
+
+		public void AddAnimation(AnimationExpress animation)
+		{
+			animations.Add(animation);
+		}
+
+#endif
+
 		private void PlayDefault()
 		{
 			CheckInitialization();
 
-			if (currentAnimation == animations[0]) return;
+			if (animations.IsEmpty() || currentAnimation == animations[0]) return;
 
 			currentAnimation = animations[0]; // First animation is default
 			this.TryStartCoroutine(PlayCore(), ref animationRoutine);

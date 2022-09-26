@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf71752e22bd0a2478c8074f8452590b, type: 3}
-  m_Name: Characters-DeathWater
+  m_Name: Player-Jump
   m_EditorClassIdentifier: 
-  isLooping: 0
-  playDefaultOnCompletion: 0
+  isLooping: 1
+  playDefaultOnCompletion: 1
   frames:
-  - sprite: {fileID: -1125467155, guid: 94ecc154445d967449139503b6968c45, type: 3}
+  - sprite: {fileID: -1993947417, guid: 04740e31d5df24e4da66552d916cc274, type: 3}
     duration: 0.1
-  - sprite: {fileID: 1481211845, guid: 94ecc154445d967449139503b6968c45, type: 3}
+  - sprite: {fileID: -394513600, guid: 04740e31d5df24e4da66552d916cc274, type: 3}
     duration: 0.1
-  - sprite: {fileID: 675496584, guid: 94ecc154445d967449139503b6968c45, type: 3}
+  - sprite: {fileID: -1177148840, guid: 04740e31d5df24e4da66552d916cc274, type: 3}
     duration: 0.1
-  - sprite: {fileID: -936491132, guid: 94ecc154445d967449139503b6968c45, type: 3}
+  - sprite: {fileID: 329034067, guid: 04740e31d5df24e4da66552d916cc274, type: 3}
     duration: 0.1
   events: []

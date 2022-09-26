@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8443d2d359906ce45be213cc8a5bb39a
+guid: 97d9c0de48590874caee342684467019
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -44,7 +44,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: 4
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Characters-Idle_0
+      name: Player-Walk_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcbedd6d5fa6ac048b39314c9215effc
-      internalID: -1125467155
+      spriteID: 798509f9e29b8d6428f7f20e4b4022dd
+      internalID: 225568851
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Characters-Idle_1
+      name: Player-Walk_1
       rect:
         serializedVersion: 2
         x: 32
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f0780749f5423f4283461e7de77980f
-      internalID: 1481211845
+      spriteID: e2cd4171f319dd0438c49cf5eb553c6b
+      internalID: -632438560
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Characters-Idle_2
+      name: Player-Walk_2
       rect:
         serializedVersion: 2
         x: 64
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f5a37c81812a7643a6a2af138721f55
-      internalID: 675496584
+      spriteID: a7f377e159cb4b14f93f721a52db6544
+      internalID: 888887601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Characters-Idle_3
+      name: Player-Walk_3
       rect:
         serializedVersion: 2
         x: 96
@@ -194,50 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87e7e286a2b3ae04b92dfd979d745e06
-      internalID: -936491132
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Characters-Idle_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 92d4c93d14b6b704390625f6d87f1adf
-      internalID: 718503526
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Characters-Idle_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 387b28cf24b0c9e49ab2bfcccb0fc04d
-      internalID: 971358932
+      spriteID: c901c20aa207f3d498ab2cd1675e67a8
+      internalID: 481146413
       vertices: []
       indices: 
       edges: []
@@ -253,12 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Characters-Idle_1: 1481211845
-      Characters-Idle_2: 675496584
-      Characters-Idle_5: 971358932
-      Characters-Idle_3: -936491132
-      Characters-Idle_0: -1125467155
-      Characters-Idle_4: 718503526
+      Player-Walk_0: 225568851
+      Player-Walk_3: 481146413
+      Player-Walk_1: -632438560
+      Player-Walk_2: 888887601
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

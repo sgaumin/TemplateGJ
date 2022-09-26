@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf71752e22bd0a2478c8074f8452590b, type: 3}
-  m_Name: Characters-Praying
+  m_Name: Player-Attack
   m_EditorClassIdentifier: 
-  isLooping: 1
+  isLooping: 0
   playDefaultOnCompletion: 1
   frames:
-  - sprite: {fileID: -1125467155, guid: 0df65f3685ffe5249bca0b6e489eaee0, type: 3}
-    duration: 0.2
-  - sprite: {fileID: 1481211845, guid: 0df65f3685ffe5249bca0b6e489eaee0, type: 3}
+  - sprite: {fileID: -1288987919, guid: 42ea482e096d95d46a0b529960f2e80f, type: 3}
     duration: 0.1
-  - sprite: {fileID: 675496584, guid: 0df65f3685ffe5249bca0b6e489eaee0, type: 3}
+  - sprite: {fileID: 1140790951, guid: 42ea482e096d95d46a0b529960f2e80f, type: 3}
     duration: 0.1
-  - sprite: {fileID: -936491132, guid: 0df65f3685ffe5249bca0b6e489eaee0, type: 3}
+  - sprite: {fileID: -1897290279, guid: 42ea482e096d95d46a0b529960f2e80f, type: 3}
     duration: 0.1
-  - sprite: {fileID: 718503526, guid: 0df65f3685ffe5249bca0b6e489eaee0, type: 3}
+  - sprite: {fileID: -2020272170, guid: 42ea482e096d95d46a0b529960f2e80f, type: 3}
+    duration: 0.1
+  - sprite: {fileID: -2035749421, guid: 42ea482e096d95d46a0b529960f2e80f, type: 3}
     duration: 0.1
   events: []

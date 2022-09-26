@@ -184,7 +184,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1125467155, guid: 8443d2d359906ce45be213cc8a5bb39a, type: 3}
+  m_Sprite: {fileID: -733563644, guid: d8f30ac1fc1d7c34883811428222e07e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -223,12 +223,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animations:
-  - {fileID: 11400000, guid: f4e8674c065030a4084bc309c834b289, type: 2}
-  - {fileID: 11400000, guid: 6284e52a6a551674f9308b9ac6781172, type: 2}
-  - {fileID: 11400000, guid: d0160f63772c4174a92fd494ee549f5e, type: 2}
-  - {fileID: 11400000, guid: 2faa55f097d966d4284fb425275e5232, type: 2}
-  - {fileID: 11400000, guid: 61d76380657305041b53f163242b6e13, type: 2}
-  - {fileID: 11400000, guid: df9ada016ecc14e4fbf1cc14a4ad7091, type: 2}
+  - {fileID: 11400000, guid: f58d4dc4998c777478ac1f698766bd4f, type: 2}
+  - {fileID: 11400000, guid: 7d419745e1b525e4a8eebed0212ae0c9, type: 2}
+  - {fileID: 11400000, guid: c6316d453b3f05b48ae7ae216239487a, type: 2}
+  - {fileID: 11400000, guid: da8e396caf0da5641bfe5ad38e6588e7, type: 2}
+  - {fileID: 11400000, guid: 6de30be3fa6a1ff40a96ecc116678fc6, type: 2}
+  - {fileID: 11400000, guid: 0231c83ef133cc846a21d4c644cbd1fb, type: 2}
   _spriteRenderer:
     _source: 0
     _localReference: {fileID: 0}

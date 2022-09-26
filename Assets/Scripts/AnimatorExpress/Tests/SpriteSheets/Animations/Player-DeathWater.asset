@@ -10,19 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf71752e22bd0a2478c8074f8452590b, type: 3}
-  m_Name: Characters-Attack
+  m_Name: Player-DeathWater
   m_EditorClassIdentifier: 
   isLooping: 0
-  playDefaultOnCompletion: 1
+  playDefaultOnCompletion: 0
   frames:
-  - sprite: {fileID: -1125467155, guid: 2a263725cf8a77d40a90e098649ec063, type: 3}
+  - sprite: {fileID: -1278877302, guid: 87b6622c8541568468da573a728a0518, type: 3}
     duration: 0.1
-  - sprite: {fileID: 1481211845, guid: 2a263725cf8a77d40a90e098649ec063, type: 3}
+  - sprite: {fileID: -796159301, guid: 87b6622c8541568468da573a728a0518, type: 3}
     duration: 0.1
-  - sprite: {fileID: 675496584, guid: 2a263725cf8a77d40a90e098649ec063, type: 3}
+  - sprite: {fileID: 1460344754, guid: 87b6622c8541568468da573a728a0518, type: 3}
     duration: 0.1
-  - sprite: {fileID: -936491132, guid: 2a263725cf8a77d40a90e098649ec063, type: 3}
-    duration: 0.1
-  - sprite: {fileID: 718503526, guid: 2a263725cf8a77d40a90e098649ec063, type: 3}
+  - sprite: {fileID: 1968147782, guid: 87b6622c8541568468da573a728a0518, type: 3}
     duration: 0.1
   events: []

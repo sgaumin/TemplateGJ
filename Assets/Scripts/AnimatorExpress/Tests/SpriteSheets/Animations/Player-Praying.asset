@@ -10,17 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf71752e22bd0a2478c8074f8452590b, type: 3}
-  m_Name: Characters-Walk
+  m_Name: Player-Praying
   m_EditorClassIdentifier: 
   isLooping: 1
   playDefaultOnCompletion: 1
   frames:
-  - sprite: {fileID: -1125467155, guid: 3d034c79162746d4586e540ed3ec1102, type: 3}
+  - sprite: {fileID: 166234848, guid: 1cb92650f540f1d42aa51450cc494a02, type: 3}
     duration: 0.1
-  - sprite: {fileID: 1481211845, guid: 3d034c79162746d4586e540ed3ec1102, type: 3}
+  - sprite: {fileID: 1117728723, guid: 1cb92650f540f1d42aa51450cc494a02, type: 3}
     duration: 0.1
-  - sprite: {fileID: 675496584, guid: 3d034c79162746d4586e540ed3ec1102, type: 3}
+  - sprite: {fileID: -888250697, guid: 1cb92650f540f1d42aa51450cc494a02, type: 3}
     duration: 0.1
-  - sprite: {fileID: -936491132, guid: 3d034c79162746d4586e540ed3ec1102, type: 3}
+  - sprite: {fileID: 1764596417, guid: 1cb92650f540f1d42aa51450cc494a02, type: 3}
+    duration: 0.1
+  - sprite: {fileID: 444274061, guid: 1cb92650f540f1d42aa51450cc494a02, type: 3}
     duration: 0.1
   events: []

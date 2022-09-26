@@ -1,5 +1,7 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
+using Utils;
 
 namespace AnimExpress
 {
@@ -17,29 +19,57 @@ namespace AnimExpress
 		{
 			base.OnInspectorGUI();
 
-			EditorGUI.BeginDisabledGroup(!Application.isPlaying);
 			if (context is not null && context.Animator is not null && context.Animator.Animations is not null)
 			{
+				EditorGUI.BeginDisabledGroup(!Application.isPlaying);
 				foreach (AnimationExpress item in context.Animator.Animations)
 				{
-					if (item is null) continue;
-
-					if (GUILayout.Button(item.name))
+					try
 					{
-						context.IsTakingControls = true;
-						context.Animator.PlayTesting(item.name);
+						if (item is null) continue;
+
+						if (GUILayout.Button(item.name))
+						{
+							context.IsTakingControls = true;
+							context.Animator.PlayTesting(item.name);
+						}
+					}
+					catch (Exception)
+					{
 					}
 				}
 
-				GUILayout.Space(16f);
-				EditorGUI.BeginDisabledGroup(!context.IsTakingControls);
-				if (GUILayout.Button("Release Control"))
+				if (context.Animator.Animations.Count > 0)
 				{
-					context.IsTakingControls = false;
+					GUILayout.Space(16f);
+					EditorGUI.BeginDisabledGroup(!context.IsTakingControls);
+					if (GUILayout.Button("Release Control"))
+					{
+						context.IsTakingControls = false;
+					}
+					EditorGUI.EndDisabledGroup();
 				}
 				EditorGUI.EndDisabledGroup();
+
+				if (context.Animator.Animations.Count == 0)
+				{
+					string filteredName = $"{context.gameObject.name}-";
+					if (GUILayout.Button($"Import animations starting with \"{filteredName}\""))
+					{
+						string[] guids = AssetDatabase.FindAssets($"t:AnimationExpress {filteredName}");
+
+						if (guids.IsEmpty())
+						{
+							Debug.LogError($"No animations assets found starting with \"{filteredName}\"");
+						}
+
+						foreach (string guid in guids)
+						{
+							context.Animator.AddAnimation(AssetDatabase.LoadAssetAtPath<AnimationExpress>(AssetDatabase.GUIDToAssetPath(guid)));
+						}
+					}
+				}
 			}
-			EditorGUI.EndDisabledGroup();
 		}
 	}
 }
