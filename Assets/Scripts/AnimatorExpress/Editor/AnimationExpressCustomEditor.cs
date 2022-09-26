@@ -1,3 +1,4 @@
+using System.Runtime.Remoting.Contexts;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,7 +16,16 @@ namespace AnimExpress
 
 		public override void OnInspectorGUI()
 		{
-			base.OnInspectorGUI();
+			serializedObject.Update();
+
+			SerializedProperty isLooping = serializedObject.FindProperty("isLooping");
+			EditorGUILayout.PropertyField(isLooping);
+			if (!isLooping.boolValue)
+			{
+				EditorGUILayout.PropertyField(serializedObject.FindProperty("playDefaultOnCompletion"));
+			}
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("frames"));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("events"));
 
 			GUIStyle GuistyleBoxDND = new GUIStyle(GUI.skin.box);
 			GuistyleBoxDND.alignment = TextAnchor.MiddleCenter;
@@ -45,6 +55,8 @@ namespace AnimExpress
 					Event.current.Use();
 				}
 			}
+
+			serializedObject.ApplyModifiedProperties();
 		}
 	}
 }

@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.dbrizov.naughtyattributes": {
+      "version": "https://github.com/dbrizov/NaughtyAttributes.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "8a8fa5a9659a6d63f196391c71e06c4286c8acd7"
+    },
     "com.github.superunitybuild.buildactions": {
       "version": "https://github.com/superunitybuild/buildactions.git",
       "depth": 0,
@@ -15,13 +22,6 @@
       "source": "git",
       "dependencies": {},
       "hash": "18fd7c1b9295d3afb802531824d3bfaa1b1ad885"
-    },
-    "com.madsbangh.easybuttons": {
-      "version": "https://github.com/madsbangh/EasyButtons.git#upm",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "39da70419a2dc9ce0059b40dd64abcdfcef58ea1"
     },
     "com.unity.2d.pixel-perfect": {
       "version": "5.0.2",
