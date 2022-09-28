@@ -30,6 +30,12 @@ namespace Utils
 			ShowExplorer();
 		}
 
+		[MenuItem("Tools/Reserialize All Assets", false, 2)]
+		public static void ReserializeAllAssets()
+		{
+			AssetDatabase.ForceReserializeAssets();
+		}
+
 		private static void ShowExplorer()
 		{
 			System.Diagnostics.Process.Start(GeneralBuildsFolder);
@@ -42,7 +48,7 @@ namespace Utils
 				Directory.CreateDirectory(GeneralBuildsFolder);
 			}
 
-			string templateName = $"{ Application.productName.Replace(" ", "") }_{ target}_{ Application.version}";
+			string templateName = $"{Application.productName.Replace(" ", "")}_{target}_{Application.version}";
 			string buildFolder = Path.Combine(GeneralBuildsFolder, templateName);
 			if (!Directory.Exists(buildFolder))
 			{
