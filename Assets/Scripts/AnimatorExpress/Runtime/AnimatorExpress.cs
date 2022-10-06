@@ -162,7 +162,7 @@ namespace AnimExpress
 
 					Frame currentFrame = frames[currentIndex++];
 					spriteRenderer.sprite = currentFrame.Sprite;
-					currentDuration = Time.time + currentFrame.Duration;
+					currentDuration = Time.time + currentFrame.Duration / currentAnimation.SpeedFactor;
 				}
 
 				foreach (var e in events)

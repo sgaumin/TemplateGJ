@@ -24,6 +24,16 @@ namespace AnimExpress
 			{
 				EditorGUILayout.PropertyField(serializedObject.FindProperty("playDefaultOnCompletion"));
 			}
+			SerializedProperty speedFactor = serializedObject.FindProperty("speedFactor");
+			EditorGUILayout.PropertyField(speedFactor);
+			if (speedFactor.floatValue == 0f)
+			{
+				speedFactor.floatValue = 1f;
+			}
+			else
+			{
+				speedFactor.floatValue = Mathf.Max(speedFactor.floatValue, 0.01f);
+			}
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("frames"));
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("events"));
 

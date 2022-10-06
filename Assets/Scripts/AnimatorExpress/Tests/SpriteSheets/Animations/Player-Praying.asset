@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLooping: 1
   playDefaultOnCompletion: 1
+  speedFactor: 1
   frames:
   - sprite: {fileID: 166234848, guid: 1cb92650f540f1d42aa51450cc494a02, type: 3}
     duration: 0.1
