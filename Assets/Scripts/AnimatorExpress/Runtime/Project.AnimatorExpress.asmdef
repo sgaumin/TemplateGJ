@@ -1,10 +1,7 @@
 {
     "name": "Project.AnimatorExpress",
     "rootNamespace": "",
-    "references": [
-        "GUID:c8b10eac7c97de54db609f6e4cf27c50",
-        "GUID:9e49e2cda224a184daea5fbeb60f0c4e"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

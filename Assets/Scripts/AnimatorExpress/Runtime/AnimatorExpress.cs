@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Utils.Dependency;
 using UnityEngine;
-using Utils;
 using System;
 
 namespace AnimExpress
@@ -13,11 +11,8 @@ namespace AnimExpress
 		[SerializeField] private List<AnimationExpress> animations = new List<AnimationExpress>();
 
 		[Header("References")]
-		[SerializeField] protected Dependency<SpriteRenderer> _spriteRenderer;
-		[SerializeField] protected Dependency<AnimatorExpressTester> _animatorExpressTester;
-
-		private SpriteRenderer spriteRenderer => _spriteRenderer.Resolve(this);
-		private AnimatorExpressTester animatorExpressTester => _animatorExpressTester.Resolve(this);
+		[SerializeField] protected SpriteRenderer spriteRenderer;
+		[SerializeField] protected AnimatorExpressTester animatorExpressTester;
 
 		private bool hasBeenInitialized;
 		private Coroutine animationRoutine;
@@ -33,6 +28,14 @@ namespace AnimExpress
 			{
 				if (!Application.isPlaying)
 				{
+					if (spriteRenderer is null)
+					{
+						spriteRenderer = GetComponent<SpriteRenderer>();
+					}
+					if (animatorExpressTester is null)
+					{
+						animatorExpressTester = GetComponent<AnimatorExpressTester>();
+					}
 					spriteRenderer.sprite = animations[0].Frames[0].Sprite;
 				}
 			}
@@ -80,10 +83,11 @@ namespace AnimExpress
 		{
 			CheckInitialization();
 
-			if (animations.IsEmpty() || currentAnimation == animations[0]) return;
+			if (animations.Count == 0 || currentAnimation == animations[0]) return;
 
 			currentAnimation = animations[0]; // First animation is default
-			this.TryStartCoroutine(PlayCore(), ref animationRoutine);
+
+			PlayRoutine();
 		}
 
 		public void PlayTesting(string animationKey = "")
@@ -116,7 +120,16 @@ namespace AnimExpress
 				Debug.LogError($"Animation {animationKey} not found for {gameObject.name}");
 			}
 
-			this.TryStartCoroutine(PlayCore(), ref animationRoutine);
+			PlayRoutine();
+		}
+
+		private void PlayRoutine()
+		{
+			if (animationRoutine is not null)
+			{
+				StopCoroutine(animationRoutine);
+			}
+			animationRoutine = StartCoroutine(PlayCore());
 		}
 
 		private void CheckInitialization()

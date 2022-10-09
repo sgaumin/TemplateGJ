@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using Utils;
 
 namespace AnimExpress
 {
@@ -57,8 +57,7 @@ namespace AnimExpress
 					if (GUILayout.Button($"Import animations starting with \"{filteredName}\""))
 					{
 						string[] guids = AssetDatabase.FindAssets($"t:AnimationExpress {filteredName}");
-
-						if (guids.IsEmpty())
+						if (guids.Length == 0)
 						{
 							Debug.LogError($"No animations assets found starting with \"{filteredName}\"");
 						}
