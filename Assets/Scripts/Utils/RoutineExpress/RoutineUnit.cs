@@ -1,7 +1,8 @@
 using System.Collections;
+using System.Data;
 using UnityEngine;
 
-namespace Utils
+namespace RoutineExpress
 {
 	public class RoutineUnit : MonoBehaviour
 	{
@@ -9,13 +10,17 @@ namespace Utils
 
 		public void Run(IEnumerator routineMethod)
 		{
-			this.TryStartCoroutine(RunCore(routineMethod), ref routine);
+			if (routine is not null)
+			{
+				StopCoroutine(routine);
+			}
+			routine = StartCoroutine(RunCore(routineMethod));
 		}
 
 		private IEnumerator RunCore(IEnumerator routineMethod)
 		{
 			yield return routineMethod;
-			RoutineExpress.ReturnToPool(this);
+			RoutinePool.ReturnToPool(this);
 		}
 	}
 }

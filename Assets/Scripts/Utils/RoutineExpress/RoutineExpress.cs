@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Utils
+namespace RoutineExpress
 {
-	public static class RoutineExpress
+	public static class RoutinePool
 	{
 		private const string holderName = "RoutinePool";
 		private const string unitPrefix = "RoutineUnit";

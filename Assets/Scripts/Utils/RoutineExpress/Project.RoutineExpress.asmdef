@@ -1,11 +1,7 @@
 {
-    "name": "Project.Utils",
+    "name": "Project.RoutineExpress",
     "rootNamespace": "",
-    "references": [
-        "Unity.TextMeshPro",
-        "Project.Utils.Dependency",
-        "Project.RoutineExpress"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
