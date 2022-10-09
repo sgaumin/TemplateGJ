@@ -1,6 +1,9 @@
-﻿public enum AudioStopType
+﻿namespace AudioExpress
 {
-	No,
-	StopAfterDuration,
-	StopAfterPlays
+	public enum AudioStopType
+	{
+		No,
+		StopAfterDuration,
+		StopAfterPlays
+	}
 }

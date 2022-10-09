@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using AudioExpress;
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -33,16 +34,6 @@ public class MusicPlayer : MonoBehaviour
 		}
 	}
 	public bool IsMuted => _masterVolume == -80f;
-
-	public void SwitchBackToMain()
-	{
-		if (MusicOverride != null)
-		{
-			MusicOverride.FadeOut(returnToPool: true);
-			MusicOverride = null;
-			FadIn();
-		}
-	}
 
 	public void FadIn()
 	{

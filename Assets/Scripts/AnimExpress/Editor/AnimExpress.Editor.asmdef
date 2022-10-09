@@ -1,5 +1,5 @@
 {
-    "name": "Project.AnimatorExpress.Editor",
+    "name": "AnimExpress.Editor",
     "rootNamespace": "",
     "references": [
         "GUID:a1928c647970bdc40a5b951ad60a7fc9"

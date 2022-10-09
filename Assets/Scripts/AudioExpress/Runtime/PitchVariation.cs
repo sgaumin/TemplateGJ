@@ -1,8 +1,11 @@
-public enum PitchVariation
+namespace AudioExpress
 {
-	None,
-	VerySmall,
-	Small,
-	Medium,
-	Large
+	public enum PitchVariation
+	{
+		None,
+		VerySmall,
+		Small,
+		Medium,
+		Large
+	}
 }

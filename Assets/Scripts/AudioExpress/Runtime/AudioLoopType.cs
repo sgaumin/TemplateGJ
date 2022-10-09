@@ -1,6 +1,9 @@
-﻿public enum AudioLoopType
+﻿namespace AudioExpress
 {
-	No,
-	Normal,
-	Manuel
+	public enum AudioLoopType
+	{
+		No,
+		Normal,
+		Manuel
+	}
 }
