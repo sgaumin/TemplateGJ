@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: Player-Attack
   m_EditorClassIdentifier: 
   isLooping: 0
-  playDefaultOnCompletion: 0
+  playDefaultOnCompletion: 1
   speedFactor: 1
   frames:
-  - sprite: {fileID: -1288987919, guid: 42ea482e096d95d46a0b529960f2e80f, type: 3}
+  - sprite: {fileID: 0, guid: 42ea482e096d95d46a0b529960f2e80f, type: 3}
     duration: 0.1
   - sprite: {fileID: 1140790951, guid: 42ea482e096d95d46a0b529960f2e80f, type: 3}
     duration: 0.1
-  - sprite: {fileID: -1897290279, guid: 42ea482e096d95d46a0b529960f2e80f, type: 3}
+  - sprite: {fileID: 6497020797011349256, guid: 42ea482e096d95d46a0b529960f2e80f,
+      type: 3}
     duration: 0.1
   - sprite: {fileID: -2020272170, guid: 42ea482e096d95d46a0b529960f2e80f, type: 3}
     duration: 0.1

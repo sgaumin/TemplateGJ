@@ -224,7 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animations:
   - {fileID: 11400000, guid: f58d4dc4998c777478ac1f698766bd4f, type: 2}
-  - {fileID: 11400000, guid: 7d419745e1b525e4a8eebed0212ae0c9, type: 2}
+  - {fileID: 11400000, guid: 05e83818de23c42488f27eed921b2a0b, type: 2}
   - {fileID: 11400000, guid: c6316d453b3f05b48ae7ae216239487a, type: 2}
   - {fileID: 11400000, guid: da8e396caf0da5641bfe5ad38e6588e7, type: 2}
   - {fileID: 11400000, guid: 6de30be3fa6a1ff40a96ecc116678fc6, type: 2}
