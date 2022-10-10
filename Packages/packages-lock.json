@@ -23,12 +23,26 @@
       "dependencies": {},
       "hash": "18fd7c1b9295d3afb802531824d3bfaa1b1ad885"
     },
+    "com.sgaumin.animexpress": {
+      "version": "https://github.com/sgaumin/AnimExpress.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "0308863d84a30945f6d9904a83d570c21ca4ad92"
+    },
     "com.sgaumin.audioexpress": {
       "version": "https://github.com/sgaumin/AudioExpress.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
       "hash": "03c5a7fc9632e8f4519dcdb3e7af895385d0725f"
+    },
+    "com.sgaumin.routineexpress": {
+      "version": "https://github.com/sgaumin/RoutineExpress.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "40376f76fda2a2c4c0c53460e90b161d405d670c"
     },
     "com.unity.2d.pixel-perfect": {
       "version": "5.0.2",
