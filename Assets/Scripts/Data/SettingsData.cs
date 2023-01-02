@@ -7,9 +7,6 @@ public class SettingsData : BaseIndex
 
 	public static SettingsData Instance => GetOrLoad(ref _instance);
 
-	// Set up your references below!
-	public bool autoAssignScene = true;
-
 	[Header("Animations")]
 	public float sceneFadeDuration = 0.5f;
 
