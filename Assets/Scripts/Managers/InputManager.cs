@@ -39,7 +39,7 @@ public class InputManager : MonoBehaviour
 
 	private static void ListenRestart()
 	{
-		if (Level.State != SceneState.Start && Input.GetKeyDown(RESTART))
+		if (!Level.IsRunning && Input.GetKeyDown(RESTART))
 		{
 			Level.ReloadScene();
 		}
@@ -47,7 +47,7 @@ public class InputManager : MonoBehaviour
 
 	private void ListenKeyAxis()
 	{
-		if (Level.State != SceneState.Start) return;
+		if (!Level.IsRunning) return;
 
 		if (Input.GetKey(_codes[0]) || Input.GetKey(KeyCode.UpArrow)) // UP
 		{

@@ -3,21 +3,20 @@ using System;
 using UnityEngine;
 using Utils;
 
-public class SceneBase : Singleton<SceneBase>
+public class GameBase : Singleton<GameBase>
 {
-	public event Action OnStart;
-
-	public event Action OnEnd;
-
-	public event Action OnPause;
+	public event Action OnLoadingEvent;
+	public event Action OnStartRunningEvent;
+	public event Action OnGameOverEvent;
+	public event Action OnPauseEvent;
 
 	[SerializeField] private LevelLoader levelLoader;
 	[SerializeField] private MusicPlayer music;
 	[SerializeField] private VisualEffectsHandler effectHandler;
 
-	private SceneState state;
+	private GameState state;
 
-	public SceneState State
+	public GameState State
 	{
 		get => state;
 		set
@@ -26,20 +25,26 @@ public class SceneBase : Singleton<SceneBase>
 
 			switch (value)
 			{
-				case SceneState.Start:
-					OnStart?.Invoke();
+				case GameState.Loading:
+					OnLoadingEvent?.Invoke();
 					break;
 
-				case SceneState.End:
-					OnEnd?.Invoke();
+				case GameState.GameOver:
+					OnGameOverEvent?.Invoke();
 					break;
 
-				case SceneState.Pause:
-					OnPause?.Invoke();
+				case GameState.Pause:
+					OnPauseEvent?.Invoke();
+					break;
+
+				case GameState.Running:
+					OnStartRunningEvent?.Invoke();
 					break;
 			}
 		}
 	}
+
+	public bool IsRunning => state == GameState.Running;
 
 	protected override void Awake()
 	{

@@ -80,8 +80,6 @@ MonoBehaviour:
   fader: {fileID: 7504465885851701071}
   impulse: {fileID: 4471903342019983564}
   currentCamera: {fileID: 2193284842810304318}
-  volume: {fileID: 1702720540106031783}
-  transition: {fileID: 2100000, guid: bbb5062d96b699f4d9c1b1bfbf109ce9, type: 2}
 --- !u!1 &1773694430037643180
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +361,7 @@ GameObject:
   - component: {fileID: 1649039352197683438}
   - component: {fileID: 2593835828638304647}
   m_Layer: 0
-  m_Name: LevelHolder
+  m_Name: GameHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -740,20 +738,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 4381328670056538346, guid: 70dcbaea908f1374295c2aa4af06da9d,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.x
+      value: 0.027226139
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381328670056538346, guid: 70dcbaea908f1374295c2aa4af06da9d,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.y
+      value: 0.7502078
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381328670056538346, guid: 70dcbaea908f1374295c2aa4af06da9d,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 0.512492
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381328670056538346, guid: 70dcbaea908f1374295c2aa4af06da9d,
+        type: 3}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 0.3740648
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70dcbaea908f1374295c2aa4af06da9d, type: 3}
---- !u!114 &1702720540106031783 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 546079154488410560, guid: 70dcbaea908f1374295c2aa4af06da9d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1167935706699334503}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &3240564644996932466 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4381328670056538133, guid: 70dcbaea908f1374295c2aa4af06da9d,
