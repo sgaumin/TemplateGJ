@@ -1,13 +1,7 @@
-﻿using Cinemachine;
-using DG.Tweening;
+﻿using DG.Tweening;
 using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.Rendering.PostProcessing;
 using Utils;
-using Utils.Dependency;
-using static Facade;
 
 public class SceneBase : Singleton<SceneBase>
 {
@@ -81,26 +75,6 @@ public class SceneBase : Singleton<SceneBase>
 	public void GenerateImpulse()
 	{
 		effectHandler.GenerateImpulse();
-	}
-
-	public void BoostTime(float startValue, float duration)
-	{
-		effectHandler.BoostTime(startValue, duration);
-	}
-
-	public void FreezeTime(float duration = 0.1f)
-	{
-		effectHandler.FreezeTime(duration);
-	}
-
-	public void InverseColor(float duration = 0.05f)
-	{
-		effectHandler.InverseColor(duration);
-	}
-
-	public void ResetShaders()
-	{
-		effectHandler.ResetShaders();
 	}
 
 	#endregion Post-Processing and Effects

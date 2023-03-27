@@ -2,7 +2,6 @@
 using System.Collections;
 using UnityEngine;
 using Utils;
-using static Facade;
 
 public class LevelLoader : MonoBehaviour
 {
@@ -131,7 +130,6 @@ public class LevelLoader : MonoBehaviour
 	private IEnumerator LoadSceneCore(float transitionTime = 0f, Action content = null)
 	{
 		yield return new WaitForSeconds(transitionTime);
-		Level.ResetShaders();
 		Time.timeScale = 1f;
 
 		content?.Invoke();

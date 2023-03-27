@@ -1,12 +1,4 @@
-using Cinemachine;
-using DG.Tweening;
-using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.Rendering.PostProcessing;
-using Utils;
-using Utils.Dependency;
 using static Facade;
 
 public class InputManager : MonoBehaviour
