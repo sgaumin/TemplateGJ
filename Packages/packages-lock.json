@@ -37,6 +37,13 @@
       "dependencies": {},
       "hash": "690d99e6548897cb16a8ecd42bd83e241ddc3e58"
     },
+    "com.sgaumin.linkexpress": {
+      "version": "https://github.com/sgaumin/LinkExpress.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "443c1584d30140aa462b8e358fb17234a72efb0f"
+    },
     "com.sgaumin.routineexpress": {
       "version": "https://github.com/sgaumin/RoutineExpress.git",
       "depth": 0,

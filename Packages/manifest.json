@@ -5,6 +5,7 @@
     "com.github.superunitybuild.buildtool": "https://github.com/superunitybuild/buildtool.git",
     "com.sgaumin.animexpress": "https://github.com/sgaumin/AnimExpress.git",
     "com.sgaumin.audioexpress": "https://github.com/sgaumin/AudioExpress.git",
+    "com.sgaumin.linkexpress": "https://github.com/sgaumin/LinkExpress.git",
     "com.sgaumin.routineexpress": "https://github.com/sgaumin/RoutineExpress.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
