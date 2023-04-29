@@ -28,28 +28,28 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "92f309de2e169eb82af4185040d1599a116874cc"
+      "hash": "7e2aec7ff71d19b151c99177b1a9e21d0794f57f"
     },
     "com.sgaumin.audioexpress": {
       "version": "https://github.com/sgaumin/AudioExpress.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "690d99e6548897cb16a8ecd42bd83e241ddc3e58"
+      "hash": "695ab040cf277abd8c6deb2d5442dbc018d6e622"
     },
     "com.sgaumin.linkexpress": {
       "version": "https://github.com/sgaumin/LinkExpress.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "443c1584d30140aa462b8e358fb17234a72efb0f"
+      "hash": "30c9ae9ce10284db53d771b8f824b181fb8d6534"
     },
     "com.sgaumin.routineexpress": {
       "version": "https://github.com/sgaumin/RoutineExpress.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "40376f76fda2a2c4c0c53460e90b161d405d670c"
+      "hash": "1abe9706b166be0e3d3611d5ba02c971ee1012e4"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
